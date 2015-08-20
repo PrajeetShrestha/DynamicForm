@@ -8,6 +8,7 @@
 
 #import "FieldTableViewCell.h"
 
-@interface PJTextField : FieldTableViewCell
+@interface PJTextField : FieldTableViewCell <UITextFieldDelegate>
+@property (weak, nonatomic) IBOutlet UITextField *textField;
 
 @end

@@ -6,15 +6,18 @@
 //  Copyright (c) 2015 EK Solutions Pvt Ltd. All rights reserved.
 //
 
+#import "DescriptionViewController.h"
 #import "FieldsViewController.h"
 #import "FieldTableViewCell.h"
 
-@interface FieldsViewController ()<FieldTableViewCell>
+@interface FieldsViewController ()<FieldTableViewCell,DescriptionViewControllerDelegate> {
+
+}
 
 @end
 
 @implementation FieldsViewController
-@synthesize cellTypes;
+@synthesize cellDefinition;
 
 - (instancetype)init
 {
@@ -29,7 +32,6 @@
     [super viewDidLoad];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
-    cellTypes = @[@0,@1,@2,@3];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -39,7 +41,7 @@
 
 #pragma mark - TableView Datasource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return cellTypes.count;
+    return cellDefinition.count;
 
 }
 
@@ -49,38 +51,41 @@
 }
 
 #pragma mark - TableView Delegates
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 
-}
 
 #pragma mark - Private Method
 - (UITableViewCell *)cellTypeForIndexPath:(NSIndexPath *)indexPath forTableView:(UITableView *)tableView {
-    FieldTableViewCell *cell;
-    int cellType = [cellTypes[indexPath.row] intValue];
-    switch (cellType) {
-        case 0:
-            cell = [tableView dequeueReusableCellWithIdentifier:@"PJTextField"];
-            break;
-        case 1:
-            cell = [tableView dequeueReusableCellWithIdentifier:@"PJDescription"];
-            cell.delegate = self;
-            break;
-        case 2:
-            cell = [tableView dequeueReusableCellWithIdentifier:@"PJBoolField"];
-            break;
-        case 3:
-            cell = [tableView dequeueReusableCellWithIdentifier:@"PJDatePicker"];
-            break;
-        default:
-            cell = nil;
-            break;
-    }
+    PJCellDefinition *definition = cellDefinition[indexPath.row];
+    NSString *cellType = definition.type;
+    FieldTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellType];
+    cell.value = definition.value;
+    cell.delegate = self;
+    cell.indexPath = indexPath;
     return cell;
 }
 
-- (void)didSelected {
-    //[self showViewController:<#(UIViewController *)#> sender:<#(id)#>
+#pragma mark - FieldTableViewCellDelegate
+- (void)didSelected:(Class)viewController sender:(FieldTableViewCell *)cell {
+    DescriptionViewController *vc = [[viewController alloc]init];
+    vc.delegate = self;
+    vc.initialValue = cell.value;
+    vc.indexPath = cell.indexPath;
+    [self showViewController:vc sender:nil];
 }
+
+- (void)controlValueChanged:(id)value sender:(FieldTableViewCell *)cell {
+    PJCellDefinition *definition = cellDefinition[cell.indexPath.row];
+    definition.value = value;
+
+    NSLog(@"%@",[cellDefinition[cell.indexPath.row] valueForKey:@"value"]);
+}
+#pragma mark - DescriptionViewControllerDelegate
+- (void)passValue:(id)value forIndexPath:(NSIndexPath *)indexPath {
+    PJCellDefinition *definition = cellDefinition[indexPath.row];
+    definition.value = value;
+    [self.tableView reloadData];
+}
+
 
 
 @end

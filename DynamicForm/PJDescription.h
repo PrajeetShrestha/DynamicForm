@@ -9,5 +9,6 @@
 #import "FieldTableViewCell.h"
 
 @interface PJDescription : FieldTableViewCell
+@property (weak, nonatomic) IBOutlet UILabel *lblDescription;
 
 @end

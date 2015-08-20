@@ -7,7 +7,7 @@
 //
 
 #import "ViewController.h"
-#import "FieldsViewController.h"
+#import "PJDynamicForm.h"
 
 @interface ViewController ()
 
@@ -35,7 +35,46 @@
 }
 */
 - (IBAction)push:(id)sender {
+
+    NSMutableArray *cellDefinitions = [NSMutableArray new];
+    PJCellDefinition *cellDefinition = [PJCellDefinition new];
+    cellDefinition.type = kPJTextField;
+    cellDefinition.title = @"How are you";
+    cellDefinition.placeholder = @"Greetings";
+    cellDefinition.value = @"OH SOUKA";
+    [cellDefinitions addObject:cellDefinition];
+
+    cellDefinition = [PJCellDefinition new];
+    cellDefinition.type = kPJBoolField;
+    cellDefinition.title = @"How are you";
+    cellDefinition.placeholder = @"Greetings";
+    cellDefinition.value = @"OH SOUKA";
+    [cellDefinitions addObject:cellDefinition];
+
+    cellDefinition = [PJCellDefinition new];
+    cellDefinition.type = kPJDescription;
+    cellDefinition.title = @"How are you";
+    cellDefinition.placeholder = @"Greetings";
+    cellDefinition.value = @"OH SOUKA";
+    [cellDefinitions addObject:cellDefinition];
+
+    cellDefinition = [PJCellDefinition new];
+    cellDefinition.type = kPJBoolField;
+    cellDefinition.title = @"How are you";
+    cellDefinition.placeholder = @"Greetings";
+    cellDefinition.value = @"OH SOUKA";
+    [cellDefinitions addObject:cellDefinition];
+
+    cellDefinition = [PJCellDefinition new];
+    cellDefinition.type = kPJBoolField;
+    cellDefinition.title = @"How are you";
+    cellDefinition.placeholder = @"Greetings";
+    cellDefinition.value = @"OH SOUKA";
+    [cellDefinitions addObject:cellDefinition];
+
+
     FieldsViewController *vc = [FieldsViewController new];
+    vc.cellDefinition = cellDefinitions;
     [self showViewController:vc sender:nil];
 }
 

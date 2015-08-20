@@ -7,22 +7,15 @@
 //
 
 #import "FieldTableView.h"
-
 @implementation FieldTableView
 
 
 - (void)awakeFromNib {
-    [self registerNib:[UINib nibWithNibName:@"PJTextField" bundle:nil] forCellReuseIdentifier:@"PJTextField"];
-    [self registerNib:[UINib nibWithNibName:@"PJDescription" bundle:nil] forCellReuseIdentifier:@"PJDescription"];
-    [self registerNib:[UINib nibWithNibName:@"PJDatePicker" bundle:nil] forCellReuseIdentifier:@"PJDatePicker"];
-    [self registerNib:[UINib nibWithNibName:@"PJBoolField" bundle:nil] forCellReuseIdentifier:@"PJBoolField"];
+    [self registerNib:[UINib nibWithNibName:kPJTextField bundle:nil] forCellReuseIdentifier:kPJTextField];
+    [self registerNib:[UINib nibWithNibName:kPJDescription bundle:nil] forCellReuseIdentifier:kPJDescription];
+    [self registerNib:[UINib nibWithNibName:kPJDatePicker bundle:nil] forCellReuseIdentifier:kPJDatePicker];
+    [self registerNib:[UINib nibWithNibName:kPJBoolField bundle:nil] forCellReuseIdentifier:kPJBoolField];
 }
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect {
-    // Drawing code
-}
-*/
 
 @end
+

@@ -7,20 +7,24 @@
 //
 
 #import "PJDescription.h"
+#import "DescriptionViewController.h"
 
 @implementation PJDescription
 - (void)awakeFromNib {
-    
+
 }
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
 
     if (selected) {
-        NSLog(@"Description Selected");
-        [self.delegate didSelected];
+        [self.delegate didSelected:([DescriptionViewController class]) sender:self];
     } else {
 
     }
+}
+
+- (void)layoutSubviews {
+    self.lblDescription.text = self.value;
 }
 
 @end

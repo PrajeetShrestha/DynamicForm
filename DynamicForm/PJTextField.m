@@ -13,6 +13,12 @@
 
  - (void)awakeFromNib {
      self.type = @"PJTextField";
+     self.textField.delegate = self;
  }
 
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
+    [self.delegate controlValueChanged:[NSString stringWithFormat:@"%@%@",textField.text,string]
+                                sender:self];
+    return YES;
+}
 @end
