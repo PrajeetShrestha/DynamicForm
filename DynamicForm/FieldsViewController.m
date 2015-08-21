@@ -92,7 +92,6 @@
         vc.dataArray = cell.dataArray;
         [self showViewController:vc sender:nil];
     }
-
 }
 
 - (void)controlActivated:(id)sender {
@@ -102,6 +101,13 @@
     //CGRect rectInTableView = [self.tableView rectForRowAtIndexPath:cell.indexPath];
     //CGRect rectInSuperview = [self.tableView convertRect:rectInTableView toView:[self.tableView superview]];
     //NSLog(@"%@ RECT IN SUPERVIEW " ,NSStringFromCGRect(rectInSuperview));
+}
+
+- (void)submitAction:(id)sender {
+    [self.view endEditing:YES];
+    for (PJCellDefinition *definition in cellDefinition){
+        NSLog(@"%@",definition.value);
+    }
 }
 
 - (void)controlValueChanged:(id)value sender:(FieldTableViewCell *)cell {

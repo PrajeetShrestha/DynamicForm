@@ -14,6 +14,8 @@
 		25544BC51B87165D00B8FBE0 /* PJListItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 25544BC31B87165D00B8FBE0 /* PJListItemCell.m */; };
 		25544BC61B87165D00B8FBE0 /* PJListItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 25544BC41B87165D00B8FBE0 /* PJListItemCell.xib */; };
 		25544BCA1B871DD500B8FBE0 /* UIViewController+BackButtonHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 25544BC91B871DD500B8FBE0 /* UIViewController+BackButtonHandler.m */; };
+		25544BCF1B8737D200B8FBE0 /* PJSubmitCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 25544BCD1B8737D200B8FBE0 /* PJSubmitCell.m */; };
+		25544BD01B8737D200B8FBE0 /* PJSubmitCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 25544BCE1B8737D200B8FBE0 /* PJSubmitCell.xib */; };
 		256BA5AA1B85B94A00C55EEB /* DescriptionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 256BA5A81B85B94A00C55EEB /* DescriptionViewController.m */; };
 		256BA5AB1B85B94A00C55EEB /* DescriptionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 256BA5A91B85B94A00C55EEB /* DescriptionViewController.xib */; };
 		256BA5B01B85C83B00C55EEB /* PJConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 256BA5AF1B85C83B00C55EEB /* PJConstants.m */; };
@@ -63,6 +65,9 @@
 		25544BC41B87165D00B8FBE0 /* PJListItemCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PJListItemCell.xib; sourceTree = "<group>"; };
 		25544BC81B871DD500B8FBE0 /* UIViewController+BackButtonHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+BackButtonHandler.h"; sourceTree = "<group>"; };
 		25544BC91B871DD500B8FBE0 /* UIViewController+BackButtonHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+BackButtonHandler.m"; sourceTree = "<group>"; };
+		25544BCC1B8737D200B8FBE0 /* PJSubmitCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PJSubmitCell.h; sourceTree = "<group>"; };
+		25544BCD1B8737D200B8FBE0 /* PJSubmitCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PJSubmitCell.m; sourceTree = "<group>"; };
+		25544BCE1B8737D200B8FBE0 /* PJSubmitCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PJSubmitCell.xib; sourceTree = "<group>"; };
 		256BA5A71B85B94A00C55EEB /* DescriptionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DescriptionViewController.h; sourceTree = "<group>"; };
 		256BA5A81B85B94A00C55EEB /* DescriptionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DescriptionViewController.m; sourceTree = "<group>"; };
 		256BA5A91B85B94A00C55EEB /* DescriptionViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DescriptionViewController.xib; sourceTree = "<group>"; };
@@ -279,6 +284,7 @@
 		25A4BE301B849EEC006FEB71 /* Cells Interface */ = {
 			isa = PBXGroup;
 			children = (
+				25544BCE1B8737D200B8FBE0 /* PJSubmitCell.xib */,
 				25A4BE281B849E9D006FEB71 /* PJTextField.xib */,
 				25A4BE2A1B849EB3006FEB71 /* PJDescription.xib */,
 				25A4BE2C1B849EC6006FEB71 /* PJBoolField.xib */,
@@ -310,6 +316,8 @@
 			isa = PBXGroup;
 			children = (
 				25A4BE311B849F1A006FEB71 /* BaseCell */,
+				25544BCC1B8737D200B8FBE0 /* PJSubmitCell.h */,
+				25544BCD1B8737D200B8FBE0 /* PJSubmitCell.m */,
 				25544BB71B870C7E00B8FBE0 /* PJListField.h */,
 				25544BB81B870C7E00B8FBE0 /* PJListField.m */,
 				25A4BE1C1B849E77006FEB71 /* PJTextField.h */,
@@ -441,6 +449,7 @@
 				256BA5AB1B85B94A00C55EEB /* DescriptionViewController.xib in Resources */,
 				25A4BE2B1B849EB3006FEB71 /* PJDescription.xib in Resources */,
 				25A4BE2D1B849EC6006FEB71 /* PJBoolField.xib in Resources */,
+				25544BD01B8737D200B8FBE0 /* PJSubmitCell.xib in Resources */,
 				25544BBB1B870C7E00B8FBE0 /* PJListField.xib in Resources */,
 				25A4BE291B849E9D006FEB71 /* PJTextField.xib in Resources */,
 				25A4BE2F1B849ED9006FEB71 /* PJDatePicker.xib in Resources */,
@@ -499,6 +508,7 @@
 				25544BC51B87165D00B8FBE0 /* PJListItemCell.m in Sources */,
 				25A4BE211B849E7E006FEB71 /* PJDescription.m in Sources */,
 				25A4BDDA1B8494AC006FEB71 /* AppDelegate.m in Sources */,
+				25544BCF1B8737D200B8FBE0 /* PJSubmitCell.m in Sources */,
 				25544BBA1B870C7E00B8FBE0 /* PJListField.m in Sources */,
 				25A4BE181B849DC0006FEB71 /* FieldTableViewCell.m in Sources */,
 				25A4BDDD1B8494AC006FEB71 /* DynamicForm.xcdatamodeld in Sources */,

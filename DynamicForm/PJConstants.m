@@ -14,4 +14,5 @@ NSString *const kPJTextField    = @"PJTextField";
 NSString *const kPJBoolField    = @"PJBoolField";
 NSString *const kPJDatePicker   = @"PJDatePicker";
 NSString *const kPJListField = @"PJListField";
+NSString *const kPJSubmitCell = @"PJSubmitCell";
 

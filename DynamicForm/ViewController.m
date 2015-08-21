@@ -34,100 +34,62 @@
     NSMutableArray *cellDefinitions = [NSMutableArray new];
     PJCellDefinition *cellDefinition = [PJCellDefinition new];
     cellDefinition.type = kPJTextField;
-    cellDefinition.title = @"Name";
-    cellDefinition.placeholder = @"Greetings";
-    cellDefinition.value = @"Type your description here!";
+    cellDefinition.title = @"First Name";
     cellDefinition.isRequired = YES;
     cellDefinition.placeholder = @"Type your name...";
     [cellDefinitions addObject:cellDefinition];
 
     cellDefinition = [PJCellDefinition new];
-    cellDefinition.type = kPJDescription;
-    cellDefinition.title = @"Address";
-    cellDefinition.placeholder = @"Greetings";
+    cellDefinition.type = kPJTextField;
+    cellDefinition.title = @"Last Name";
     cellDefinition.isRequired = YES;
-    cellDefinition.value = @"This is so cool!";
+    cellDefinition.placeholder = @"Type your last name...";
+    [cellDefinitions addObject:cellDefinition];
+
+    cellDefinition = [PJCellDefinition new];
+    cellDefinition.type = kPJTextField;
+    cellDefinition.title = @"Email Address";
+    cellDefinition.isRequired = YES;
+    cellDefinition.placeholder = @"Type your email_id...";
+    [cellDefinitions addObject:cellDefinition];
+
+    cellDefinition = [PJCellDefinition new];
+    cellDefinition.type = kPJTextField;
+    cellDefinition.title = @"Desired Username";
+    cellDefinition.isRequired = YES;
+    cellDefinition.placeholder = @"Type your desired username...";
+    [cellDefinitions addObject:cellDefinition];
+
+    cellDefinition = [PJCellDefinition new];
+    cellDefinition.type = kPJTextField;
+    cellDefinition.title = @"Affiliation";
+    cellDefinition.isRequired = YES;
+    cellDefinition.placeholder = @"Type your affiliation...";
+    [cellDefinitions addObject:cellDefinition];
+
+    cellDefinition = [PJCellDefinition new];
+    cellDefinition.type = kPJDescription;
+    cellDefinition.title = @"Reason for account";
+    cellDefinition.isRequired = YES;
+    cellDefinition.placeholder = @"Type reason for your account...";
     [cellDefinitions addObject:cellDefinition];
 
     cellDefinition = [PJCellDefinition new];
     cellDefinition.type = kPJListField;
-    cellDefinition.title = @"This is List Field";
-    cellDefinition.placeholder = @"Greetings";
-    cellDefinition.value = @"Select One Value";
-    cellDefinition.isRequired = NO;
-    cellDefinition.dataArray = @[@"Nepal",@"USA",@"India",@"Sri-Lanka",@"Bangaladesh"];
-    [cellDefinitions addObject:cellDefinition];
-
-    cellDefinition = [PJCellDefinition new];
-    cellDefinition.type = kPJBoolField;
-    cellDefinition.title = @"Need a tutor? (Yes/No)";
-    cellDefinition.placeholder = @"Greetings";
-    cellDefinition.value = @"OH SOUKA";
+    cellDefinition.title = @"User Type";
     cellDefinition.isRequired = YES;
+    cellDefinition.placeholder = @"Select User Type...";
+    cellDefinition.dataArray = @[@"Student",@"Faculty",@"Staff",@"Other"];
+    cellDefinition.value = @"User Type";
     [cellDefinitions addObject:cellDefinition];
 
-    cellDefinition = [PJCellDefinition new];
-    cellDefinition.type = kPJTextField;
-    cellDefinition.title = @"How are you";
-    cellDefinition.placeholder = @"Greetings";
-    cellDefinition.value = @"OH SOUKA";
-    cellDefinition.isRequired = YES;
-    [cellDefinitions addObject:cellDefinition];
+
+
+
 
     cellDefinition = [PJCellDefinition new];
-    cellDefinition.type = kPJTextField;
-    cellDefinition.title = @"How are you";
-    cellDefinition.placeholder = @"Greetings";
-    cellDefinition.value = @"OH SOUKA";
-    cellDefinition.isRequired = YES;
-    [cellDefinitions addObject:cellDefinition];
+    cellDefinition.type = kPJSubmitCell;
 
-    cellDefinition = [PJCellDefinition new];
-    cellDefinition.type = kPJTextField;
-    cellDefinition.title = @"How are you";
-    cellDefinition.placeholder = @"Greetings";
-    cellDefinition.value = @"OH SOUKA";
-    cellDefinition.isRequired = YES;
-    [cellDefinitions addObject:cellDefinition];
-
-    cellDefinition = [PJCellDefinition new];
-    cellDefinition.type = kPJTextField;
-    cellDefinition.title = @"How are you";
-    cellDefinition.placeholder = @"Greetings";
-    cellDefinition.value = @"OH SOUKA";
-    cellDefinition.isRequired = YES;
-    [cellDefinitions addObject:cellDefinition];
-
-    cellDefinition = [PJCellDefinition new];
-    cellDefinition.type = kPJTextField;
-    cellDefinition.title = @"How are you";
-    cellDefinition.placeholder = @"Greetings";
-    cellDefinition.value = @"OH SOUKA";
-    cellDefinition.isRequired = YES;
-    [cellDefinitions addObject:cellDefinition];
-
-    cellDefinition = [PJCellDefinition new];
-    cellDefinition.type = kPJTextField;
-    cellDefinition.title = @"How are you";
-    cellDefinition.placeholder = @"Greetings";
-    cellDefinition.value = @"OH SOUKA";
-    cellDefinition.isRequired = YES;
-    [cellDefinitions addObject:cellDefinition];
-
-    cellDefinition = [PJCellDefinition new];
-    cellDefinition.type = kPJTextField;
-    cellDefinition.title = @"How are you";
-    cellDefinition.placeholder = @"Greetings";
-    cellDefinition.value = @"OH SOUKA";
-    cellDefinition.isRequired = NO;
-    [cellDefinitions addObject:cellDefinition];
-
-    cellDefinition = [PJCellDefinition new];
-    cellDefinition.type = kPJBoolField;
-    cellDefinition.title = @"Accept Terms & Conditions? (Yes/No)";
-    cellDefinition.placeholder = @"Greetings";
-    cellDefinition.value = @"OH SOUKA";
-    cellDefinition.isRequired = YES;
     [cellDefinitions addObject:cellDefinition];
 
 

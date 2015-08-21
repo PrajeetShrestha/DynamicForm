@@ -8,9 +8,11 @@
 #import "PJConstants.h"
 #import <UIKit/UIKit.h>
 @protocol FieldTableViewCell<NSObject>
+@optional
 - (void)controlActivated:(id)sender;
 - (void)controlValueChanged:(id)value sender:(id)cell;
 - (void)didSelected:(Class)viewController sender:(id)cell;
+- (void)submitAction:(id)sender;
 @end
 
 @interface FieldTableViewCell : UITableViewCell
