@@ -16,9 +16,12 @@
     self.textField.delegate = self;
     self.title.textColor = PJColorFieldTitle;
     self.textField.textColor = PJColorFieldValue;
+    self.title.font = [UIFont systemFontOfSize:PJSizeFieldTitle];
+    self.textField.font = [UIFont systemFontOfSize:PJSizeFieldValue];
 }
 - (void)textFieldDidBeginEditing:(UITextField *)textField {
     [self.delegate controlActivated:self];
+
 }
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
     [self.delegate controlValueChanged:[NSString stringWithFormat:@"%@%@",textField.text,string]
@@ -28,6 +31,11 @@
 
 - (void)layoutSubviews {
     [self setupRequiredLabelVisibility];
+    self.title.text = self.titleText;
+    if (self.placeHolderText != nil) {
+        self.textField.placeholder = self.placeHolderText;
+    }
+
 }
 - (void)setupRequiredLabelVisibility {
     if (self.isRequired) {

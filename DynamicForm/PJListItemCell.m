@@ -1,16 +1,14 @@
 //
-//  FieldTableViewCell.m
+//  PJListItemCell.m
 //  DynamicForm
 //
-//  Created by Prajeet Shrestha on 8/19/15.
+//  Created by Prajeet Shrestha on 8/21/15.
 //  Copyright (c) 2015 EK Solutions Pvt Ltd. All rights reserved.
 //
 
-#import "FieldTableViewCell.h"
+#import "PJListItemCell.h"
 
-@implementation FieldTableViewCell
-
-
+@implementation PJListItemCell
 
 - (void)awakeFromNib {
     // Initialization code
@@ -19,7 +17,7 @@
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
 
-    
+    // Configure the view for the selected state
 }
 
 @end

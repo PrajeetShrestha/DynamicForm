@@ -7,11 +7,12 @@
 //
 
 #import "DescriptionViewController.h"
+#import "PJListViewController.h"
 #import "FieldsViewController.h"
 #import "FieldTableViewCell.h"
 
-@interface FieldsViewController ()<FieldTableViewCell,DescriptionViewControllerDelegate> {
-
+@interface FieldsViewController ()<FieldTableViewCell,DescriptionViewControllerDelegate,PJListViewControllerDelegate> {
+    BOOL needsShowConfirmation;
 }
 
 @end
@@ -33,6 +34,7 @@
     [super viewDidLoad];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
+    needsShowConfirmation = YES;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -45,10 +47,7 @@
 
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    CGRect rectInTableView = [tableView rectForRowAtIndexPath:indexPath];
-    CGRect rectInSuperview = [tableView convertRect:rectInTableView toView:[tableView superview]];
 
-    NSLog(@"%@ RECT IN SUPERVIEW " ,NSStringFromCGRect(rectInSuperview));
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -71,16 +70,25 @@
     cell.value = definition.value;
     cell.isRequired = definition.isRequired;
     cell.indexPath = indexPath;
+    cell.titleText = definition.title;
+    cell.placeHolderText = definition.placeholder;
     return cell;
 }
 
 #pragma mark - FieldTableViewCellDelegate
 - (void)didSelected:(Class)viewController sender:(FieldTableViewCell *)cell {
-    DescriptionViewController *vc = [[viewController alloc]init];
-    vc.delegate = self;
-    vc.initialValue = cell.value;
-    vc.indexPath = cell.indexPath;
-    [self showViewController:vc sender:nil];
+    if (viewController == [DescriptionViewController class]) {
+        DescriptionViewController *vc = [[viewController alloc]init];
+        vc.delegate = self;
+        vc.initialValue = cell.value;
+        vc.indexPath = cell.indexPath;
+        [self showViewController:vc sender:nil];
+    } else if (viewController == [PJListViewController class]) {
+        PJListViewController *vc = [[PJListViewController alloc]init];
+        vc.delegate = self;
+        [self showViewController:vc sender:nil];
+    }
+
 }
 
 - (void)controlActivated:(id)sender {
@@ -104,6 +112,28 @@
     definition.value = value;
 }
 
+#pragma mark - PJListViewControllerDelegate
+- (void)selectedItemInList:(id)value {
+    NSLog(@"Selected Value:%@",value)  ;
+}
+
+-(BOOL) navigationShouldPopOnBackButton {
+    if(needsShowConfirmation) {
+        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Confirm your action!" message:@"All the changes you have done in the form will be lost. Do you really want to go back?" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Ok" , nil];
+        [alert show ];
+        return NO; // Ignore 'Back' button this time
+    }
+    return YES; // Process 'Back' button click and Pop view controler
+}
+#pragma mark - AlertView Delegate
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    if (buttonIndex == 1) {
+        needsShowConfirmation = NO;
+        [self.navigationController popViewControllerAnimated:YES];
+    } else {
+        needsShowConfirmation = YES;
+    }
+}
 
 
 @end

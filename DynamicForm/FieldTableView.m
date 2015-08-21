@@ -15,6 +15,7 @@
     [self registerNib:[UINib nibWithNibName:kPJDescription bundle:nil] forCellReuseIdentifier:kPJDescription];
     [self registerNib:[UINib nibWithNibName:kPJDatePicker bundle:nil] forCellReuseIdentifier:kPJDatePicker];
     [self registerNib:[UINib nibWithNibName:kPJBoolField bundle:nil] forCellReuseIdentifier:kPJBoolField];
+    [self registerNib:[UINib nibWithNibName:kPJListField bundle:nil] forCellReuseIdentifier:kPJListField];
 }
 
 @end

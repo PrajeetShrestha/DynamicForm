@@ -9,7 +9,9 @@
 #ifndef DynamicForm_PJDynamicForm_h
 #define DynamicForm_PJDynamicForm_h
 #import "PJConstants.h"
+#import "PJConfig.h"
 #import "FieldsViewController.h"
 #import "PJCellDefinition.h"
 #import "DescriptionViewController.h"
+#import "PJListViewController.h"
 #endif

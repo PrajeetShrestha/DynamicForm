@@ -8,8 +8,10 @@
 
 #import "PJConstants.h"
 
+
 NSString *const kPJDescription  = @"PJDescription";
 NSString *const kPJTextField    = @"PJTextField";
 NSString *const kPJBoolField    = @"PJBoolField";
 NSString *const kPJDatePicker   = @"PJDatePicker";
-NSString *const kPJListSelector = @"PJListSelector";
+NSString *const kPJListField = @"PJListField";
+

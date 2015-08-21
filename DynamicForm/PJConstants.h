@@ -8,14 +8,13 @@
 
 #import <Foundation/Foundation.h>
 #import "PJCellDefinition.h"
+#import "PJConfig.h"
 
 #pragma mark - Cell Type
 extern NSString *const kPJDescription;
 extern NSString *const kPJTextField;
 extern NSString *const kPJBoolField;
 extern NSString *const kPJDatePicker;
-extern NSString *const kPJListSelector;
+extern NSString *const kPJListField;
 
-#pragma mark - Color
-#define PJColorFieldTitle [UIColor darkGrayColor]
-#define PJColorFieldValue [UIColor blackColor]
+

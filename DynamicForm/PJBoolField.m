@@ -11,6 +11,11 @@
 @implementation PJBoolField
 
 - (void)awakeFromNib {
-     self.title.textColor = PJColorFieldTitle;
+    self.title.textColor = PJColorFieldTitle;
+    self.title.font = [UIFont systemFontOfSize:PJSizeFieldTitle];
+}
+
+- (void)layoutSubviews {
+    self.title.text = self.titleText;
 }
 @end

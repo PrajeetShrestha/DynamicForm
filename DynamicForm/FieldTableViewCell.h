@@ -16,8 +16,8 @@
 @interface FieldTableViewCell : UITableViewCell
 @property (nonatomic) NSIndexPath *indexPath;
 @property (nonatomic) NSString *type;
-@property (nonatomic) NSString *placeHolder;
-@property (nonatomic) NSString *segueName;
+@property (nonatomic) NSString *titleText;
+@property (nonatomic) NSString *placeHolderText;
 @property (nonatomic) id value;
 @property (nonatomic,weak) id <FieldTableViewCell> delegate;
 @property (nonatomic) BOOL isRequired;
