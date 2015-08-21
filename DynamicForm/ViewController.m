@@ -55,6 +55,7 @@
     cellDefinition.placeholder = @"Greetings";
     cellDefinition.value = @"Select One Value";
     cellDefinition.isRequired = NO;
+    cellDefinition.dataArray = @[@"Nepal",@"USA",@"India",@"Sri-Lanka",@"Bangaladesh"];
     [cellDefinitions addObject:cellDefinition];
 
     cellDefinition = [PJCellDefinition new];
@@ -120,6 +121,15 @@
     cellDefinition.value = @"OH SOUKA";
     cellDefinition.isRequired = NO;
     [cellDefinitions addObject:cellDefinition];
+
+    cellDefinition = [PJCellDefinition new];
+    cellDefinition.type = kPJBoolField;
+    cellDefinition.title = @"Accept Terms & Conditions? (Yes/No)";
+    cellDefinition.placeholder = @"Greetings";
+    cellDefinition.value = @"OH SOUKA";
+    cellDefinition.isRequired = YES;
+    [cellDefinitions addObject:cellDefinition];
+
 
     FieldsViewController *vc = [FieldsViewController new];
     vc.cellDefinition = cellDefinitions;

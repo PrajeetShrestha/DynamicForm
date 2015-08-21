@@ -72,6 +72,7 @@
     cell.indexPath = indexPath;
     cell.titleText = definition.title;
     cell.placeHolderText = definition.placeholder;
+    cell.dataArray = definition.dataArray;
     return cell;
 }
 
@@ -85,7 +86,10 @@
         [self showViewController:vc sender:nil];
     } else if (viewController == [PJListViewController class]) {
         PJListViewController *vc = [[PJListViewController alloc]init];
+        vc.dataArray = nil;
         vc.delegate = self;
+        vc.indexPath = cell.indexPath;
+        vc.dataArray = cell.dataArray;
         [self showViewController:vc sender:nil];
     }
 
@@ -108,15 +112,18 @@
 #pragma mark - DescriptionViewControllerDelegate
 - (void)passValue:(id)value forIndexPath:(NSIndexPath *)indexPath {
     PJCellDefinition *definition = cellDefinition[indexPath.row];
-    [self.tableView reloadData];
     definition.value = value;
+    [self.tableView reloadData];
 }
 
 #pragma mark - PJListViewControllerDelegate
-- (void)selectedItemInList:(id)value {
-    NSLog(@"Selected Value:%@",value)  ;
+- (void)selectedItemInList:(id)value forCellAtIndexPath:(NSIndexPath *)indexPath {
+    PJCellDefinition *definition = cellDefinition[indexPath.row];
+    definition.value = value;
+    [self.tableView reloadData];
 }
 
+#pragma mark - UIViewController+BackButtonHandler
 -(BOOL) navigationShouldPopOnBackButton {
     if(needsShowConfirmation) {
         UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Confirm your action!" message:@"All the changes you have done in the form will be lost. Do you really want to go back?" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Ok" , nil];

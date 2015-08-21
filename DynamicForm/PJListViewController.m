@@ -39,16 +39,16 @@ static NSString *cellIdentifier = @"PJListItemCell";
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 10;
+    return self.dataArray.count;
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [self.navigationController popViewControllerAnimated:YES];
-    [self.delegate selectedItemInList:@((int)indexPath.row)];
+    [self.delegate selectedItemInList:self.dataArray[indexPath.row] forCellAtIndexPath:self.indexPath] ;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     PJListItemCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
-    cell.textLabel.text = [NSString stringWithFormat:@"%d",(int)indexPath.row];
+    cell.textLabel.text = self.dataArray[indexPath.row];
     return cell;
 }
 

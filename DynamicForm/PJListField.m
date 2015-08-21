@@ -28,7 +28,7 @@
 }
 
 - (void)layoutSubviews {
-    self.selectedValue.text = self.value;
+    self.selectedValue.text = [NSString stringWithFormat:@"%@",self.value];
     self.title.text = self.titleText;
     [self setupRequiredLabelVisibility];
 }

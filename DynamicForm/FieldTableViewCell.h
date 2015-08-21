@@ -19,6 +19,8 @@
 @property (nonatomic) NSString *titleText;
 @property (nonatomic) NSString *placeHolderText;
 @property (nonatomic) id value;
+//Array of String options
+@property (nonatomic) NSArray *dataArray;
 @property (nonatomic,weak) id <FieldTableViewCell> delegate;
 @property (nonatomic) BOOL isRequired;
 

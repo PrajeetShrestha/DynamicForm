@@ -22,4 +22,6 @@
 @property (nonatomic) BOOL isRequired;
 @property (nonatomic) BOOL isVisible;
 
+@property (nonatomic) NSArray *dataArray;
+
 @end
