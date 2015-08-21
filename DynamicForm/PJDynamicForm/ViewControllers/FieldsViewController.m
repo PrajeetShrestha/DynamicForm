@@ -73,6 +73,11 @@
     cell.titleText = definition.title;
     cell.placeHolderText = definition.placeholder;
     cell.dataArray = definition.dataArray;
+    if ([cell respondsToSelector:NSSelectorFromString(@"delegate")])
+    {
+        NSLog(@"Yes it responds");
+        //[self setValue:elementInnerText forKey:elementName];
+    }
     return cell;
 }
 
