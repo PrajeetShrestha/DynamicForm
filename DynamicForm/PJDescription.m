@@ -11,8 +11,12 @@
 
 @implementation PJDescription
 - (void)awakeFromNib {
+    self.title.textColor = PJColorFieldTitle;
+    self.lblDescription.textColor = PJColorFieldValue;
 
 }
+
+
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
 
@@ -25,6 +29,15 @@
 
 - (void)layoutSubviews {
     self.lblDescription.text = self.value;
+    [self setupRequiredLabelVisibility];
+}
+
+- (void)setupRequiredLabelVisibility {
+    if (super.isRequired) {
+        self.requiredLabel.hidden = NO;
+    } else {
+        self.requiredLabel.hidden = YES;
+    }
 }
 
 @end

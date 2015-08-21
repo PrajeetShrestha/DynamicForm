@@ -24,6 +24,7 @@
     self = [super init];
     if (self) {
         self = [self initWithNibName:@"FieldsViewController" bundle:[NSBundle mainBundle]];
+
     }
     return self;
 }
@@ -38,11 +39,16 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
 #pragma mark - TableView Datasource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return cellDefinition.count;
 
+}
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    CGRect rectInTableView = [tableView rectForRowAtIndexPath:indexPath];
+    CGRect rectInSuperview = [tableView convertRect:rectInTableView toView:[tableView superview]];
+
+    NSLog(@"%@ RECT IN SUPERVIEW " ,NSStringFromCGRect(rectInSuperview));
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -50,16 +56,20 @@
     return cell;
 }
 
-#pragma mark - TableView Delegates
 
+#pragma mark - TableView Delegates
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 60.0f;
+}
 
 #pragma mark - Private Method
 - (UITableViewCell *)cellTypeForIndexPath:(NSIndexPath *)indexPath forTableView:(UITableView *)tableView {
     PJCellDefinition *definition = cellDefinition[indexPath.row];
     NSString *cellType = definition.type;
     FieldTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellType];
-    cell.value = definition.value;
     cell.delegate = self;
+    cell.value = definition.value;
+    cell.isRequired = definition.isRequired;
     cell.indexPath = indexPath;
     return cell;
 }
@@ -73,17 +83,25 @@
     [self showViewController:vc sender:nil];
 }
 
+- (void)controlActivated:(id)sender {
+    //FieldTableViewCell *cell = (FieldTableViewCell *)sender;
+    //TODO: Future upgrade
+    //Dynamic Form view scroll.
+    //CGRect rectInTableView = [self.tableView rectForRowAtIndexPath:cell.indexPath];
+    //CGRect rectInSuperview = [self.tableView convertRect:rectInTableView toView:[self.tableView superview]];
+    //NSLog(@"%@ RECT IN SUPERVIEW " ,NSStringFromCGRect(rectInSuperview));
+}
+
 - (void)controlValueChanged:(id)value sender:(FieldTableViewCell *)cell {
     PJCellDefinition *definition = cellDefinition[cell.indexPath.row];
     definition.value = value;
 
-    NSLog(@"%@",[cellDefinition[cell.indexPath.row] valueForKey:@"value"]);
 }
 #pragma mark - DescriptionViewControllerDelegate
 - (void)passValue:(id)value forIndexPath:(NSIndexPath *)indexPath {
     PJCellDefinition *definition = cellDefinition[indexPath.row];
-    definition.value = value;
     [self.tableView reloadData];
+    definition.value = value;
 }
 
 

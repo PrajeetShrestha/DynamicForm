@@ -10,5 +10,7 @@
 
 @interface PJTextField : FieldTableViewCell <UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *textField;
+@property (weak, nonatomic) IBOutlet UILabel *title;
+@property (weak, nonatomic) IBOutlet UILabel *requiredLabel;
 
 @end

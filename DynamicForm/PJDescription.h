@@ -10,5 +10,7 @@
 
 @interface PJDescription : FieldTableViewCell
 @property (weak, nonatomic) IBOutlet UILabel *lblDescription;
+@property (weak, nonatomic) IBOutlet UILabel *title;
+@property (weak, nonatomic) IBOutlet UILabel *requiredLabel;
 
 @end

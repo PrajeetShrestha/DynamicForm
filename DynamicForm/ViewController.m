@@ -20,6 +20,10 @@
     // Do any additional setup after loading the view.
 }
 
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    [self push:nil];
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -42,36 +46,88 @@
     cellDefinition.title = @"How are you";
     cellDefinition.placeholder = @"Greetings";
     cellDefinition.value = @"OH SOUKA";
-    [cellDefinitions addObject:cellDefinition];
-
-    cellDefinition = [PJCellDefinition new];
-    cellDefinition.type = kPJBoolField;
-    cellDefinition.title = @"How are you";
-    cellDefinition.placeholder = @"Greetings";
-    cellDefinition.value = @"OH SOUKA";
+    cellDefinition.isRequired = YES;
     [cellDefinitions addObject:cellDefinition];
 
     cellDefinition = [PJCellDefinition new];
     cellDefinition.type = kPJDescription;
     cellDefinition.title = @"How are you";
     cellDefinition.placeholder = @"Greetings";
-    cellDefinition.value = @"OH SOUKA";
+    cellDefinition.isRequired = YES;
+    cellDefinition.value = @"This is so cool!";
     [cellDefinitions addObject:cellDefinition];
 
     cellDefinition = [PJCellDefinition new];
-    cellDefinition.type = kPJBoolField;
+    cellDefinition.type = kPJTextField;
     cellDefinition.title = @"How are you";
     cellDefinition.placeholder = @"Greetings";
     cellDefinition.value = @"OH SOUKA";
+    cellDefinition.isRequired = YES;
     [cellDefinitions addObject:cellDefinition];
 
     cellDefinition = [PJCellDefinition new];
-    cellDefinition.type = kPJBoolField;
+    cellDefinition.type = kPJTextField;
     cellDefinition.title = @"How are you";
     cellDefinition.placeholder = @"Greetings";
     cellDefinition.value = @"OH SOUKA";
+    cellDefinition.isRequired = YES;
     [cellDefinitions addObject:cellDefinition];
 
+    cellDefinition = [PJCellDefinition new];
+    cellDefinition.type = kPJTextField;
+    cellDefinition.title = @"How are you";
+    cellDefinition.placeholder = @"Greetings";
+    cellDefinition.value = @"OH SOUKA";
+    cellDefinition.isRequired = YES;
+    [cellDefinitions addObject:cellDefinition];
+
+    cellDefinition = [PJCellDefinition new];
+    cellDefinition.type = kPJTextField;
+    cellDefinition.title = @"How are you";
+    cellDefinition.placeholder = @"Greetings";
+    cellDefinition.value = @"OH SOUKA";
+    cellDefinition.isRequired = YES;
+    [cellDefinitions addObject:cellDefinition];
+
+    cellDefinition = [PJCellDefinition new];
+    cellDefinition.type = kPJTextField;
+    cellDefinition.title = @"How are you";
+    cellDefinition.placeholder = @"Greetings";
+    cellDefinition.value = @"OH SOUKA";
+    cellDefinition.isRequired = YES;
+    [cellDefinitions addObject:cellDefinition];
+
+    cellDefinition = [PJCellDefinition new];
+    cellDefinition.type = kPJTextField;
+    cellDefinition.title = @"How are you";
+    cellDefinition.placeholder = @"Greetings";
+    cellDefinition.value = @"OH SOUKA";
+    cellDefinition.isRequired = YES;
+    [cellDefinitions addObject:cellDefinition];
+
+    cellDefinition = [PJCellDefinition new];
+    cellDefinition.type = kPJTextField;
+    cellDefinition.title = @"How are you";
+    cellDefinition.placeholder = @"Greetings";
+    cellDefinition.value = @"OH SOUKA";
+    cellDefinition.isRequired = YES;
+    [cellDefinitions addObject:cellDefinition];
+
+    cellDefinition = [PJCellDefinition new];
+    cellDefinition.type = kPJTextField;
+    cellDefinition.title = @"How are you";
+    cellDefinition.placeholder = @"Greetings";
+    cellDefinition.value = @"OH SOUKA";
+    cellDefinition.isRequired = YES;
+    [cellDefinitions addObject:cellDefinition];
+
+    cellDefinition = [PJCellDefinition new];
+    cellDefinition.type = kPJTextField;
+    cellDefinition.title = @"How are you";
+    cellDefinition.placeholder = @"Greetings";
+    cellDefinition.value = @"OH SOUKA";
+    cellDefinition.isRequired = YES;
+    [cellDefinitions addObject:cellDefinition];
 
     FieldsViewController *vc = [FieldsViewController new];
     vc.cellDefinition = cellDefinitions;
