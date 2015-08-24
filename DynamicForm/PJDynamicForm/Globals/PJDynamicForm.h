@@ -11,7 +11,16 @@
 #import "PJConstants.h"
 #import "PJConfig.h"
 #import "FieldsViewController.h"
-#import "PJCellDefinition.h"
+
 #import "DescriptionViewController.h"
 #import "PJListViewController.h"
+
+#pragma mark - Cell
+#import "PJBoolField.h"
+#import "PJDatePicker.h"
+#import "PJDescription.h"
+#import "PJListField.h"
+#import "PJListItemCell.h"  
+#import "PJSubmitCell.h"
+#import "PJTextField.h"
 #endif

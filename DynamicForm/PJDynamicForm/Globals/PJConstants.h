@@ -7,7 +7,6 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "PJCellDefinition.h"
 #import "PJConfig.h"
 
 #pragma mark - Cell Type

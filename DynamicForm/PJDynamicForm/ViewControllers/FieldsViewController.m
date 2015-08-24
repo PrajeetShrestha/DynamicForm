@@ -9,7 +9,7 @@
 #import "DescriptionViewController.h"
 #import "PJListViewController.h"
 #import "FieldsViewController.h"
-#import "FieldTableViewCell.h"
+#import "PJDynamicForm.h"
 
 @interface FieldsViewController ()<FieldTableViewCell,DescriptionViewControllerDelegate,PJListViewControllerDelegate> {
     BOOL needsShowConfirmation;
@@ -63,24 +63,68 @@
 
 #pragma mark - Private Method
 - (UITableViewCell *)cellTypeForIndexPath:(NSIndexPath *)indexPath forTableView:(UITableView *)tableView {
-    PJCellDefinition *definition = cellDefinition[indexPath.row];
-    NSString *cellType = definition.type;
+    FieldTableViewCell *definition = cellDefinition[indexPath.row];
+    NSString *cellType = [self cellTypeForDefinitionClass:[definition class]];
     FieldTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellType];
-    cell.delegate = self;
-    cell.value = definition.value;
-    cell.isRequired = definition.isRequired;
-    cell.indexPath = indexPath;
-    cell.titleText = definition.title;
-    cell.placeHolderText = definition.placeholder;
-    cell.dataArray = definition.dataArray;
-    if ([cell respondsToSelector:NSSelectorFromString(@"delegate")])
-    {
-        NSLog(@"Yes it responds");
-        //[self setValue:elementInnerText forKey:elementName];
-    }
+    //Initialize common properties of all Cells
+    cell.titleText          = definition.titleText;
+    cell.placeholderText    = definition.placeholderText;
+    cell.isRequired         = definition.isRequired;
+    cell.indexPath          = indexPath;
+    cell.delegate           = self;
+    cell.defaultValue       = definition.defaultValue;
+    cell.isEnabled          = definition.isEnabled;
+    [self segragateValuesByTypeInCell:cell forDefinition:definition];
     return cell;
 }
 
+- (void)segragateValuesByTypeInCell:(id)cell forDefinition:(id)definition {
+    Class class = [cell class];
+    if (class == [PJTextField class] ) {
+        PJTextField *textCell = (PJTextField *)cell;
+        textCell.inputType = PJEmail;
+
+    } else if (class == [PJBoolField class]) {
+
+    } else if (class == [PJDatePicker class]) {
+
+    } else if (class == [PJDescription class]) {
+
+    } else if (class == [PJListField class]) {
+
+    } else if (class == [PJSubmitCell class]) {
+
+    } else {
+
+    }
+
+}
+
+- (NSString *)cellTypeForDefinitionClass:(Class)class {
+    NSString *cellType;
+    if (class == [PJTextField class] ) {
+        cellType = kPJTextField;
+        return cellType;
+    } else if (class == [PJBoolField class]) {
+        cellType = kPJBoolField;
+        return cellType;
+    } else if (class == [PJDatePicker class]) {
+        cellType = kPJDatePicker;
+        return cellType;
+    } else if (class == [PJDescription class]) {
+        cellType = kPJDescription;
+        return cellType;
+    } else if (class == [PJListField class]) {
+        cellType = kPJListField;
+        return cellType;
+    } else if (class == [PJSubmitCell class]) {
+        cellType = kPJSubmitCell;
+        return cellType;
+    } else {
+        return nil;
+    }
+
+}
 #pragma mark - FieldTableViewCellDelegate
 - (void)didSelected:(Class)viewController sender:(FieldTableViewCell *)cell {
     if (viewController == [DescriptionViewController class]) {
@@ -110,26 +154,31 @@
 
 - (void)submitAction:(id)sender {
     [self.view endEditing:YES];
-    for (PJCellDefinition *definition in cellDefinition){
-        NSLog(@"%@",definition.value);
+    for (FieldTableViewCell *definition in cellDefinition){
+        if (![definition isKindOfClass:[PJSubmitCell class]]) {
+            if (!definition.isValid) {
+                NSLog(@"Message:%@ Value: %@",definition.invalidMessage,definition.value);
+            }
+        }
     }
 }
 
-- (void)controlValueChanged:(id)value sender:(FieldTableViewCell *)cell {
-    PJCellDefinition *definition = cellDefinition[cell.indexPath.row];
-    definition.value = value;
+- (void)controlValueChanged:(FieldTableViewCell *)cell {
+    FieldTableViewCell *definition = cellDefinition[cell.indexPath.row];
+    definition.invalidMessage = cell.invalidMessage;
+    definition.value = cell.value;
 
 }
 #pragma mark - DescriptionViewControllerDelegate
 - (void)passValue:(id)value forIndexPath:(NSIndexPath *)indexPath {
-    PJCellDefinition *definition = cellDefinition[indexPath.row];
+    FieldTableViewCell *definition = cellDefinition[indexPath.row];
     definition.value = value;
     [self.tableView reloadData];
 }
 
 #pragma mark - PJListViewControllerDelegate
 - (void)selectedItemInList:(id)value forCellAtIndexPath:(NSIndexPath *)indexPath {
-    PJCellDefinition *definition = cellDefinition[indexPath.row];
+    FieldTableViewCell *definition = cellDefinition[indexPath.row];
     definition.value = value;
     [self.tableView reloadData];
 }

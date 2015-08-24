@@ -7,10 +7,14 @@
 //
 
 #import "FieldTableViewCell.h"
+typedef enum PJTextFieldInputType {
+    PJEmail,
+    PJNumber,
+    PJString,
+}PJTextFieldInputType;
 
 @interface PJTextField : FieldTableViewCell <UITextFieldDelegate>
-@property (weak, nonatomic) IBOutlet UITextField *textField;
-@property (weak, nonatomic) IBOutlet UILabel *title;
-@property (weak, nonatomic) IBOutlet UILabel *requiredLabel;
+@property (nonatomic) NSString *regex;
+@property (nonatomic) PJTextFieldInputType inputType;
 
 @end

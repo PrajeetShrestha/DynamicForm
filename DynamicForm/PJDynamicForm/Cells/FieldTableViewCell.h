@@ -9,21 +9,32 @@
 #import <UIKit/UIKit.h>
 @protocol FieldTableViewCell<NSObject>
 @optional
+//Method to be triggered when any of the controls (TextField,TextView etc) is activated
 - (void)controlActivated:(id)sender;
-- (void)controlValueChanged:(id)value sender:(id)cell;
+//Method when any of the controls is changed in cell.
+- (void)controlValueChanged:(id)cell;
 - (void)didSelected:(Class)viewController sender:(id)cell;
 - (void)submitAction:(id)sender;
 @end
 
 @interface FieldTableViewCell : UITableViewCell
-@property (nonatomic) NSIndexPath *indexPath;
+
+//These are the common properties in every Field
 @property (nonatomic) NSString *type;
-@property (nonatomic) NSString *titleText;
-@property (nonatomic) NSString *placeHolderText;
+@property (nonatomic) id defaultValue;
 @property (nonatomic) id value;
+@property (nonatomic) NSString *placeholderText;
+@property (nonatomic) NSString *titleText;
+@property (nonatomic) BOOL isEnabled;
+@property (nonatomic) BOOL isRequired;
+@property (nonatomic) NSIndexPath *indexPath;
+@property (nonatomic) BOOL isValid;
+@property (nonatomic) NSString *invalidMessage;
+
+
 //Array of String options
 @property (nonatomic) NSArray *dataArray;
 @property (nonatomic,weak) id <FieldTableViewCell> delegate;
-@property (nonatomic) BOOL isRequired;
+
 
 @end

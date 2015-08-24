@@ -24,7 +24,6 @@
 		25544C551B874C1900B8FBE0 /* PJTextField.xib in Resources */ = {isa = PBXBuildFile; fileRef = 25544C2E1B874C1900B8FBE0 /* PJTextField.xib */; };
 		25544C561B874C1900B8FBE0 /* PJConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 25544C321B874C1900B8FBE0 /* PJConstants.m */; };
 		25544C571B874C1900B8FBE0 /* UIViewController+BackButtonHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 25544C361B874C1900B8FBE0 /* UIViewController+BackButtonHandler.m */; };
-		25544C581B874C1900B8FBE0 /* PJCellDefinition.m in Sources */ = {isa = PBXBuildFile; fileRef = 25544C391B874C1900B8FBE0 /* PJCellDefinition.m */; };
 		25544C591B874C1900B8FBE0 /* FieldTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 25544C3C1B874C1900B8FBE0 /* FieldTableView.m */; };
 		25544C5A1B874C1900B8FBE0 /* DescriptionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 25544C3F1B874C1900B8FBE0 /* DescriptionViewController.m */; };
 		25544C5B1B874C1900B8FBE0 /* DescriptionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 25544C401B874C1900B8FBE0 /* DescriptionViewController.xib */; };
@@ -83,8 +82,6 @@
 		25544C331B874C1900B8FBE0 /* PJDynamicForm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PJDynamicForm.h; sourceTree = "<group>"; };
 		25544C351B874C1900B8FBE0 /* UIViewController+BackButtonHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+BackButtonHandler.h"; sourceTree = "<group>"; };
 		25544C361B874C1900B8FBE0 /* UIViewController+BackButtonHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+BackButtonHandler.m"; sourceTree = "<group>"; };
-		25544C381B874C1900B8FBE0 /* PJCellDefinition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PJCellDefinition.h; sourceTree = "<group>"; };
-		25544C391B874C1900B8FBE0 /* PJCellDefinition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PJCellDefinition.m; sourceTree = "<group>"; };
 		25544C3B1B874C1900B8FBE0 /* FieldTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FieldTableView.h; sourceTree = "<group>"; };
 		25544C3C1B874C1900B8FBE0 /* FieldTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FieldTableView.m; sourceTree = "<group>"; };
 		25544C3E1B874C1900B8FBE0 /* DescriptionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DescriptionViewController.h; sourceTree = "<group>"; };
@@ -209,8 +206,6 @@
 		25544C371B874C1900B8FBE0 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				25544C381B874C1900B8FBE0 /* PJCellDefinition.h */,
-				25544C391B874C1900B8FBE0 /* PJCellDefinition.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -466,7 +461,6 @@
 				25544C5A1B874C1900B8FBE0 /* DescriptionViewController.m in Sources */,
 				25A4BDDA1B8494AC006FEB71 /* AppDelegate.m in Sources */,
 				25544C521B874C1900B8FBE0 /* PJSubmitCell.m in Sources */,
-				25544C581B874C1900B8FBE0 /* PJCellDefinition.m in Sources */,
 				25A4BDDD1B8494AC006FEB71 /* DynamicForm.xcdatamodeld in Sources */,
 				25544C471B874C1900B8FBE0 /* FieldTableViewCell.m in Sources */,
 				25A4BE411B84A645006FEB71 /* ViewController.m in Sources */,
