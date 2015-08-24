@@ -19,13 +19,14 @@
     self.title.textColor = PJColorFieldTitle;
     self.title.font = [UIFont systemFontOfSize:PJSizeFieldTitle];
     [self.switchControl addTarget:self action:@selector(setState:) forControlEvents:UIControlEventValueChanged];
+
 }
 #pragma mark - Selectors
 - (void)setState:(UISwitch *)sender {
     if (sender.isOn) {
         self.value = @YES;
         self.textValue = self.valueWhenOn ;
-      
+
 
     } else {
         self.value = @NO;
@@ -39,9 +40,15 @@
     self.title.text = self.titleText;
     if (switchState) {
         [self.switchControl setOn:YES animated:NO];
+        self.value = @YES;
+        self.textValue = self.valueWhenOn;
+
     } else {
         [self.switchControl setOn:NO animated:NO];
-    }
+        self.value = @NO;
+
+        self.textValue = self.valueWhenOff;
+    }    
 }
 
 

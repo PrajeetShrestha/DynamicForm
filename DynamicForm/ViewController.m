@@ -34,12 +34,14 @@
 - (IBAction)push:(id)sender {
 
     NSMutableArray *cellDefinitions = [NSMutableArray new];
+
     PJTextField *cellDefinition = [PJTextField new];
     cellDefinition.titleText = @"Email Address";
     cellDefinition.isRequired = YES;
     cellDefinition.inputType = PJEmail;
     cellDefinition.placeholderText = @"Type your email...";
     [cellDefinitions addObject:cellDefinition];
+
 
     PJBoolField *boolField = [PJBoolField new];
     boolField.titleText = @"Agreed";

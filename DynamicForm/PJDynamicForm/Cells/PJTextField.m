@@ -69,6 +69,11 @@ static NSString *defaultEmailRegex = @"[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-
             self.invalidMessage = @"Email Expression not correct";
             self.isValid = NO;
         }
+
+        if (self.textField.text.length <= 0) {
+            self.invalidMessage = @"Required Field Empty!";
+            self.isValid = NO;
+        }
     }
 }
 

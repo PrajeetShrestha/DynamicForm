@@ -13,6 +13,7 @@
 
 @interface FieldsViewController ()<FieldTableViewCell,DescriptionViewControllerDelegate,PJListViewControllerDelegate> {
     BOOL needsShowConfirmation;
+    NSMutableArray *cellObjects;
 }
 
 @end
@@ -34,6 +35,7 @@
     [super viewDidLoad];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
+    cellObjects = [NSMutableArray new];
     needsShowConfirmation = YES;
 }
 
@@ -73,8 +75,24 @@
     cell.delegate           = self;
     cell.defaultValue       = definition.defaultValue;
     cell.isEnabled          = definition.isEnabled;
+    cell.value              = definition.value;
     [self segragateValuesByTypeInCell:cell forDefinition:definition];
+    [self pushCellInArray:cell];
     return cell;
+}
+
+- (void)pushCellInArray:(FieldTableViewCell *)cell {
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"indexPath == %@", cell.indexPath];
+    NSArray *filteredArray = [cellObjects filteredArrayUsingPredicate:predicate];
+    id firstFoundObject = nil;
+    firstFoundObject =  filteredArray.count > 0 ? filteredArray.firstObject : nil;
+    if (firstFoundObject != nil) {
+
+    } else {
+        [cellObjects addObject:cell];
+    }
+
+
 }
 
 - (void)segragateValuesByTypeInCell:(id)cell forDefinition:(id)definition {
@@ -156,14 +174,14 @@
 - (void)submitAction:(id)sender {
     [self.view endEditing:YES];
 
-    for (FieldTableViewCell *definition in cellDefinition){
+    for (FieldTableViewCell *definition in cellObjects){
         Class class = [definition class];
         if (class == [PJTextField class] ) {
             PJTextField *textField = (PJTextField *)definition;
-            NSLog(@"TextField Value %@",textField.value);
+            NSLog(@"TextField Value %@ %@",textField.value,textField.invalidMessage);
         } else if (class == [PJBoolField class]) {
             PJBoolField *boolField = (PJBoolField *)definition;
-            NSLog(@"BoolField TextValue: %@",boolField.textValue);
+            NSLog(@"TextValue: %@",boolField.textValue);
         } else if (class == [PJDatePicker class]) {
             PJDatePicker *datePicker = (PJDatePicker *)definition;
         } else if (class == [PJDescription class]) {
@@ -205,7 +223,7 @@
     Class class = [definition class];
     if (class == [PJTextField class] ) {
         PJTextField *textField = (PJTextField *)definition;
-
+        textField.invalidMessage = [cell valueForKey:@"invalidMessage"];
     } else if (class == [PJBoolField class]) {
         PJBoolField *boolField = (PJBoolField *)definition;
         boolField.textValue = [cell valueForKey:@"textValue"];

@@ -8,8 +8,14 @@
 
 #import "PJDescription.h"
 #import "DescriptionViewController.h"
+@interface PJDescription()
+@property (weak, nonatomic) IBOutlet UILabel *lblDescription;
+@property (weak, nonatomic) IBOutlet UILabel *title;
+@property (weak, nonatomic) IBOutlet UILabel *requiredLabel;
+@end
 
 @implementation PJDescription
+
 - (void)awakeFromNib {
     self.title.textColor = PJColorFieldTitle;
     self.lblDescription.textColor = PJColorFieldValue;
