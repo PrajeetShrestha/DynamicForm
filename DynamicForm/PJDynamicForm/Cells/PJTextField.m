@@ -44,14 +44,14 @@ static NSString *defaultEmailRegex = @"[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-
 
 - (void)textFieldDidChange:(UITextField *)textField {
 
-    [self sanityCheck];
+    [self sanitize];
 
 }
 - (void)textFieldDidBeginEditing:(UITextField *)textField {
     [self.delegate controlActivated:self];
 
 }
-- (void)sanityCheck {
+- (void)sanitize {
     self.value = self.textField.text;
     if (self.inputType == PJEmail) {
         NSString *regex;
@@ -70,11 +70,10 @@ static NSString *defaultEmailRegex = @"[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-
             self.isValid = NO;
         }
     }
-    NSLog(@"Value: %@, Message: %@",self.value,self.invalidMessage);
 }
 
 - (void)textFieldDidEndEditing:(UITextField *)textField {
-    [self sanityCheck];
+    [self sanitize];
     [self.delegate controlValueChanged:self];
 }
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {

@@ -9,6 +9,7 @@
 #import "FieldTableViewCell.h"
 
 @interface PJBoolField : FieldTableViewCell
-@property (weak, nonatomic) IBOutlet UILabel *title;
-
+@property (nonatomic) id valueWhenOn;
+@property (nonatomic) id valueWhenOff;
+@property (nonatomic) NSString *textValue;
 @end

@@ -35,12 +35,18 @@
 
     NSMutableArray *cellDefinitions = [NSMutableArray new];
     PJTextField *cellDefinition = [PJTextField new];
-
-    cellDefinition.type = kPJTextField;
-    cellDefinition.titleText = @"First Name";
+    cellDefinition.titleText = @"Email Address";
     cellDefinition.isRequired = YES;
-    cellDefinition.placeholderText = @"Type your name...";
+    cellDefinition.inputType = PJEmail;
+    cellDefinition.placeholderText = @"Type your email...";
     [cellDefinitions addObject:cellDefinition];
+
+    PJBoolField *boolField = [PJBoolField new];
+    boolField.titleText = @"Agreed";
+    boolField.value = @YES;
+    boolField.valueWhenOff = @"NO";
+    boolField.valueWhenOn = @"YES";
+    [cellDefinitions addObject:boolField];
 
 //    cellDefinition = [PJCellDefinition new];
 //    cellDefinition.type = kPJTextField;

@@ -14,6 +14,7 @@ typedef enum PJTextFieldInputType {
 }PJTextFieldInputType;
 
 @interface PJTextField : FieldTableViewCell <UITextFieldDelegate>
+@property (nonatomic) NSString *placeholderText;
 @property (nonatomic) NSString *regex;
 @property (nonatomic) PJTextFieldInputType inputType;
 
