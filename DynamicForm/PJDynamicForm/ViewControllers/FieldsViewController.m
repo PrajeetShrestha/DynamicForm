@@ -91,8 +91,6 @@
     } else {
         [cellObjects addObject:cell];
     }
-
-
 }
 
 - (void)segragateValuesByTypeInCell:(id)cell forDefinition:(id)definition {
@@ -217,28 +215,7 @@
  */
 
 - (void)controlValueChanged:(FieldTableViewCell *)cell {
-    FieldTableViewCell *definition = cellDefinition[cell.indexPath.row];
-    definition.value = cell.value;
-    definition.isValid = cell.isValid;
-    Class class = [definition class];
-    if (class == [PJTextField class] ) {
-        PJTextField *textField = (PJTextField *)definition;
-        textField.invalidMessage = [cell valueForKey:@"invalidMessage"];
-    } else if (class == [PJBoolField class]) {
-        PJBoolField *boolField = (PJBoolField *)definition;
-        boolField.textValue = [cell valueForKey:@"textValue"];
-    } else if (class == [PJDatePicker class]) {
-        PJDatePicker *datePicker = (PJDatePicker *)definition;
-    } else if (class == [PJDescription class]) {
-        PJDescription *descriptionField = (PJDescription *)definition;
-    } else if (class == [PJListField class]) {
-        PJListField *listField = (PJListField *)definition;
-    } else if (class == [PJSubmitCell class]) {
-        PJSubmitCell *submitCell = (PJSubmitCell *)definition;
-    } else {
 
-
-    }
 
 }
 #pragma mark - DescriptionViewControllerDelegate
