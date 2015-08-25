@@ -115,6 +115,9 @@
     } else if (class == [PJDatePicker class]) {
 
     } else if (class == [PJListField class]) {
+        PJListField *listField = (PJListField *)cell;
+        listField.listItems = [definition valueForKey:@"listItems"];
+        listField.defaultValue = [definition valueForKey:@"defaultValue"];
 
     } else if (class == [PJSubmitCell class]) {
 
@@ -161,10 +164,12 @@
     } else if (viewController == [PJListViewController class]) {
 
         PJListViewController *vc = [[PJListViewController alloc]init];
-        vc.dataArray             = nil;
         vc.delegate              = self;
         vc.indexPath             = cell.indexPath;
-        vc.dataArray             = cell.dataArray;
+        vc.listItems             = [cell valueForKey:@"listItems"];
+        if ([cell valueForKey:@"indexPathOfSelectedItem"] != nil) {
+            vc.indexPathOfSelectedItem = [cell valueForKey:@"indexPathOfSelectedItem"];
+        }
         [self showViewController:vc sender:nil];
 
     }
@@ -196,7 +201,7 @@
 
         } else if (class == [PJDatePicker class]) {
 
-            PJDatePicker *datePicker = (PJDatePicker *)definition;
+            //PJDatePicker *datePicker = (PJDatePicker *)definition;
 
         } else if (class == [PJDescription class]) {
 
@@ -205,10 +210,11 @@
         } else if (class == [PJListField class]) {
 
             PJListField *listField = (PJListField *)definition;
+            NSLog(@"List Item: %@",listField.value);
 
         } else if (class == [PJSubmitCell class]) {
 
-            PJSubmitCell *submitCell = (PJSubmitCell *)definition;
+            //PJSubmitCell *submitCell = (PJSubmitCell *)definition;
 
         } else {
 
@@ -231,10 +237,11 @@
 }
 
 #pragma mark - PJListViewControllerDelegate
-- (void)selectedItemInList:(id)value forCellAtIndexPath:(NSIndexPath *)indexPath {
-    FieldTableViewCell *definition = cellDefinition[indexPath.row];
+- (void)selectedItemInList:(id)value forCellAtIndexPath:(NSIndexPath *)indexPath andSelectedIndex:(NSIndexPath *)selectedIndex {
+    PJListField *definition = cellObjects[indexPath.row];
+    definition.indexPathOfSelectedItem = selectedIndex;
     definition.value = value;
-    [self.tableView reloadData];
+    [definition layoutSubviews];
 }
 
 #pragma mark - UIViewController+BackButtonHandler

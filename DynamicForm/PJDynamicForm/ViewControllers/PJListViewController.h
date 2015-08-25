@@ -8,12 +8,13 @@
 
 #import <UIKit/UIKit.h>
 @protocol PJListViewControllerDelegate <NSObject>
-- (void)selectedItemInList:(id)value forCellAtIndexPath:(NSIndexPath *)indexPath;
+- (void)selectedItemInList:(id)value forCellAtIndexPath:(NSIndexPath *)indexPath andSelectedIndex:(NSIndexPath *)selectedIndex;
 @end
 @interface PJListViewController : UIViewController
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) id <PJListViewControllerDelegate> delegate;
-@property (nonatomic) NSArray *dataArray;
+@property (nonatomic) NSArray *listItems;
 @property (nonatomic) NSIndexPath *indexPath;
+@property (nonatomic) NSIndexPath *indexPathOfSelectedItem;
 
 @end

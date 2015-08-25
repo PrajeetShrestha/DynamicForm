@@ -39,16 +39,24 @@ static NSString *cellIdentifier = @"PJListItemCell";
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.dataArray.count;
+    return self.listItems.count;
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+
     [self.navigationController popViewControllerAnimated:YES];
-    [self.delegate selectedItemInList:self.dataArray[indexPath.row] forCellAtIndexPath:self.indexPath] ;
+    [self.delegate selectedItemInList:self.listItems[indexPath.row] forCellAtIndexPath:self.indexPath andSelectedIndex:indexPath] ;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     PJListItemCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
-    cell.textLabel.text = self.dataArray[indexPath.row];
+    cell.textLabel.text = self.listItems[indexPath.row];
+    cell.textLabel.textColor = PJColorFieldValue;
+    if ([indexPath isEqual: self.indexPathOfSelectedItem]) {
+        cell.selectionIndicatorView.hidden = NO;
+    } else {
+        cell.selectionIndicatorView.hidden = YES;
+    }
+    //cell.textLabel.textAlignment = NSTextAlignmentCenter;
     return cell;
 }
 

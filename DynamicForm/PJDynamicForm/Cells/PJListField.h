@@ -11,8 +11,8 @@
 #import "PJListViewController.h"
 
 @interface PJListField : FieldTableViewCell
-@property (weak, nonatomic) IBOutlet UILabel *title;
-@property (weak, nonatomic) IBOutlet UILabel *selectedValue;
-@property (weak, nonatomic) IBOutlet UILabel *requiredLabel;
+
+@property (nonatomic) NSArray *listItems;
+@property (nonatomic) NSIndexPath *indexPathOfSelectedItem;
 
 @end

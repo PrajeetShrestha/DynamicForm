@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		250B14761B8C484C0077D7EA /* tick.png in Resources */ = {isa = PBXBuildFile; fileRef = 250B14751B8C484C0077D7EA /* tick.png */; };
 		25544C471B874C1900B8FBE0 /* FieldTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 25544C191B874C1900B8FBE0 /* FieldTableViewCell.m */; };
 		25544C481B874C1900B8FBE0 /* PJBoolField.m in Sources */ = {isa = PBXBuildFile; fileRef = 25544C1B1B874C1900B8FBE0 /* PJBoolField.m */; };
 		25544C491B874C1900B8FBE0 /* PJBoolField.xib in Resources */ = {isa = PBXBuildFile; fileRef = 25544C1C1B874C1900B8FBE0 /* PJBoolField.xib */; };
@@ -53,6 +54,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		250B14751B8C484C0077D7EA /* tick.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tick.png; sourceTree = "<group>"; };
 		25544C181B874C1900B8FBE0 /* FieldTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FieldTableViewCell.h; sourceTree = "<group>"; };
 		25544C191B874C1900B8FBE0 /* FieldTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FieldTableViewCell.m; sourceTree = "<group>"; };
 		25544C1A1B874C1900B8FBE0 /* PJBoolField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PJBoolField.h; sourceTree = "<group>"; };
@@ -67,9 +69,9 @@
 		25544C231B874C1900B8FBE0 /* PJListField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PJListField.h; sourceTree = "<group>"; };
 		25544C241B874C1900B8FBE0 /* PJListField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PJListField.m; sourceTree = "<group>"; };
 		25544C251B874C1900B8FBE0 /* PJListField.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PJListField.xib; sourceTree = "<group>"; };
-		25544C261B874C1900B8FBE0 /* PJListItemCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PJListItemCell.h; sourceTree = "<group>"; };
-		25544C271B874C1900B8FBE0 /* PJListItemCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PJListItemCell.m; sourceTree = "<group>"; };
-		25544C281B874C1900B8FBE0 /* PJListItemCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PJListItemCell.xib; sourceTree = "<group>"; };
+		25544C261B874C1900B8FBE0 /* PJListItemCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PJListItemCell.h; path = ../Cells/PJListItemCell.h; sourceTree = "<group>"; };
+		25544C271B874C1900B8FBE0 /* PJListItemCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PJListItemCell.m; path = ../Cells/PJListItemCell.m; sourceTree = "<group>"; };
+		25544C281B874C1900B8FBE0 /* PJListItemCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PJListItemCell.xib; path = ../Cells/PJListItemCell.xib; sourceTree = "<group>"; };
 		25544C291B874C1900B8FBE0 /* PJSubmitCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PJSubmitCell.h; sourceTree = "<group>"; };
 		25544C2A1B874C1900B8FBE0 /* PJSubmitCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PJSubmitCell.m; sourceTree = "<group>"; };
 		25544C2B1B874C1900B8FBE0 /* PJSubmitCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PJSubmitCell.xib; sourceTree = "<group>"; };
@@ -140,6 +142,100 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		250B146C1B8C302D0077D7EA /* BoolField */ = {
+			isa = PBXGroup;
+			children = (
+				25544C1A1B874C1900B8FBE0 /* PJBoolField.h */,
+				25544C1B1B874C1900B8FBE0 /* PJBoolField.m */,
+				25544C1C1B874C1900B8FBE0 /* PJBoolField.xib */,
+			);
+			name = BoolField;
+			sourceTree = "<group>";
+		};
+		250B146D1B8C30330077D7EA /* DatePicker */ = {
+			isa = PBXGroup;
+			children = (
+				25544C1D1B874C1900B8FBE0 /* PJDatePicker.h */,
+				25544C1E1B874C1900B8FBE0 /* PJDatePicker.m */,
+				25544C1F1B874C1900B8FBE0 /* PJDatePicker.xib */,
+			);
+			name = DatePicker;
+			sourceTree = "<group>";
+		};
+		250B146E1B8C30390077D7EA /* Description */ = {
+			isa = PBXGroup;
+			children = (
+				25544C201B874C1900B8FBE0 /* PJDescription.h */,
+				25544C211B874C1900B8FBE0 /* PJDescription.m */,
+				25544C221B874C1900B8FBE0 /* PJDescription.xib */,
+			);
+			name = Description;
+			sourceTree = "<group>";
+		};
+		250B146F1B8C30420077D7EA /* ListField */ = {
+			isa = PBXGroup;
+			children = (
+				25544C231B874C1900B8FBE0 /* PJListField.h */,
+				25544C241B874C1900B8FBE0 /* PJListField.m */,
+				25544C251B874C1900B8FBE0 /* PJListField.xib */,
+			);
+			name = ListField;
+			sourceTree = "<group>";
+		};
+		250B14701B8C304A0077D7EA /* TextField */ = {
+			isa = PBXGroup;
+			children = (
+				25544C2C1B874C1900B8FBE0 /* PJTextField.h */,
+				25544C2D1B874C1900B8FBE0 /* PJTextField.m */,
+				25544C2E1B874C1900B8FBE0 /* PJTextField.xib */,
+			);
+			name = TextField;
+			sourceTree = "<group>";
+		};
+		250B14711B8C304F0077D7EA /* SubmitCell */ = {
+			isa = PBXGroup;
+			children = (
+				25544C291B874C1900B8FBE0 /* PJSubmitCell.h */,
+				25544C2A1B874C1900B8FBE0 /* PJSubmitCell.m */,
+				25544C2B1B874C1900B8FBE0 /* PJSubmitCell.xib */,
+			);
+			name = SubmitCell;
+			sourceTree = "<group>";
+		};
+		250B14721B8C30600077D7EA /* PJListViewController */ = {
+			isa = PBXGroup;
+			children = (
+				25544C441B874C1900B8FBE0 /* PJListViewController.h */,
+				25544C451B874C1900B8FBE0 /* PJListViewController.m */,
+				250B14751B8C484C0077D7EA /* tick.png */,
+				25544C461B874C1900B8FBE0 /* PJListViewController.xib */,
+				25544C261B874C1900B8FBE0 /* PJListItemCell.h */,
+				25544C271B874C1900B8FBE0 /* PJListItemCell.m */,
+				25544C281B874C1900B8FBE0 /* PJListItemCell.xib */,
+			);
+			name = PJListViewController;
+			sourceTree = "<group>";
+		};
+		250B14731B8C30690077D7EA /* FieldsViewController */ = {
+			isa = PBXGroup;
+			children = (
+				25544C411B874C1900B8FBE0 /* FieldsViewController.h */,
+				25544C421B874C1900B8FBE0 /* FieldsViewController.m */,
+				25544C431B874C1900B8FBE0 /* FieldsViewController.xib */,
+			);
+			name = FieldsViewController;
+			sourceTree = "<group>";
+		};
+		250B14741B8C30700077D7EA /* DescriptionViewController */ = {
+			isa = PBXGroup;
+			children = (
+				25544C3E1B874C1900B8FBE0 /* DescriptionViewController.h */,
+				25544C3F1B874C1900B8FBE0 /* DescriptionViewController.m */,
+				25544C401B874C1900B8FBE0 /* DescriptionViewController.xib */,
+			);
+			name = DescriptionViewController;
+			sourceTree = "<group>";
+		};
 		25544C161B874C1900B8FBE0 /* PJDynamicForm */ = {
 			isa = PBXGroup;
 			children = (
@@ -158,27 +254,12 @@
 			children = (
 				25544C181B874C1900B8FBE0 /* FieldTableViewCell.h */,
 				25544C191B874C1900B8FBE0 /* FieldTableViewCell.m */,
-				25544C1A1B874C1900B8FBE0 /* PJBoolField.h */,
-				25544C1B1B874C1900B8FBE0 /* PJBoolField.m */,
-				25544C1C1B874C1900B8FBE0 /* PJBoolField.xib */,
-				25544C1D1B874C1900B8FBE0 /* PJDatePicker.h */,
-				25544C1E1B874C1900B8FBE0 /* PJDatePicker.m */,
-				25544C1F1B874C1900B8FBE0 /* PJDatePicker.xib */,
-				25544C201B874C1900B8FBE0 /* PJDescription.h */,
-				25544C211B874C1900B8FBE0 /* PJDescription.m */,
-				25544C221B874C1900B8FBE0 /* PJDescription.xib */,
-				25544C231B874C1900B8FBE0 /* PJListField.h */,
-				25544C241B874C1900B8FBE0 /* PJListField.m */,
-				25544C251B874C1900B8FBE0 /* PJListField.xib */,
-				25544C261B874C1900B8FBE0 /* PJListItemCell.h */,
-				25544C271B874C1900B8FBE0 /* PJListItemCell.m */,
-				25544C281B874C1900B8FBE0 /* PJListItemCell.xib */,
-				25544C291B874C1900B8FBE0 /* PJSubmitCell.h */,
-				25544C2A1B874C1900B8FBE0 /* PJSubmitCell.m */,
-				25544C2B1B874C1900B8FBE0 /* PJSubmitCell.xib */,
-				25544C2C1B874C1900B8FBE0 /* PJTextField.h */,
-				25544C2D1B874C1900B8FBE0 /* PJTextField.m */,
-				25544C2E1B874C1900B8FBE0 /* PJTextField.xib */,
+				250B146C1B8C302D0077D7EA /* BoolField */,
+				250B146D1B8C30330077D7EA /* DatePicker */,
+				250B146E1B8C30390077D7EA /* Description */,
+				250B146F1B8C30420077D7EA /* ListField */,
+				250B14711B8C304F0077D7EA /* SubmitCell */,
+				250B14701B8C304A0077D7EA /* TextField */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -222,15 +303,9 @@
 		25544C3D1B874C1900B8FBE0 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				25544C3E1B874C1900B8FBE0 /* DescriptionViewController.h */,
-				25544C3F1B874C1900B8FBE0 /* DescriptionViewController.m */,
-				25544C401B874C1900B8FBE0 /* DescriptionViewController.xib */,
-				25544C411B874C1900B8FBE0 /* FieldsViewController.h */,
-				25544C421B874C1900B8FBE0 /* FieldsViewController.m */,
-				25544C431B874C1900B8FBE0 /* FieldsViewController.xib */,
-				25544C441B874C1900B8FBE0 /* PJListViewController.h */,
-				25544C451B874C1900B8FBE0 /* PJListViewController.m */,
-				25544C461B874C1900B8FBE0 /* PJListViewController.xib */,
+				250B14731B8C30690077D7EA /* FieldsViewController */,
+				250B14741B8C30700077D7EA /* DescriptionViewController */,
+				250B14721B8C30600077D7EA /* PJListViewController */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -392,6 +467,7 @@
 				25544C551B874C1900B8FBE0 /* PJTextField.xib in Resources */,
 				25A4BDE31B8494AC006FEB71 /* Main.storyboard in Resources */,
 				25A4BDE81B8494AC006FEB71 /* LaunchScreen.xib in Resources */,
+				250B14761B8C484C0077D7EA /* tick.png in Resources */,
 				25544C4F1B874C1900B8FBE0 /* PJListField.xib in Resources */,
 				25544C4D1B874C1900B8FBE0 /* PJDescription.xib in Resources */,
 				25544C491B874C1900B8FBE0 /* PJBoolField.xib in Resources */,

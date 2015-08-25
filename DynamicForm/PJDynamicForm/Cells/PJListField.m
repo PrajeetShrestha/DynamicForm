@@ -7,14 +7,18 @@
 //
 
 #import "PJListField.h"
-
+@interface PJListField ()
+@property (weak, nonatomic) IBOutlet UILabel *title;
+@property (weak, nonatomic) IBOutlet UILabel *selectedValue;
+@property (weak, nonatomic) IBOutlet UILabel *requiredLabel;
+@end
 @implementation PJListField
 
 - (void)awakeFromNib {
-    self.title.textColor = PJColorFieldTitle;
+    self.title.textColor         = PJColorFieldTitle;
     self.selectedValue.textColor = PJColorFieldValue;
-    self.title.font = [UIFont systemFontOfSize:PJSizeFieldTitle];
-    self.selectedValue.font = [UIFont systemFontOfSize:PJSizeFieldValue];
+    self.title.font              = [UIFont systemFontOfSize:PJSizeFieldTitle];
+    self.selectedValue.font      = [UIFont systemFontOfSize:PJSizeFieldValue];
 
 }
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
@@ -28,8 +32,15 @@
 }
 
 - (void)layoutSubviews {
-    self.selectedValue.text = [NSString stringWithFormat:@"%@",self.value];
+    if (self.defaultValue != nil && self.value == nil) {
+        self.selectedValue.text = self.defaultValue;
+    } else if (self.defaultValue == nil && self.value == nil) {
+        self.selectedValue.text = @"- (Select One) -";
+    } else {
+        self.selectedValue.text = [NSString stringWithFormat:@"%@",self.value];
+    }
     self.title.text = self.titleText;
+
     [self setupRequiredLabelVisibility];
 }
 

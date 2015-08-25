@@ -42,7 +42,6 @@
     cellDefinition.placeholderText = @"Type your email...";
     [cellDefinitions addObject:cellDefinition];
 
-
     PJBoolField *boolField = [PJBoolField new];
     boolField.titleText = @"Agreed";
     boolField.value = @YES;
@@ -55,6 +54,12 @@
     descriptionField.placeholderText = @"Type your description here...";
     descriptionField.isRequired = YES;
     [cellDefinitions addObject:descriptionField];
+
+    PJListField *listField = [PJListField new];
+    listField.titleText = @"Your Country";
+    listField.listItems = @[@"Nepal",@"India",@"USA",@"China"];
+    //listField.defaultValue = listField.listItems[0];
+    [cellDefinitions addObject:listField];
 
 //    cellDefinition = [PJCellDefinition new];
 //    cellDefinition.type = kPJTextField;

@@ -30,9 +30,6 @@
 @property (nonatomic) BOOL        isValid;
 @property (nonatomic) NSString    *validityMessage;
 
-
-//Array of String options
-@property (nonatomic) NSArray *dataArray;
 @property (nonatomic,weak) id <FieldTableViewCell> delegate;
 
 

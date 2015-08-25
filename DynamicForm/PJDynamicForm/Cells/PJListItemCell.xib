@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6211" systemVersion="14A298i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6204"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -12,7 +15,47 @@
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
                 <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                 <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FEe-7W-BW1" userLabel="Separator">
+                        <rect key="frame" x="8" y="42" width="304" height="1"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="5c7-FJ-rue"/>
+                        </constraints>
+                    </view>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lY8-wj-ktd" userLabel="SelectionIndicator">
+                        <rect key="frame" x="292" y="12" width="20" height="19"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tick.png" translatesAutoresizingMaskIntoConstraints="NO" id="S2Z-20-dcZ">
+                                <rect key="frame" x="0.0" y="0.0" width="20" height="19"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="S2Z-20-dcZ" firstAttribute="top" secondItem="lY8-wj-ktd" secondAttribute="top" id="1RO-v1-v4i"/>
+                            <constraint firstItem="S2Z-20-dcZ" firstAttribute="leading" secondItem="lY8-wj-ktd" secondAttribute="leading" id="1ZG-TX-e7L"/>
+                            <constraint firstAttribute="bottom" secondItem="S2Z-20-dcZ" secondAttribute="bottom" id="HWF-Aw-gvK"/>
+                            <constraint firstAttribute="width" secondItem="lY8-wj-ktd" secondAttribute="height" multiplier="12:12" constant="1" id="PPr-Og-U2a"/>
+                            <constraint firstAttribute="trailing" secondItem="S2Z-20-dcZ" secondAttribute="trailing" id="gE7-bP-kYy"/>
+                            <constraint firstAttribute="width" constant="20" id="rUK-nx-zSv"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="bottomMargin" secondItem="FEe-7W-BW1" secondAttribute="bottom" constant="-8" id="6gc-nt-uaL"/>
+                    <constraint firstAttribute="centerY" secondItem="lY8-wj-ktd" secondAttribute="centerY" id="BWt-6f-r01"/>
+                    <constraint firstItem="lY8-wj-ktd" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="TFK-KV-bzS"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="FEe-7W-BW1" secondAttribute="trailing" id="fVG-8x-Pzf"/>
+                    <constraint firstAttribute="centerX" secondItem="FEe-7W-BW1" secondAttribute="centerX" id="kZ9-fW-2zB"/>
+                    <constraint firstItem="FEe-7W-BW1" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="mfK-Vh-6sV"/>
+                </constraints>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="selectionIndicatorView" destination="lY8-wj-ktd" id="Vee-jG-7D8"/>
+            </connections>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="tick.png" width="256" height="256"/>
+    </resources>
 </document>
