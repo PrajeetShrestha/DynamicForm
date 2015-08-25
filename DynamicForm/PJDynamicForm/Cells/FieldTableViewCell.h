@@ -20,15 +20,15 @@
 @interface FieldTableViewCell : UITableViewCell
 
 //These are the common properties in every Field
-@property (nonatomic) NSString *titleText;
-@property (nonatomic) id defaultValue;
-@property (nonatomic) id value;
+@property (nonatomic) NSString    *titleText;
+@property (nonatomic) id          defaultValue;
+@property (nonatomic) id          value;
 
-@property (nonatomic) BOOL isEnabled;
-@property (nonatomic) BOOL isRequired;
+@property (nonatomic) BOOL        isEnabled;
+@property (nonatomic) BOOL        isRequired;
 @property (nonatomic) NSIndexPath *indexPath;
-@property (nonatomic) BOOL isValid;
-@property (nonatomic) NSString *invalidMessage;
+@property (nonatomic) BOOL        isValid;
+@property (nonatomic) NSString    *validityMessage;
 
 
 //Array of String options

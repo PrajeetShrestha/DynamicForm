@@ -105,8 +105,8 @@
 		25A4BDED1B8494AD006FEB71 /* DynamicFormTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DynamicFormTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		25A4BDF21B8494AD006FEB71 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		25A4BDF31B8494AD006FEB71 /* DynamicFormTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DynamicFormTests.m; sourceTree = "<group>"; };
-		25A4BE3F1B84A644006FEB71 /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		25A4BE401B84A645006FEB71 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		25A4BE3F1B84A644006FEB71 /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ViewController.h; path = DynamicForm/ViewController.h; sourceTree = "<group>"; };
+		25A4BE401B84A645006FEB71 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ViewController.m; path = DynamicForm/ViewController.m; sourceTree = "<group>"; };
 		DA5B372A741DB6259BB09D06 /* libPods-DynamicForm.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-DynamicForm.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DD5260945C3E6787BB4A4C1D /* Pods-DynamicForm.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DynamicForm.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DynamicForm/Pods-DynamicForm.debug.xcconfig"; sourceTree = "<group>"; };
 		EB4EBFDE2348EA40E924D9EB /* Pods-DynamicForm.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DynamicForm.release.xcconfig"; path = "Pods/Target Support Files/Pods-DynamicForm/Pods-DynamicForm.release.xcconfig"; sourceTree = "<group>"; };
@@ -238,6 +238,8 @@
 		25A4BDC81B8494AC006FEB71 = {
 			isa = PBXGroup;
 			children = (
+				25A4BE3F1B84A644006FEB71 /* ViewController.h */,
+				25A4BE401B84A645006FEB71 /* ViewController.m */,
 				25A4BDD31B8494AC006FEB71 /* DynamicForm */,
 				25A4BDF01B8494AD006FEB71 /* DynamicFormTests */,
 				25A4BDD21B8494AC006FEB71 /* Products */,
@@ -261,8 +263,6 @@
 				25544C161B874C1900B8FBE0 /* PJDynamicForm */,
 				25A4BDD81B8494AC006FEB71 /* AppDelegate.h */,
 				25A4BDD91B8494AC006FEB71 /* AppDelegate.m */,
-				25A4BE3F1B84A644006FEB71 /* ViewController.h */,
-				25A4BE401B84A645006FEB71 /* ViewController.m */,
 				25A4BDE11B8494AC006FEB71 /* Main.storyboard */,
 				25A4BDE41B8494AC006FEB71 /* Images.xcassets */,
 				25A4BDE61B8494AC006FEB71 /* LaunchScreen.xib */,

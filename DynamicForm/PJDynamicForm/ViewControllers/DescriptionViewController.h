@@ -14,7 +14,8 @@
 
 @interface DescriptionViewController : UIViewController
 @property (weak, nonatomic) IBOutlet UITextView *textView;
-@property (nonatomic) NSString *initialValue;
+@property (nonatomic)       NSString *initialValue;
+@property (nonatomic)       NSIndexPath *indexPath;
 @property (nonatomic,weak)id <DescriptionViewControllerDelegate> delegate;
-@property (nonatomic) NSIndexPath *indexPath;
+
 @end

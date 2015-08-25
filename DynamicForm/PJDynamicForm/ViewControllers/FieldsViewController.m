@@ -33,10 +33,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.tableView.delegate = self;
+    self.tableView.delegate   = self;
     self.tableView.dataSource = self;
-    cellObjects = [NSMutableArray new];
-    needsShowConfirmation = YES;
+    cellObjects               = [NSMutableArray new];
+    needsShowConfirmation     = YES;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -66,29 +66,29 @@
 #pragma mark - Private Method
 - (UITableViewCell *)cellTypeForIndexPath:(NSIndexPath *)indexPath forTableView:(UITableView *)tableView {
     FieldTableViewCell *definition = cellDefinition[indexPath.row];
-    NSString *cellType = [self cellTypeForDefinitionClass:[definition class]];
-    FieldTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellType];
-    //Initialize common properties of all Cells
-    cell.titleText          = definition.titleText;
-    cell.isRequired         = definition.isRequired;
-    cell.indexPath          = indexPath;
-    cell.delegate           = self;
-    cell.defaultValue       = definition.defaultValue;
-    cell.isEnabled          = definition.isEnabled;
-    cell.value              = definition.value;
+    NSString *cellType             = [self cellTypeForDefinitionClass:[definition class]];
+        //Initialize common properties of all Cells
+    FieldTableViewCell *cell       = [tableView dequeueReusableCellWithIdentifier:cellType];
+    cell.titleText                 = definition.titleText;
+    cell.isRequired                = definition.isRequired;
+    cell.indexPath                 = indexPath;
+    cell.delegate                  = self;
+    cell.defaultValue              = definition.defaultValue;
+    cell.isEnabled                 = definition.isEnabled;
+    cell.value                     = definition.value;
     [self segragateValuesByTypeInCell:cell forDefinition:definition];
     [self pushCellInArray:cell];
     return cell;
 }
 
 - (void)pushCellInArray:(FieldTableViewCell *)cell {
+    //Check if cell is already inserted. The cell is unique by it's indexPath
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"indexPath == %@", cell.indexPath];
     NSArray *filteredArray = [cellObjects filteredArrayUsingPredicate:predicate];
-    id firstFoundObject = nil;
-    firstFoundObject =  filteredArray.count > 0 ? filteredArray.firstObject : nil;
-    if (firstFoundObject != nil) {
-
-    } else {
+    id firstFoundObject    = nil;
+    firstFoundObject       = filteredArray.count > 0 ? filteredArray.firstObject : nil;
+    //If there the cellObjects array has no cell of indexPath then insert the cell into array
+    if (firstFoundObject == nil) {
         [cellObjects addObject:cell];
     }
 }
@@ -96,17 +96,23 @@
 - (void)segragateValuesByTypeInCell:(id)cell forDefinition:(id)definition {
     Class class = [cell class];
     if (class == [PJTextField class] ) {
-        PJTextField *textCell = (PJTextField *)cell;
-        textCell.inputType = PJEmail;
-        textCell.placeholderText    = [definition valueForKey:@"placeholderText"];
+
+        PJTextField *textCell    = (PJTextField *)cell;
+        textCell.inputType       = PJEmail;
+        textCell.placeholderText = [definition valueForKey:@"placeholderText"];
 
     } else if (class == [PJBoolField class]) {
+
         PJBoolField *boolField = (PJBoolField *)cell;
-        boolField.valueWhenOn = [definition valueForKey:@"valueWhenOn"];
+        boolField.valueWhenOn  = [definition valueForKey:@"valueWhenOn"];
         boolField.valueWhenOff = [definition valueForKey:@"valueWhenOff"];
-    } else if (class == [PJDatePicker class]) {
 
     } else if (class == [PJDescription class]) {
+        
+        PJDescription *descriptionCell = (PJDescription *)cell;
+        descriptionCell.placeholderText = [definition valueForKey:@"placeholderText"];
+
+    } else if (class == [PJDatePicker class]) {
 
     } else if (class == [PJListField class]) {
 
@@ -144,19 +150,23 @@
 }
 #pragma mark - FieldTableViewCellDelegate
 - (void)didSelected:(Class)viewController sender:(FieldTableViewCell *)cell {
+
     if (viewController == [DescriptionViewController class]) {
         DescriptionViewController *vc = [[viewController alloc]init];
-        vc.delegate = self;
-        vc.initialValue = cell.value;
-        vc.indexPath = cell.indexPath;
+        vc.delegate                   = self;
+        vc.initialValue               = cell.value;
+        vc.indexPath                  = cell.indexPath;
         [self showViewController:vc sender:nil];
+
     } else if (viewController == [PJListViewController class]) {
+
         PJListViewController *vc = [[PJListViewController alloc]init];
-        vc.dataArray = nil;
-        vc.delegate = self;
-        vc.indexPath = cell.indexPath;
-        vc.dataArray = cell.dataArray;
+        vc.dataArray             = nil;
+        vc.delegate              = self;
+        vc.indexPath             = cell.indexPath;
+        vc.dataArray             = cell.dataArray;
         [self showViewController:vc sender:nil];
+
     }
 }
 
@@ -175,44 +185,37 @@
     for (FieldTableViewCell *definition in cellObjects){
         Class class = [definition class];
         if (class == [PJTextField class] ) {
+
             PJTextField *textField = (PJTextField *)definition;
-            NSLog(@"TextField Value %@ %@",textField.value,textField.invalidMessage);
+            NSLog(@"TextField Value %@ %@",textField.value,textField.validityMessage);
+
         } else if (class == [PJBoolField class]) {
+
             PJBoolField *boolField = (PJBoolField *)definition;
             NSLog(@"TextValue: %@",boolField.textValue);
+
         } else if (class == [PJDatePicker class]) {
+
             PJDatePicker *datePicker = (PJDatePicker *)definition;
+
         } else if (class == [PJDescription class]) {
+
             PJDescription *descriptionField = (PJDescription *)definition;
+            NSLog(@"DescriptionField Value: %@ %@",descriptionField.value,descriptionField.validityMessage);
         } else if (class == [PJListField class]) {
+
             PJListField *listField = (PJListField *)definition;
+
         } else if (class == [PJSubmitCell class]) {
+
             PJSubmitCell *submitCell = (PJSubmitCell *)definition;
+
         } else {
 
         }
     }
 }
-/*
- for (FieldTableViewCell *definition in cellDefinition){
- Class class = [definition class];
- if (class == [PJTextField class] ) {
- PJTextField *textField = (PJTextField *)definition;
- } else if (class == [PJBoolField class]) {
- PJBoolField *boolField = (PJBoolField *)definition;
- } else if (class == [PJDatePicker class]) {
- PJDatePicker *datePicker = (PJDatePicker *)definition;
- } else if (class == [PJDescription class]) {
- PJDescription *descriptionField = (PJDescription *)definition;
- } else if (class == [PJListField class]) {
- PJListField *listField = (PJListField *)definition;
- } else if (class == [PJSubmitCell class]) {
- PJSubmitCell *submitCell = (PJSubmitCell *)definition;
- } else {
 
- }
- }
- */
 
 - (void)controlValueChanged:(FieldTableViewCell *)cell {
 
@@ -222,6 +225,7 @@
 - (void)passValue:(id)value forIndexPath:(NSIndexPath *)indexPath {
     FieldTableViewCell *definition = cellDefinition[indexPath.row];
     definition.value = value;
+    [definition layoutSubviews];
 
     [self.tableView reloadData];
 }
@@ -251,6 +255,27 @@
         needsShowConfirmation = YES;
     }
 }
+
+#pragma mark - References 
+/*
+ for (FieldTableViewCell *definition in cellDefinition){
+ Class class = [definition class];
+ if (class == [PJTextField class] ) {
+ PJTextField *textField = (PJTextField *)definition;
+ } else if (class == [PJBoolField class]) {
+ PJBoolField *boolField = (PJBoolField *)definition;
+ } else if (class == [PJDatePicker class]) {
+ PJDatePicker *datePicker = (PJDatePicker *)definition;
+ } else if (class == [PJDescription class]) {
+ PJDescription *descriptionField = (PJDescription *)definition;
+ } else if (class == [PJListField class]) {
+ PJListField *listField = (PJListField *)definition;
+ } else if (class == [PJSubmitCell class]) {
+ PJSubmitCell *submitCell = (PJSubmitCell *)definition;
+ } else {
+ }
+ }
+ */
 
 
 @end

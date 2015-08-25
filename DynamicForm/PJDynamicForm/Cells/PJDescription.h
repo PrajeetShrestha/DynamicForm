@@ -10,5 +10,5 @@
 
 @interface PJDescription : FieldTableViewCell
 
-
+@property (nonatomic) NSString *placeholderText;
 @end

@@ -40,6 +40,7 @@ static NSString *defaultEmailRegex = @"[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-
     } else {
         self.textField.keyboardType = UIKeyboardTypeDefault;
     }
+    [self sanitize];
 }
 
 - (void)textFieldDidChange:(UITextField *)textField {
@@ -64,14 +65,14 @@ static NSString *defaultEmailRegex = @"[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-
 
         if ([myTest evaluateWithObject: self.textField.text]){
             self.isValid = YES;
-            self.invalidMessage = @"Valid";
+            self.validityMessage = @"Valid";
         } else {
-            self.invalidMessage = @"Email Expression not correct";
+            self.validityMessage = @"Email Expression not correct";
             self.isValid = NO;
         }
 
-        if (self.textField.text.length <= 0) {
-            self.invalidMessage = @"Required Field Empty!";
+        if (self.textField.text.length <= 0 && self.isRequired) {
+            self.validityMessage = @"Required Field Empty!";
             self.isValid = NO;
         }
     }

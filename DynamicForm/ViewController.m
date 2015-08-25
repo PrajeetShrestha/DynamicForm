@@ -50,49 +50,19 @@
     boolField.valueWhenOn = @"YES";
     [cellDefinitions addObject:boolField];
 
+    PJDescription *descriptionField = [PJDescription new];
+    descriptionField.titleText = @"About you!";
+    descriptionField.placeholderText = @"Type your description here...";
+    descriptionField.isRequired = YES;
+    [cellDefinitions addObject:descriptionField];
+
 //    cellDefinition = [PJCellDefinition new];
 //    cellDefinition.type = kPJTextField;
 //    cellDefinition.title = @"Last Name";
 //    cellDefinition.isRequired = YES;
 //    cellDefinition.placeholder = @"Type your last name...";
 //    [cellDefinitions addObject:cellDefinition];
-//
-//    cellDefinition = [PJCellDefinition new];
-//    cellDefinition.type = kPJTextField;
-//    cellDefinition.title = @"Email Address";
-//    cellDefinition.isRequired = YES;
-//    cellDefinition.placeholder = @"Type your email_id...";
-//    [cellDefinitions addObject:cellDefinition];
-//
-//    cellDefinition = [PJCellDefinition new];
-//    cellDefinition.type = kPJTextField;
-//    cellDefinition.title = @"Desired Username";
-//    cellDefinition.isRequired = YES;
-//    cellDefinition.placeholder = @"Type your desired username...";
-//    [cellDefinitions addObject:cellDefinition];
-//
-//    cellDefinition = [PJCellDefinition new];
-//    cellDefinition.type = kPJTextField;
-//    cellDefinition.title = @"Affiliation";
-//    cellDefinition.isRequired = YES;
-//    cellDefinition.placeholder = @"Type your affiliation...";
-//    [cellDefinitions addObject:cellDefinition];
-//
-//    cellDefinition = [PJCellDefinition new];
-//    cellDefinition.type = kPJDescription;
-//    cellDefinition.title = @"Reason for account";
-//    cellDefinition.isRequired = YES;
-//    cellDefinition.placeholder = @"Type reason for your account...";
-//    [cellDefinitions addObject:cellDefinition];
-//
-//    cellDefinition = [PJCellDefinition new];
-//    cellDefinition.type = kPJListField;
-//    cellDefinition.title = @"User Type";
-//    cellDefinition.isRequired = YES;
-//    cellDefinition.placeholder = @"Select User Type...";
-//    cellDefinition.dataArray = @[@"Student",@"Faculty",@"Staff",@"Other"];
-//    cellDefinition.value = @"User Type";
-//    [cellDefinitions addObject:cellDefinition];
+
 
     PJSubmitCell *submit = [PJSubmitCell new];
     [cellDefinitions addObject:submit];

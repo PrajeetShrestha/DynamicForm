@@ -24,31 +24,31 @@
 #pragma mark - Selectors
 - (void)setState:(UISwitch *)sender {
     if (sender.isOn) {
-        self.value = @YES;
-        self.textValue = self.valueWhenOn ;
-
+    self.value       = @YES;
+    self.textValue   = self.valueWhenOn ;
 
     } else {
-        self.value = @NO;
-        self.textValue = self.valueWhenOff;
+
+    self.value       = @NO;
+    self.textValue   = self.valueWhenOff;
     }
+
     [self.delegate controlValueChanged:self];
 }
 - (void)layoutSubviews {
     bool switchState = [self.value boolValue];
+    self.title.text  = self.titleText;
 
-    self.title.text = self.titleText;
     if (switchState) {
         [self.switchControl setOn:YES animated:NO];
-        self.value = @YES;
-        self.textValue = self.valueWhenOn;
+        self.value       = @YES;
+        self.textValue   = self.valueWhenOn;
 
     } else {
         [self.switchControl setOn:NO animated:NO];
-        self.value = @NO;
-
-        self.textValue = self.valueWhenOff;
-    }    
+        self.value       = @NO;
+        self.textValue   = self.valueWhenOff;
+    }
 }
 
 
