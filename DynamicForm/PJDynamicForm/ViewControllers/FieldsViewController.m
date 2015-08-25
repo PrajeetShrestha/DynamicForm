@@ -15,6 +15,10 @@
     BOOL needsShowConfirmation;
     NSMutableArray *cellObjects;
 }
+@property (weak, nonatomic) IBOutlet UIView *datePickerContainer;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *datePickerContainerBottomConstraint;
+@property (nonatomic) NSString *selectedDate;
+@property (weak, nonatomic) IBOutlet UIDatePicker *datePicker;
 
 @end
 
@@ -37,6 +41,14 @@
     self.tableView.dataSource = self;
     cellObjects               = [NSMutableArray new];
     needsShowConfirmation     = YES;
+    self.title = self.titleString;
+    self.datePickerContainerBottomConstraint.constant = -self.datePickerContainer.frame.size.height - 100;
+
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+
 }
 
 - (void)didReceiveMemoryWarning {
@@ -153,11 +165,17 @@
     }
 
 }
+#pragma mark - Picker Action;
+- (IBAction)pickerAction:(id)sender {
+
+
+}
 #pragma mark - FieldTableViewCellDelegate
 - (void)didSelected:(Class)viewController sender:(FieldTableViewCell *)cell {
 
     if (viewController == [DescriptionViewController class]) {
         DescriptionViewController *vc = [[viewController alloc]init];
+        vc.titleString                = cell.titleText;
         vc.delegate                   = self;
         vc.initialValue               = cell.value;
         vc.indexPath                  = cell.indexPath;
@@ -166,14 +184,23 @@
     } else if (viewController == [PJListViewController class]) {
 
         PJListViewController *vc = [[PJListViewController alloc]init];
-        vc.delegate              = self;
-        vc.indexPath             = cell.indexPath;
-        vc.listItems             = [cell valueForKey:@"listItems"];
+        vc.titleString = cell.titleText;
+        vc.delegate    = self;
+        vc.indexPath   = cell.indexPath;
+        vc.listItems   = [cell valueForKey:@"listItems"];
         if ([cell valueForKey:@"indexPathOfSelectedItem"] != nil) {
             vc.indexPathOfSelectedItem = [cell valueForKey:@"indexPathOfSelectedItem"];
         }
         [self showViewController:vc sender:nil];
+
+    } else if ([cell isKindOfClass:[PJDatePicker class]]) {
+        //Date Picker Selected;
+        self.datePickerContainerBottomConstraint.constant = 0;
+        [UIView animateWithDuration:0.3 animations:^{
+            [self.view layoutIfNeeded];
+        }];
     }
+
 }
 
 - (void)controlActivated:(id)sender {
@@ -189,8 +216,8 @@
     [self.view endEditing:YES];
     NSMutableArray *formValues = [NSMutableArray new];
     for (FieldTableViewCell *cell in cellObjects){
-
         if (![cell isKindOfClass:[PJSubmitCell class]]) {
+            //NSLog(@"Cell Key: %@\nCell Value: %@\nCell Message: %@\nCellIsValid: %d",cell.key,cell.value,cell.validityMessage,(int)cell.isValid);
             if (cell.isValid) {
                 NSDictionary *values = @{ cell.key :
                                              @{  @"value":cell.value,
@@ -248,6 +275,7 @@
         needsShowConfirmation = YES;
     }
 }
+
 
 #pragma mark - References
 /*

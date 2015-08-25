@@ -17,5 +17,6 @@
 @property (nonatomic)       NSString *initialValue;
 @property (nonatomic)       NSIndexPath *indexPath;
 @property (nonatomic,weak)id <DescriptionViewControllerDelegate> delegate;
+@property (nonatomic) NSString *titleString;
 
 @end

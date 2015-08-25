@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		250B14761B8C484C0077D7EA /* tick.png in Resources */ = {isa = PBXBuildFile; fileRef = 250B14751B8C484C0077D7EA /* tick.png */; };
+		250B147A1B8C88FA0077D7EA /* UIImage+ImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = 250B14791B8C88FA0077D7EA /* UIImage+ImageEffects.m */; };
+		250B147D1B8C897C0077D7EA /* FieldsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 250B147C1B8C897C0077D7EA /* FieldsViewController.xib */; };
 		25544C471B874C1900B8FBE0 /* FieldTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 25544C191B874C1900B8FBE0 /* FieldTableViewCell.m */; };
 		25544C481B874C1900B8FBE0 /* PJBoolField.m in Sources */ = {isa = PBXBuildFile; fileRef = 25544C1B1B874C1900B8FBE0 /* PJBoolField.m */; };
 		25544C491B874C1900B8FBE0 /* PJBoolField.xib in Resources */ = {isa = PBXBuildFile; fileRef = 25544C1C1B874C1900B8FBE0 /* PJBoolField.xib */; };
@@ -29,7 +31,6 @@
 		25544C5A1B874C1900B8FBE0 /* DescriptionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 25544C3F1B874C1900B8FBE0 /* DescriptionViewController.m */; };
 		25544C5B1B874C1900B8FBE0 /* DescriptionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 25544C401B874C1900B8FBE0 /* DescriptionViewController.xib */; };
 		25544C5C1B874C1900B8FBE0 /* FieldsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 25544C421B874C1900B8FBE0 /* FieldsViewController.m */; };
-		25544C5D1B874C1900B8FBE0 /* FieldsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 25544C431B874C1900B8FBE0 /* FieldsViewController.xib */; };
 		25544C5E1B874C1900B8FBE0 /* PJListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 25544C451B874C1900B8FBE0 /* PJListViewController.m */; };
 		25544C5F1B874C1900B8FBE0 /* PJListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 25544C461B874C1900B8FBE0 /* PJListViewController.xib */; };
 		25A4BDD71B8494AC006FEB71 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 25A4BDD61B8494AC006FEB71 /* main.m */; };
@@ -55,6 +56,9 @@
 
 /* Begin PBXFileReference section */
 		250B14751B8C484C0077D7EA /* tick.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tick.png; sourceTree = "<group>"; };
+		250B14781B8C88FA0077D7EA /* UIImage+ImageEffects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ImageEffects.h"; sourceTree = "<group>"; };
+		250B14791B8C88FA0077D7EA /* UIImage+ImageEffects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ImageEffects.m"; sourceTree = "<group>"; };
+		250B147C1B8C897C0077D7EA /* FieldsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FieldsViewController.xib; sourceTree = "<group>"; };
 		25544C181B874C1900B8FBE0 /* FieldTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FieldTableViewCell.h; sourceTree = "<group>"; };
 		25544C191B874C1900B8FBE0 /* FieldTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FieldTableViewCell.m; sourceTree = "<group>"; };
 		25544C1A1B874C1900B8FBE0 /* PJBoolField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PJBoolField.h; sourceTree = "<group>"; };
@@ -91,7 +95,6 @@
 		25544C401B874C1900B8FBE0 /* DescriptionViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DescriptionViewController.xib; sourceTree = "<group>"; };
 		25544C411B874C1900B8FBE0 /* FieldsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FieldsViewController.h; sourceTree = "<group>"; };
 		25544C421B874C1900B8FBE0 /* FieldsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FieldsViewController.m; sourceTree = "<group>"; };
-		25544C431B874C1900B8FBE0 /* FieldsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FieldsViewController.xib; sourceTree = "<group>"; };
 		25544C441B874C1900B8FBE0 /* PJListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PJListViewController.h; sourceTree = "<group>"; };
 		25544C451B874C1900B8FBE0 /* PJListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PJListViewController.m; sourceTree = "<group>"; };
 		25544C461B874C1900B8FBE0 /* PJListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PJListViewController.xib; sourceTree = "<group>"; };
@@ -221,7 +224,7 @@
 			children = (
 				25544C411B874C1900B8FBE0 /* FieldsViewController.h */,
 				25544C421B874C1900B8FBE0 /* FieldsViewController.m */,
-				25544C431B874C1900B8FBE0 /* FieldsViewController.xib */,
+				250B147C1B8C897C0077D7EA /* FieldsViewController.xib */,
 			);
 			name = FieldsViewController;
 			sourceTree = "<group>";
@@ -234,6 +237,24 @@
 				25544C401B874C1900B8FBE0 /* DescriptionViewController.xib */,
 			);
 			name = DescriptionViewController;
+			sourceTree = "<group>";
+		};
+		250B14771B8C88EA0077D7EA /* BackButton Library */ = {
+			isa = PBXGroup;
+			children = (
+				25544C351B874C1900B8FBE0 /* UIViewController+BackButtonHandler.h */,
+				25544C361B874C1900B8FBE0 /* UIViewController+BackButtonHandler.m */,
+			);
+			name = "BackButton Library";
+			sourceTree = "<group>";
+		};
+		250B147B1B8C88FD0077D7EA /* ImageEffect Library */ = {
+			isa = PBXGroup;
+			children = (
+				250B14781B8C88FA0077D7EA /* UIImage+ImageEffects.h */,
+				250B14791B8C88FA0077D7EA /* UIImage+ImageEffects.m */,
+			);
+			name = "ImageEffect Library";
 			sourceTree = "<group>";
 		};
 		25544C161B874C1900B8FBE0 /* PJDynamicForm */ = {
@@ -278,8 +299,8 @@
 		25544C341B874C1900B8FBE0 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
-				25544C351B874C1900B8FBE0 /* UIViewController+BackButtonHandler.h */,
-				25544C361B874C1900B8FBE0 /* UIViewController+BackButtonHandler.m */,
+				250B147B1B8C88FD0077D7EA /* ImageEffect Library */,
+				250B14771B8C88EA0077D7EA /* BackButton Library */,
 			);
 			path = Libraries;
 			sourceTree = "<group>";
@@ -471,8 +492,8 @@
 				25544C4F1B874C1900B8FBE0 /* PJListField.xib in Resources */,
 				25544C4D1B874C1900B8FBE0 /* PJDescription.xib in Resources */,
 				25544C491B874C1900B8FBE0 /* PJBoolField.xib in Resources */,
-				25544C5D1B874C1900B8FBE0 /* FieldsViewController.xib in Resources */,
 				25544C531B874C1900B8FBE0 /* PJSubmitCell.xib in Resources */,
+				250B147D1B8C897C0077D7EA /* FieldsViewController.xib in Resources */,
 				25544C5F1B874C1900B8FBE0 /* PJListViewController.xib in Resources */,
 				25A4BDE51B8494AC006FEB71 /* Images.xcassets in Resources */,
 				25544C4B1B874C1900B8FBE0 /* PJDatePicker.xib in Resources */,
@@ -529,6 +550,7 @@
 			files = (
 				25544C571B874C1900B8FBE0 /* UIViewController+BackButtonHandler.m in Sources */,
 				25544C5E1B874C1900B8FBE0 /* PJListViewController.m in Sources */,
+				250B147A1B8C88FA0077D7EA /* UIImage+ImageEffects.m in Sources */,
 				25544C501B874C1900B8FBE0 /* PJListItemCell.m in Sources */,
 				25544C591B874C1900B8FBE0 /* FieldTableView.m in Sources */,
 				25544C5C1B874C1900B8FBE0 /* FieldsViewController.m in Sources */,
@@ -675,6 +697,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = DynamicForm/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "EKBANA.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -687,6 +710,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = DynamicForm/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "EKBANA.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";

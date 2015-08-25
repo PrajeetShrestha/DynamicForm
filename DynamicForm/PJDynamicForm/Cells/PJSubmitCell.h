@@ -11,6 +11,6 @@
 
 @interface PJSubmitCell :FieldTableViewCell
 
-@property (weak, nonatomic) IBOutlet UIButton *submitButton;
+
 - (IBAction)submitAction:(id)sender;
 @end

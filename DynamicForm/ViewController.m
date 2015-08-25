@@ -45,22 +45,14 @@
 
     {
         PJTextField *textField = [PJTextField new];
-        textField.titleText       = @"Confirm Email";
-        textField.key             = @"confirmEmail";
+        textField.titleText       = @"Address";
+        textField.key             = @"address";
         textField.isRequired       = NO;
         textField.inputType       = PJString;
-        textField.placeholderText = @"Confirm email...";
+        textField.placeholderText = @"Type your address...";
         [cellDefinitions addObject:textField];
     }
-
-    PJBoolField *boolField = [PJBoolField new];
-    boolField.key          = @"agreement";
-    boolField.titleText    = @"Agreed";
-    boolField.value        = @YES;
-    boolField.valueWhenOff = @"NO";
-    boolField.valueWhenOn  = @"YES";
-    [cellDefinitions addObject:boolField];
-
+    
     PJDescription *descriptionField  = [PJDescription new];
     descriptionField.key             = @"about";
     descriptionField.titleText       = @"About you!";
@@ -68,17 +60,25 @@
     descriptionField.isRequired      = YES;
     [cellDefinitions addObject:descriptionField];
 //
-    PJListField *listField = [PJListField new];
+    PJDatePicker *listField = [PJDatePicker new];
     listField.key       = @"country";
     listField.titleText = @"Your Country";
-    listField.listItems = @[@"Nepal",@"India",@"USA",@"China"];
-    listField.defaultValue = listField.listItems[0];
+
     [cellDefinitions addObject:listField];
+
+    PJBoolField *boolField = [PJBoolField new];
+    boolField.key          = @"subscription";
+    boolField.titleText    = @"Subscribe to our newsletter";
+    boolField.value        = @YES;
+    boolField.valueWhenOff = @"NO";
+    boolField.valueWhenOn  = @"YES";
+    [cellDefinitions addObject:boolField];
 
     PJSubmitCell *submit = [PJSubmitCell new];
     [cellDefinitions addObject:submit];
 
     FieldsViewController *vc = [FieldsViewController new];
+    vc.titleString = @"Regsitration";
     vc.cellDefinition = cellDefinitions;
     [self showViewController:vc sender:nil];
 }

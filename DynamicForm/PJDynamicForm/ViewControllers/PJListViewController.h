@@ -16,5 +16,6 @@
 @property (nonatomic) NSArray *listItems;
 @property (nonatomic) NSIndexPath *indexPath;
 @property (nonatomic) NSIndexPath *indexPathOfSelectedItem;
+@property (nonatomic) NSString *titleString;
 
 @end

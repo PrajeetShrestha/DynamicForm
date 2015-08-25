@@ -7,11 +7,15 @@
 //
 
 #import "PJSubmitCell.h"
-
+@interface PJSubmitCell ()
+@property (weak, nonatomic) IBOutlet UIButton *submitButton;
+@end
 @implementation PJSubmitCell
 
+
 - (void)awakeFromNib {
-    // Initialization code
+    self.submitButton.layer.cornerRadius = 3.0f;
+    self.submitButton.clipsToBounds  = YES;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

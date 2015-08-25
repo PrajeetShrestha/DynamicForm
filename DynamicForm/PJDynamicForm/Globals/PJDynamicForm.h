@@ -23,4 +23,9 @@
 #import "PJListItemCell.h"  
 #import "PJSubmitCell.h"
 #import "PJTextField.h"
+
+
+#pragma mark - Libraries
+#import "UIImage+ImageEffects.h"
+
 #endif

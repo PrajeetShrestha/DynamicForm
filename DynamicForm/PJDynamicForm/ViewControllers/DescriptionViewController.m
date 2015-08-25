@@ -27,7 +27,7 @@
     self.textView.text      = self.initialValue;
     }
     self.textView.textColor = PJColorFieldValue;
-
+    self.title = self.titleString;
 }
 
 - (void)viewDidAppear:(BOOL)animated {

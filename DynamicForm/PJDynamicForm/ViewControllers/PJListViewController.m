@@ -29,6 +29,7 @@ static NSString *cellIdentifier = @"PJListItemCell";
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     self.navigationItem.hidesBackButton = YES;
+    self.title = self.titleString;
 
     // Do any additional setup after loading the view from its nib.
 }
