@@ -36,9 +36,11 @@
     [self.delegate controlValueChanged:self];
 }
 - (void)layoutSubviews {
+    [super layoutSubviews];
     bool switchState = [self.value boolValue];
     self.title.text  = self.titleText;
-
+    //Bool Field always have a default state so it's valid.
+    self.isValid = YES;
     if (switchState) {
         [self.switchControl setOn:YES animated:NO];
         self.value       = @YES;

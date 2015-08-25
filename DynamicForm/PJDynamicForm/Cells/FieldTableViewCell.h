@@ -21,6 +21,7 @@
 
 //These are the common properties in every Field
 @property (nonatomic) NSString    *titleText;
+@property (nonatomic) NSString    *key;
 @property (nonatomic) id          defaultValue;
 @property (nonatomic) id          value;
 

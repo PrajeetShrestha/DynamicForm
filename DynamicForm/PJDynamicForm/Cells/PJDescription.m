@@ -22,6 +22,7 @@
     self.lblDescription.textColor = PJColorFieldValue;
     self.title.font               = [UIFont systemFontOfSize:PJSizeFieldTitle];
     self.lblDescription.font      = [UIFont systemFontOfSize:PJSizeFieldValue];
+    [self layoutSubviews];
 
 }
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
@@ -35,7 +36,8 @@
 }
 
 - (void)layoutSubviews {
-    if (self.value != nil) {
+    //[super layoutSubviews];
+    if (self.value != nil && [self.value length] != 0) {
         self.lblDescription.text        = self.value;
     } else {
         self.lblDescription.placeholder = self.placeholderText;

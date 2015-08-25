@@ -11,7 +11,13 @@
 @implementation FieldTableViewCell
 
 - (void)awakeFromNib {
-    // Initialization code
+
+}
+
+- (void)layoutSubviews {
+    self.validityMessage = @"Not Available";
+    self.value = @"";
+    self.isValid = NO;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

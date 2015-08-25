@@ -31,15 +31,7 @@ static NSString *defaultEmailRegex = @"[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-
              forControlEvents:UIControlEventEditingChanged];
 
     //Set the keyboard type according to inputType
-    if (self.inputType == PJEmail) {
-        self.textField.keyboardType = UIKeyboardTypeEmailAddress;;
-    } else if (self.inputType == PJNumber) {
-        self.textField.keyboardType = UIKeyboardTypeNumberPad;
-    } else if (self.inputType == PJString) {
-        self.textField.keyboardType = UIKeyboardTypeDefault;
-    } else {
-        self.textField.keyboardType = UIKeyboardTypeDefault;
-    }
+
     [self sanitize];
 }
 
@@ -54,28 +46,59 @@ static NSString *defaultEmailRegex = @"[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-
 }
 - (void)sanitize {
     self.value = self.textField.text;
-    if (self.inputType == PJEmail) {
-        NSString *regex;
-        if (self.regex == nil) {
-            regex = defaultEmailRegex;
-        } else {
-            regex = self.regex;
-        }
-        NSPredicate *myTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", regex];
 
-        if ([myTest evaluateWithObject: self.textField.text]){
+    if (self.isRequired) {
+        if (self.textField.text.length <= 0) {
+            self.isValid         = NO;
+            self.validityMessage = @"Required field is empty!";
+            return;
+        }
+        if (self.inputType == PJEmail) {
+            NSString *regex;
+            //Check if user has provided any regex for the textField
+            if (self.regex == nil) {
+                regex = defaultEmailRegex;
+            } else {
+                regex = self.regex;
+            }
+            NSPredicate *myTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", regex];
+
+            if ([myTest evaluateWithObject: self.textField.text]){
+                self.isValid         = YES;
+                self.validityMessage = @"Field is valid!";
+            } else {
+                self.validityMessage = @"Email Expression not correct";
+                self.isValid         = NO;
+            }
+        }
+    } else {
+        if (self.textField.text.length == 0) {
             self.isValid = YES;
-            self.validityMessage = @"Valid";
-        } else {
-            self.validityMessage = @"Email Expression not correct";
-            self.isValid = NO;
+            self.validityMessage = @"Field is valid!";
+            return;
         }
 
-        if (self.textField.text.length <= 0 && self.isRequired) {
-            self.validityMessage = @"Required Field Empty!";
-            self.isValid = NO;
+        if (self.inputType == PJEmail) {
+            NSString *regex;
+            //Check if user has provided any regex for the textField
+            if (self.regex == nil) {
+                regex = defaultEmailRegex;
+            } else {
+                regex = self.regex;
+            }
+            NSPredicate *myTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", regex];
+
+            if ([myTest evaluateWithObject: self.textField.text]){
+                self.isValid         = YES;
+                self.validityMessage = @"Field is valid!";
+            } else {
+                self.validityMessage = @"Email Expression not correct";
+                self.isValid         = NO;
+            }
         }
     }
+
+
 }
 
 - (void)textFieldDidEndEditing:(UITextField *)textField {
@@ -88,10 +111,22 @@ static NSString *defaultEmailRegex = @"[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-
 }
 
 - (void)layoutSubviews {
+    [super layoutSubviews];
     [self setupRequiredLabelVisibility];
     self.title.text = self.titleText;
+
     if (self.placeholderText != nil) {
         self.textField.placeholder = self.placeholderText;
+    }
+    [self sanitize];
+    if (self.inputType == PJEmail) {
+        self.textField.keyboardType = UIKeyboardTypeEmailAddress;;
+    } else if (self.inputType == PJNumber) {
+        self.textField.keyboardType = UIKeyboardTypeNumberPad;
+    } else if (self.inputType == PJString) {
+        self.textField.keyboardType = UIKeyboardTypeDefault;
+    } else {
+        self.textField.keyboardType = UIKeyboardTypeDefault;
     }
 
 }

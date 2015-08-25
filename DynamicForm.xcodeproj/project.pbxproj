@@ -207,11 +207,11 @@
 			children = (
 				25544C441B874C1900B8FBE0 /* PJListViewController.h */,
 				25544C451B874C1900B8FBE0 /* PJListViewController.m */,
-				250B14751B8C484C0077D7EA /* tick.png */,
 				25544C461B874C1900B8FBE0 /* PJListViewController.xib */,
 				25544C261B874C1900B8FBE0 /* PJListItemCell.h */,
 				25544C271B874C1900B8FBE0 /* PJListItemCell.m */,
 				25544C281B874C1900B8FBE0 /* PJListItemCell.xib */,
+				250B14751B8C484C0077D7EA /* tick.png */,
 			);
 			name = PJListViewController;
 			sourceTree = "<group>";
@@ -239,12 +239,12 @@
 		25544C161B874C1900B8FBE0 /* PJDynamicForm */ = {
 			isa = PBXGroup;
 			children = (
+				25544C3D1B874C1900B8FBE0 /* ViewControllers */,
 				25544C171B874C1900B8FBE0 /* Cells */,
 				25544C2F1B874C1900B8FBE0 /* Globals */,
 				25544C341B874C1900B8FBE0 /* Libraries */,
 				25544C371B874C1900B8FBE0 /* Model */,
 				25544C3A1B874C1900B8FBE0 /* TableView */,
-				25544C3D1B874C1900B8FBE0 /* ViewControllers */,
 			);
 			path = PJDynamicForm;
 			sourceTree = "<group>";

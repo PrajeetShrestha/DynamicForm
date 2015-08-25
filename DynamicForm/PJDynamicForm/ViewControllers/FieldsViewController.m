@@ -67,7 +67,7 @@
 - (UITableViewCell *)cellTypeForIndexPath:(NSIndexPath *)indexPath forTableView:(UITableView *)tableView {
     FieldTableViewCell *definition = cellDefinition[indexPath.row];
     NSString *cellType             = [self cellTypeForDefinitionClass:[definition class]];
-        //Initialize common properties of all Cells
+    //Initialize common properties of all Cells
     FieldTableViewCell *cell       = [tableView dequeueReusableCellWithIdentifier:cellType];
     cell.titleText                 = definition.titleText;
     cell.isRequired                = definition.isRequired;
@@ -76,6 +76,7 @@
     cell.defaultValue              = definition.defaultValue;
     cell.isEnabled                 = definition.isEnabled;
     cell.value                     = definition.value;
+    cell.key                       = definition.key;
     [self segragateValuesByTypeInCell:cell forDefinition:definition];
     [self pushCellInArray:cell];
     return cell;
@@ -96,10 +97,11 @@
 - (void)segragateValuesByTypeInCell:(id)cell forDefinition:(id)definition {
     Class class = [cell class];
     if (class == [PJTextField class] ) {
-
+        PJTextField *passedCell = (PJTextField *)definition;
         PJTextField *textCell    = (PJTextField *)cell;
         textCell.inputType       = PJEmail;
-        textCell.placeholderText = [definition valueForKey:@"placeholderText"];
+        textCell.placeholderText = passedCell.placeholderText;
+        textCell.inputType = passedCell.inputType;
 
     } else if (class == [PJBoolField class]) {
 
@@ -108,15 +110,15 @@
         boolField.valueWhenOff = [definition valueForKey:@"valueWhenOff"];
 
     } else if (class == [PJDescription class]) {
-        
-        PJDescription *descriptionCell = (PJDescription *)cell;
+
+        PJDescription *descriptionCell  = (PJDescription *)cell;
         descriptionCell.placeholderText = [definition valueForKey:@"placeholderText"];
 
     } else if (class == [PJDatePicker class]) {
 
     } else if (class == [PJListField class]) {
         PJListField *listField = (PJListField *)cell;
-        listField.listItems = [definition valueForKey:@"listItems"];
+        listField.listItems    = [definition valueForKey:@"listItems"];
         listField.defaultValue = [definition valueForKey:@"defaultValue"];
 
     } else if (class == [PJSubmitCell class]) {
@@ -171,7 +173,6 @@
             vc.indexPathOfSelectedItem = [cell valueForKey:@"indexPathOfSelectedItem"];
         }
         [self showViewController:vc sender:nil];
-
     }
 }
 
@@ -186,40 +187,27 @@
 
 - (void)submitAction:(id)sender {
     [self.view endEditing:YES];
+    NSMutableArray *formValues = [NSMutableArray new];
+    for (FieldTableViewCell *cell in cellObjects){
 
-    for (FieldTableViewCell *definition in cellObjects){
-        Class class = [definition class];
-        if (class == [PJTextField class] ) {
-
-            PJTextField *textField = (PJTextField *)definition;
-            NSLog(@"TextField Value %@ %@",textField.value,textField.validityMessage);
-
-        } else if (class == [PJBoolField class]) {
-
-            PJBoolField *boolField = (PJBoolField *)definition;
-            NSLog(@"TextValue: %@",boolField.textValue);
-
-        } else if (class == [PJDatePicker class]) {
-
-            //PJDatePicker *datePicker = (PJDatePicker *)definition;
-
-        } else if (class == [PJDescription class]) {
-
-            PJDescription *descriptionField = (PJDescription *)definition;
-            NSLog(@"DescriptionField Value: %@ %@",descriptionField.value,descriptionField.validityMessage);
-        } else if (class == [PJListField class]) {
-
-            PJListField *listField = (PJListField *)definition;
-            NSLog(@"List Item: %@",listField.value);
-
-        } else if (class == [PJSubmitCell class]) {
-
-            //PJSubmitCell *submitCell = (PJSubmitCell *)definition;
-
-        } else {
-
+        if (![cell isKindOfClass:[PJSubmitCell class]]) {
+            if (cell.isValid) {
+                NSDictionary *values = @{ cell.key :
+                                             @{  @"value":cell.value,
+                                                 @"message" : cell.validityMessage,
+                                                 @"isValid": @(cell.isValid)
+                                             }};
+                    [formValues addObject:values];
+            
+            } else {
+                UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Error!!" message:[NSString stringWithFormat:@"Field:  %@ \n\nMessage:  %@",cell.titleText,cell.validityMessage ]delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+                [alert show];
+                return;
+            }
         }
     }
+
+    NSLog(@"Values %@",formValues);
 }
 
 
@@ -229,11 +217,9 @@
 }
 #pragma mark - DescriptionViewControllerDelegate
 - (void)passValue:(id)value forIndexPath:(NSIndexPath *)indexPath {
-    FieldTableViewCell *definition = cellDefinition[indexPath.row];
+    FieldTableViewCell *definition = cellObjects[indexPath.row];
     definition.value = value;
     [definition layoutSubviews];
-
-    [self.tableView reloadData];
 }
 
 #pragma mark - PJListViewControllerDelegate
@@ -263,7 +249,7 @@
     }
 }
 
-#pragma mark - References 
+#pragma mark - References
 /*
  for (FieldTableViewCell *definition in cellDefinition){
  Class class = [definition class];
@@ -283,6 +269,4 @@
  }
  }
  */
-
-
 @end

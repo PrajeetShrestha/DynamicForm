@@ -32,6 +32,9 @@
 }
 
 - (void)layoutSubviews {
+    //[super layoutSubviews];
+    self.isValid = YES;
+    self.validityMessage = @"Valid!";
     if (self.defaultValue != nil && self.value == nil) {
         self.selectedValue.text = self.defaultValue;
     } else if (self.defaultValue == nil && self.value == nil) {

@@ -35,39 +35,45 @@
 
     NSMutableArray *cellDefinitions = [NSMutableArray new];
 
-    PJTextField *cellDefinition = [PJTextField new];
-    cellDefinition.titleText = @"Email Address";
-    cellDefinition.isRequired = YES;
-    cellDefinition.inputType = PJEmail;
-    cellDefinition.placeholderText = @"Type your email...";
-    [cellDefinitions addObject:cellDefinition];
+    PJTextField *textField = [PJTextField new];
+    textField.titleText       = @"Email Address";
+    textField.isRequired      = YES;
+    textField.key             = @"email";
+    textField.inputType       = PJEmail;
+    textField.placeholderText = @"Type your email...";
+    [cellDefinitions addObject:textField];
+
+    {
+        PJTextField *textField = [PJTextField new];
+        textField.titleText       = @"Confirm Email";
+        textField.key             = @"confirmEmail";
+        textField.isRequired       = NO;
+        textField.inputType       = PJString;
+        textField.placeholderText = @"Confirm email...";
+        [cellDefinitions addObject:textField];
+    }
 
     PJBoolField *boolField = [PJBoolField new];
-    boolField.titleText = @"Agreed";
-    boolField.value = @YES;
+    boolField.key          = @"agreement";
+    boolField.titleText    = @"Agreed";
+    boolField.value        = @YES;
     boolField.valueWhenOff = @"NO";
-    boolField.valueWhenOn = @"YES";
+    boolField.valueWhenOn  = @"YES";
     [cellDefinitions addObject:boolField];
 
-    PJDescription *descriptionField = [PJDescription new];
-    descriptionField.titleText = @"About you!";
+    PJDescription *descriptionField  = [PJDescription new];
+    descriptionField.key             = @"about";
+    descriptionField.titleText       = @"About you!";
     descriptionField.placeholderText = @"Type your description here...";
-    descriptionField.isRequired = YES;
+    descriptionField.isRequired      = YES;
     [cellDefinitions addObject:descriptionField];
-
+//
     PJListField *listField = [PJListField new];
+    listField.key       = @"country";
     listField.titleText = @"Your Country";
     listField.listItems = @[@"Nepal",@"India",@"USA",@"China"];
-    //listField.defaultValue = listField.listItems[0];
+    listField.defaultValue = listField.listItems[0];
     [cellDefinitions addObject:listField];
-
-//    cellDefinition = [PJCellDefinition new];
-//    cellDefinition.type = kPJTextField;
-//    cellDefinition.title = @"Last Name";
-//    cellDefinition.isRequired = YES;
-//    cellDefinition.placeholder = @"Type your last name...";
-//    [cellDefinitions addObject:cellDefinition];
-
 
     PJSubmitCell *submit = [PJSubmitCell new];
     [cellDefinitions addObject:submit];
