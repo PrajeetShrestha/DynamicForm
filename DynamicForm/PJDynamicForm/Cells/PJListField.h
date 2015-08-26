@@ -14,5 +14,5 @@
 
 @property (nonatomic) NSArray *listItems;
 @property (nonatomic) NSIndexPath *indexPathOfSelectedItem;
-
+@property (nonatomic) PJListSelectionOption selectionOption;
 @end

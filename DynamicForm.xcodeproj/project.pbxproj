@@ -277,6 +277,7 @@
 				25544C171B874C1900B8FBE0 /* Cells */,
 				25544C2F1B874C1900B8FBE0 /* Globals */,
 				25544C341B874C1900B8FBE0 /* Libraries */,
+				25F755AE1B8DD71D00FAE6E2 /* Models */,
 				25544C3A1B874C1900B8FBE0 /* TableView */,
 			);
 			path = PJDynamicForm;
@@ -330,10 +331,6 @@
 		25544C3D1B874C1900B8FBE0 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				2559EEE21B8DA1B500578C49 /* CustomView.h */,
-				2559EEE31B8DA1B600578C49 /* CustomView.m */,
-				2559EEDF1B8D91E700578C49 /* FormValues.h */,
-				2559EEE01B8D91E700578C49 /* FormValues.m */,
 				250B14731B8C30690077D7EA /* FieldsViewController */,
 				250B14741B8C30700077D7EA /* DescriptionViewController */,
 				250B14721B8C30600077D7EA /* PJListViewController */,
@@ -413,6 +410,18 @@
 				25A4BDF21B8494AD006FEB71 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		25F755AE1B8DD71D00FAE6E2 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				2559EEE21B8DA1B500578C49 /* CustomView.h */,
+				2559EEE31B8DA1B600578C49 /* CustomView.m */,
+				2559EEDF1B8D91E700578C49 /* FormValues.h */,
+				2559EEE01B8D91E700578C49 /* FormValues.m */,
+			);
+			name = Models;
+			path = ViewControllers;
 			sourceTree = "<group>";
 		};
 		32027C12D618A7D99DEA4EEF /* Frameworks */ = {

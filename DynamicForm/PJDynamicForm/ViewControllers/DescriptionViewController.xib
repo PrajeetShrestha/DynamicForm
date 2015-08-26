@@ -16,7 +16,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="T89-3v-Do1">
-                    <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                    <rect key="frame" x="8" y="0.0" width="584" height="600"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -25,9 +25,9 @@
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstAttribute="bottom" secondItem="T89-3v-Do1" secondAttribute="bottom" id="Egl-9g-dZc"/>
-                <constraint firstAttribute="trailing" secondItem="T89-3v-Do1" secondAttribute="trailing" id="MNi-0J-NV9"/>
+                <constraint firstAttribute="trailing" secondItem="T89-3v-Do1" secondAttribute="trailing" constant="8" id="MNi-0J-NV9"/>
                 <constraint firstItem="T89-3v-Do1" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="UlO-ud-GFB"/>
-                <constraint firstItem="T89-3v-Do1" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="lt8-cV-w7r"/>
+                <constraint firstItem="T89-3v-Do1" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="8" id="lt8-cV-w7r"/>
             </constraints>
         </view>
     </objects>

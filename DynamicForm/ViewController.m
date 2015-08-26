@@ -69,9 +69,10 @@
     PJListField *listField = [PJListField new];
     listField.key          = @"country";
     listField.titleText    = @"Country";
-    listField.listItems    = @[@"Nepal",@"India",@"Bangaladesh"];
+    listField.listItems    = @[@"Nepal",@"India",@"Bangaladesh",@"India",@"Bangaladesh",@"India",@"Bangaladesh",@"India",@"Bangaladesh",@"India",@"Bangaladesh",@"India",@"Bangaladesh",@"India",@"Bangaladesh",@"India",@"Bangaladesh",@"India",@"Bangaladesh",@"India",@"Bangaladesh",@"India",@"Bangaladesh",@"India",@"Bangaladesh",@"India",@"Bangaladesh",@"India",@"Bangaladesh",@"India",@"Bangaladesh"];
     listField.isRequired   = YES;
     listField.defaultValue = listField.listItems[0];
+    listField.selectionOption = PJListMultipleSelection;
     [cellDefinitions addObject:listField];
 
     PJBoolField *boolField = [PJBoolField new];

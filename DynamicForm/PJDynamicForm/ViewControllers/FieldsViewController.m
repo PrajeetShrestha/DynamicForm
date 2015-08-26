@@ -134,6 +134,7 @@
         if (listField.defaultValue != nil) {
             listField.indexPathOfSelectedItem = [NSIndexPath indexPathForRow:[listField.listItems indexOfObject:listField.defaultValue] inSection:0];
         }
+        listField.selectionOption = [[definition valueForKey:@"selectionOption"] intValue];
 
     } else if (class == [PJSubmitCell class]) {
 
@@ -190,6 +191,7 @@
         if ([cell valueForKey:@"indexPathOfSelectedItem"] != nil) {
             vc.indexPathOfSelectedItem = [cell valueForKey:@"indexPathOfSelectedItem"];
         }
+        vc.selectionOption = [[cell valueForKey:@"selectionOption"] intValue];
         [self showViewController:vc sender:nil];
 
     } else if ([cell isKindOfClass:[PJDatePicker class]]) {
@@ -248,11 +250,15 @@
 }
 
 #pragma mark - PJListViewControllerDelegate
-- (void)selectedItemInList:(id)value forCellAtIndexPath:(NSIndexPath *)indexPath andSelectedIndex:(NSIndexPath *)selectedIndex {
+- (void)selectedItemInList:(id)value forCellAtIndexPath:(NSIndexPath *)indexPath andSelectedIndex:(id)selectedIndex {
     PJListField *definition = cellObjects[indexPath.row];
-    definition.indexPathOfSelectedItem = selectedIndex;
-    definition.value                   = value;
-    [definition layoutSubviews];
+    if (definition.selectionOption == PJListSingleSelection) {
+        definition.indexPathOfSelectedItem = selectedIndex;
+        definition.value                   = value;
+        [definition layoutSubviews];
+    } else if (definition.selectionOption == PJListMultipleSelection) {
+        definition.value = value;
+    }
 }
 
 #pragma mark - UIViewController+BackButtonHandler

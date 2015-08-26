@@ -9,8 +9,8 @@
 #import "PJListViewController.h"
 #import "PJListItemCell.h"
 
-@interface PJListViewController ()<UITableViewDataSource,UITableViewDelegate>
-
+@interface PJListViewController ()<UITableViewDataSource,UITableViewDelegate,UIScrollViewDelegate>
+@property (nonatomic) NSMutableArray *allIndexPaths;
 @end
 
 @implementation PJListViewController
@@ -20,6 +20,7 @@ static NSString *cellIdentifier = @"PJListItemCell";
     self = [super init];
     if (self) {
         self = [self initWithNibName:@"PJListViewController" bundle:[NSBundle mainBundle]];
+        self.allIndexPaths = [NSMutableArray new];
     }
     return self;
 }
@@ -31,9 +32,32 @@ static NSString *cellIdentifier = @"PJListItemCell";
     self.navigationItem.hidesBackButton = YES;
     self.title                          = self.titleString;
 
-    // Do any additional setup after loading the view from its nib.
-}
+    //Default will be PJListSingleSelection
+    if (self.selectionOption == PJListSingleSelection) {
+        self.tableView.allowsMultipleSelection = NO;
+    } else if(self.selectionOption == PJListMultipleSelection) {
+        self.tableView.allowsMultipleSelection = YES;
+        UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithTitle:@"Done" style:UIBarButtonItemStylePlain target:self action:@selector(done:)];
+        self.navigationItem.rightBarButtonItem = doneButton;
+    }
 
+    for (int i = 0; i < self.listItems.count; i ++) {
+        NSIndexPath *indexpath = [NSIndexPath indexPathForRow:i inSection:0];
+        [self.allIndexPaths addObject:indexpath];
+    }
+}
+#pragma mark - Bar Button Action
+- (void) done:(id)sender {
+    [self.navigationController popViewControllerAnimated:YES];
+    NSMutableArray *selectedItems = [NSMutableArray new];
+
+    for (NSIndexPath *indexPath in self.tableView.indexPathsForSelectedRows) {
+        [selectedItems addObject:self.listItems[indexPath.row]];
+    }
+
+    [self.delegate selectedItemInList:selectedItems forCellAtIndexPath:self.indexPath andSelectedIndex:self.tableView.indexPathsForSelectedRows] ;
+        //[self.navigationController popViewControllerAnimated:YES];
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -43,9 +67,27 @@ static NSString *cellIdentifier = @"PJListItemCell";
     return self.listItems.count;
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (self.selectionOption == PJListMultipleSelection) {
+        [self updateCells];
+    } else {
+        [self.navigationController popViewControllerAnimated:YES];
+        [self.delegate selectedItemInList:self.listItems[indexPath.row] forCellAtIndexPath:self.indexPath andSelectedIndex:indexPath] ;
+    }
+}
 
-    [self.navigationController popViewControllerAnimated:YES];
-    [self.delegate selectedItemInList:self.listItems[indexPath.row] forCellAtIndexPath:self.indexPath andSelectedIndex:indexPath] ;
+- (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [self updateCells];
+}
+
+- (void)updateCells {
+    for (NSIndexPath *indexPath in self.allIndexPaths) {
+        PJListItemCell *cell = (PJListItemCell *)[self.tableView cellForRowAtIndexPath:indexPath];
+        if ([self.tableView.indexPathsForSelectedRows containsObject:indexPath]) {
+            cell.selectionIndicatorView.hidden = NO;
+        } else {
+            cell.selectionIndicatorView.hidden = YES;
+        }
+    }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -57,8 +99,14 @@ static NSString *cellIdentifier = @"PJListItemCell";
     } else {
         cell.selectionIndicatorView.hidden = YES;
     }
-    //cell.textLabel.textAlignment = NSTextAlignmentCenter;
+
     return cell;
 }
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollViews {
+    [self updateCells]  ;
+}
+
+
 
 @end
