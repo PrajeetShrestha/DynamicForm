@@ -39,8 +39,9 @@
     cellObjects               = [NSMutableArray new];
     needsShowConfirmation     = YES;
     self.title = self.titleString;
+    self.navigationController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName: PJColorFieldTitle};
+    self.navigationController.navigationBar.tintColor = PJColorFieldTitle;
 }
-
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
 }
@@ -66,7 +67,7 @@
 
 #pragma mark - TableView Delegates
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 60.0f;
+    return 66.0f;
 }
 
 #pragma mark - Private Method
@@ -126,9 +127,9 @@
 
     } else if (class == [PJListField class]) {
 
-        PJListField *listField = (PJListField *)cell;
-        listField.listItems    = [definition valueForKey:@"listItems"];
-        listField.defaultValue = [definition valueForKey:@"defaultValue"];
+        PJListField *listField  = (PJListField *)cell;
+        listField.listItems     = [definition valueForKey:@"listItems"];
+        listField.defaultValue  = [definition valueForKey:@"defaultValue"];
         if (listField.defaultValue != nil) {
             listField.indexPathOfSelectedItem = [NSIndexPath indexPathForRow:[listField.listItems indexOfObject:listField.defaultValue] inSection:0];
         }
@@ -165,11 +166,7 @@
     }
 
 }
-#pragma mark - Picker Action;
-- (IBAction)pickerAction:(id)sender {
 
-
-}
 #pragma mark - FieldTableViewCellDelegate
 - (void)didSelected:(Class)viewController sender:(FieldTableViewCell *)cell {
     [self.view endEditing:YES];
@@ -184,10 +181,11 @@
     } else if (viewController == [PJListViewController class]) {
 
         PJListViewController *vc = [[PJListViewController alloc]init];
-        vc.titleString = cell.titleText;
-        vc.delegate    = self;
-        vc.indexPath   = cell.indexPath;
-        vc.listItems   = [cell valueForKey:@"listItems"];
+        vc.titleString   = cell.titleText;
+        vc.delegate      = self;
+        vc.indexPath     = cell.indexPath;
+        vc.listItems     = [cell valueForKey:@"listItems"];
+        //vc.selectionType = [[cell valueForKey:@"selectionType"] intValue];
         if ([cell valueForKey:@"indexPathOfSelectedItem"] != nil) {
             vc.indexPathOfSelectedItem = [cell valueForKey:@"indexPathOfSelectedItem"];
         }
@@ -215,27 +213,30 @@
     for (FieldTableViewCell *cell in cellObjects){
         if (![cell isKindOfClass:[PJSubmitCell class]]) {
             if (cell.isValid) {
-                NSDictionary *values = @{ cell.key :
-                                              @{  @"value":cell.value,
-                                                  @"message" : cell.validityMessage,
-                                                  @"isValid": @(cell.isValid)
-                                                  }};
-                [formValues addObject:values];
+                FormValues *value = [FormValues new];
+                value.key             = cell.key;
+                value.value           = cell.value;
+                value.validityMessage = cell.validityMessage;
+                value.isValid         = cell.isValid;
+                [formValues addObject:value];
 
             } else {
-                UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Error!!" message:[NSString stringWithFormat:@"Field:  %@ \n\nMessage:  %@",cell.titleText,cell.validityMessage ]delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
-                [alert show];
+                EKToast *toast = [[EKToast alloc]initWithMessage:[NSString stringWithFormat:@"Field:  %@ \n\nMessage:  %@",cell.titleText,cell.validityMessage ]];
+                toast.position = ToastPositionBottom;
+                [toast show:nil];
                 return;
             }
         }
     }
 
-    NSLog(@"Values %@",formValues);
+    EKToast *toast = [[EKToast alloc]initWithMessage:[NSString stringWithFormat:@"%@",formValues]];
+    toast.position = ToastPositionBottom;
+    toast.delay = 3.0f;
+    toast.shouldAutoDestruct = NO;
+    [toast show:nil];
 }
 
-
 - (void)controlValueChanged:(FieldTableViewCell *)cell {
-
 
 }
 #pragma mark - DescriptionViewControllerDelegate
@@ -249,7 +250,7 @@
 - (void)selectedItemInList:(id)value forCellAtIndexPath:(NSIndexPath *)indexPath andSelectedIndex:(NSIndexPath *)selectedIndex {
     PJListField *definition = cellObjects[indexPath.row];
     definition.indexPathOfSelectedItem = selectedIndex;
-    definition.value = value;
+    definition.value                   = value;
     [definition layoutSubviews];
 }
 

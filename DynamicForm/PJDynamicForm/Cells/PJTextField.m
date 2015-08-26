@@ -14,6 +14,7 @@ static NSString *defaultEmailRegex = @"[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-
 @property (weak, nonatomic) IBOutlet UITextField *textField;
 @property (weak, nonatomic) IBOutlet UILabel *title;
 @property (weak, nonatomic) IBOutlet UILabel *requiredLabel;
+@property (weak, nonatomic) IBOutlet UIView *containerView;
 @end
 
 @implementation PJTextField
@@ -29,7 +30,10 @@ static NSString *defaultEmailRegex = @"[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-
     [self.textField addTarget:self
                        action:@selector(textFieldDidChange:)
              forControlEvents:UIControlEventEditingChanged];
-    //Set the keyboard type according to inputType
+    self.containerView.layer.borderWidth  = 0.5f;
+    self.containerView.layer.borderColor  = [UIColor lightGrayColor].CGColor;
+    self.containerView.layer.cornerRadius = 3.0f;
+    self.containerView.clipsToBounds      = YES;
     [self sanitize];
 }
 

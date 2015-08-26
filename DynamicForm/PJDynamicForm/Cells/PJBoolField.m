@@ -18,6 +18,8 @@
 - (void)awakeFromNib {
     self.title.textColor = PJColorFieldTitle;
     self.title.font = [UIFont systemFontOfSize:PJSizeFieldTitle];
+    self.switchControl.onTintColor = PJColorFieldTitle;
+    self.switchControl.tintColor = PJColorFieldTitle;
     [self.switchControl addTarget:self action:@selector(setState:) forControlEvents:UIControlEventValueChanged];
 
 }
