@@ -13,6 +13,6 @@
 @interface PJListField : FieldTableViewCell
 
 @property (nonatomic) NSArray *listItems;
-@property (nonatomic) NSIndexPath *indexPathOfSelectedItem;
+@property (nonatomic) NSIndexPath *indexPathsOfSelectedItem;
 @property (nonatomic) PJListSelectionOption selectionOption;
 @end

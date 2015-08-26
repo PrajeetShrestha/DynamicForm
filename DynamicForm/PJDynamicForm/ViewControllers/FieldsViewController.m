@@ -132,7 +132,7 @@
         listField.listItems     = [definition valueForKey:@"listItems"];
         listField.defaultValue  = [definition valueForKey:@"defaultValue"];
         if (listField.defaultValue != nil) {
-            listField.indexPathOfSelectedItem = [NSIndexPath indexPathForRow:[listField.listItems indexOfObject:listField.defaultValue] inSection:0];
+            listField.indexPathsOfSelectedItem = [NSIndexPath indexPathForRow:[listField.listItems indexOfObject:listField.defaultValue] inSection:0];
         }
         listField.selectionOption = [[definition valueForKey:@"selectionOption"] intValue];
 
@@ -188,8 +188,8 @@
         vc.indexPath     = cell.indexPath;
         vc.listItems     = [cell valueForKey:@"listItems"];
         //vc.selectionType = [[cell valueForKey:@"selectionType"] intValue];
-        if ([cell valueForKey:@"indexPathOfSelectedItem"] != nil) {
-            vc.indexPathOfSelectedItem = [cell valueForKey:@"indexPathOfSelectedItem"];
+        if ([cell valueForKey:@"indexPathsOfSelectedItem"] != nil) {
+            vc.indexPathOfSelectedItem = [cell valueForKey:@"indexPathsOfSelectedItem"];
         }
         vc.selectionOption = [[cell valueForKey:@"selectionOption"] intValue];
         [self showViewController:vc sender:nil];
@@ -253,11 +253,12 @@
 - (void)selectedItemInList:(id)value forCellAtIndexPath:(NSIndexPath *)indexPath andSelectedIndex:(id)selectedIndex {
     PJListField *definition = cellObjects[indexPath.row];
     if (definition.selectionOption == PJListSingleSelection) {
-        definition.indexPathOfSelectedItem = selectedIndex;
+        definition.indexPathsOfSelectedItem = selectedIndex;
         definition.value                   = value;
         [definition layoutSubviews];
     } else if (definition.selectionOption == PJListMultipleSelection) {
         definition.value = value;
+        [definition layoutSubviews] ;
     }
 }
 

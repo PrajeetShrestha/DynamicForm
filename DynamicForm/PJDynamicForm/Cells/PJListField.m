@@ -41,10 +41,21 @@
     } else if (self.defaultValue == nil && self.value == nil) {
         self.selectedValue.text = @"- (Select One) -";
     } else {
-        self.selectedValue.text = [NSString stringWithFormat:@"%@",self.value];
+        if (self.selectionOption == PJListMultipleSelection) {
+            if (self.value == nil) {
+                return;
+            }
+            NSMutableString *string = [NSMutableString new];
+
+            for (id value in self.value) {
+                [string appendString:[NSString stringWithFormat:@"%@, ",value]];
+            }
+            self.selectedValue.text = string;
+        } else {
+            self.selectedValue.text = [NSString stringWithFormat:@"%@",self.value];
+        }
     }
     self.title.text = self.titleText;
-
     [self setupRequiredLabelVisibility];
     [super addBorders];
 }

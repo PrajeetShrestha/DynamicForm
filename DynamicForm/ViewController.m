@@ -71,7 +71,7 @@
     listField.titleText    = @"Country";
     listField.listItems    = @[@"Nepal",@"India",@"Bangaladesh",@"India",@"Bangaladesh",@"India",@"Bangaladesh",@"India",@"Bangaladesh",@"India",@"Bangaladesh",@"India",@"Bangaladesh",@"India",@"Bangaladesh",@"India",@"Bangaladesh",@"India",@"Bangaladesh",@"India",@"Bangaladesh",@"India",@"Bangaladesh",@"India",@"Bangaladesh",@"India",@"Bangaladesh",@"India",@"Bangaladesh",@"India",@"Bangaladesh"];
     listField.isRequired   = YES;
-    listField.defaultValue = listField.listItems[0];
+//    listField.defaultValue = listField.listItems[0];
     listField.selectionOption = PJListMultipleSelection;
     [cellDefinitions addObject:listField];
 
