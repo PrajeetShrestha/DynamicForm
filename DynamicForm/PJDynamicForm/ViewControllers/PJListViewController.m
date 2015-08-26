@@ -26,10 +26,10 @@ static NSString *cellIdentifier = @"PJListItemCell";
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self.tableView registerNib:[UINib nibWithNibName:cellIdentifier bundle:nil] forCellReuseIdentifier:cellIdentifier];
-    self.tableView.delegate = self;
-    self.tableView.dataSource = self;
+    self.tableView.delegate             = self;
+    self.tableView.dataSource           = self;
     self.navigationItem.hidesBackButton = YES;
-    self.title = self.titleString;
+    self.title                          = self.titleString;
 
     // Do any additional setup after loading the view from its nib.
 }

@@ -43,27 +43,34 @@
     textField.placeholderText = @"Type your email...";
     [cellDefinitions addObject:textField];
 
-    {
-        PJTextField *textField = [PJTextField new];
-        textField.titleText       = @"Address";
-        textField.key             = @"address";
-        textField.isRequired       = NO;
-        textField.inputType       = PJString;
-        textField.placeholderText = @"Type your address...";
-        [cellDefinitions addObject:textField];
-    }
-    
+    PJTextField *addressField = [PJTextField new];
+    addressField.titleText       = @"Address";
+    addressField.key             = @"address";
+    addressField.isRequired      = NO;
+    addressField.inputType       = PJString;
+    addressField.placeholderText = @"Type your address...";
+    [cellDefinitions addObject:addressField];
+
     PJDescription *descriptionField  = [PJDescription new];
     descriptionField.key             = @"about";
     descriptionField.titleText       = @"About you!";
     descriptionField.placeholderText = @"Type your description here...";
     descriptionField.isRequired      = YES;
     [cellDefinitions addObject:descriptionField];
-//
-    PJDatePicker *listField = [PJDatePicker new];
-    listField.key       = @"country";
-    listField.titleText = @"Your Country";
 
+    PJDatePicker *datePicker  = [PJDatePicker new];
+    datePicker.key            = @"dob";
+    datePicker.titleText      = @"Date of Birth";
+    datePicker.isRequired     = YES;
+    datePicker.datePickerMode = UIDatePickerModeDate;
+    [cellDefinitions addObject:datePicker];
+
+    PJListField *listField = [PJListField new];
+    listField.key          = @"country";
+    listField.titleText    = @"Country";
+    listField.listItems    = @[@"Nepal",@"India",@"Bangaladesh"];
+    listField.isRequired   = YES;
+    listField.defaultValue = listField.listItems[0];
     [cellDefinitions addObject:listField];
 
     PJBoolField *boolField = [PJBoolField new];

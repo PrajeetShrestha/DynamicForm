@@ -6,9 +6,6 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FieldsViewController">
             <connections>
-                <outlet property="datePicker" destination="QlU-ad-6zp" id="mGA-Pu-8Zu"/>
-                <outlet property="datePickerContainer" destination="3X1-ha-5id" id="4ZA-zQ-I2O"/>
-                <outlet property="datePickerContainerBottomConstraint" destination="ic0-g4-Q4j" id="p0c-Pn-2A0"/>
                 <outlet property="tableView" destination="H2l-VP-hqb" id="Wg7-2y-Lhy"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -22,36 +19,11 @@
                     <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </tableView>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3X1-ha-5id">
-                    <rect key="frame" x="0.0" y="438" width="600" height="162"/>
-                    <subviews>
-                        <datePicker clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="QlU-ad-6zp">
-                            <rect key="frame" x="0.0" y="0.0" width="600" height="162"/>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            <date key="date" timeIntervalSinceReferenceDate="462193772.29510999">
-                                <!--2015-08-25 11:09:32 +0000-->
-                            </date>
-                            <connections>
-                                <action selector="pickerAction:" destination="-1" eventType="valueChanged" id="GFZ-bU-gH8"/>
-                            </connections>
-                        </datePicker>
-                    </subviews>
-                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                    <constraints>
-                        <constraint firstAttribute="bottom" secondItem="QlU-ad-6zp" secondAttribute="bottom" id="C73-cD-MDl"/>
-                        <constraint firstItem="QlU-ad-6zp" firstAttribute="top" secondItem="3X1-ha-5id" secondAttribute="top" id="FjV-dL-289"/>
-                        <constraint firstItem="QlU-ad-6zp" firstAttribute="leading" secondItem="3X1-ha-5id" secondAttribute="leading" id="IB8-TT-uSg"/>
-                        <constraint firstAttribute="trailing" secondItem="QlU-ad-6zp" secondAttribute="trailing" id="Lbl-u0-Ri4"/>
-                    </constraints>
-                </view>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="3X1-ha-5id" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="DMh-U3-JUn"/>
                 <constraint firstAttribute="bottom" secondItem="H2l-VP-hqb" secondAttribute="bottom" id="SIp-eh-urA"/>
                 <constraint firstItem="H2l-VP-hqb" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="X9d-hL-Fwc"/>
-                <constraint firstAttribute="bottom" secondItem="3X1-ha-5id" secondAttribute="bottom" id="ic0-g4-Q4j"/>
-                <constraint firstAttribute="trailing" secondItem="3X1-ha-5id" secondAttribute="trailing" id="jkF-lM-XSb"/>
                 <constraint firstAttribute="trailing" secondItem="H2l-VP-hqb" secondAttribute="trailing" id="kUA-ne-nE9"/>
                 <constraint firstItem="H2l-VP-hqb" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="tCv-sd-H9r"/>
             </constraints>

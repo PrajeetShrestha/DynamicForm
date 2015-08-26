@@ -15,10 +15,8 @@
     BOOL needsShowConfirmation;
     NSMutableArray *cellObjects;
 }
-@property (weak, nonatomic) IBOutlet UIView *datePickerContainer;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *datePickerContainerBottomConstraint;
 @property (nonatomic) NSString *selectedDate;
-@property (weak, nonatomic) IBOutlet UIDatePicker *datePicker;
+
 
 @end
 
@@ -30,7 +28,6 @@
     self = [super init];
     if (self) {
         self = [self initWithNibName:@"FieldsViewController" bundle:[NSBundle mainBundle]];
-
     }
     return self;
 }
@@ -42,13 +39,10 @@
     cellObjects               = [NSMutableArray new];
     needsShowConfirmation     = YES;
     self.title = self.titleString;
-    self.datePickerContainerBottomConstraint.constant = -self.datePickerContainer.frame.size.height - 100;
-
 }
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-
 }
 
 - (void)didReceiveMemoryWarning {
@@ -109,11 +103,10 @@
 - (void)segragateValuesByTypeInCell:(id)cell forDefinition:(id)definition {
     Class class = [cell class];
     if (class == [PJTextField class] ) {
-        PJTextField *passedCell = (PJTextField *)definition;
+
         PJTextField *textCell    = (PJTextField *)cell;
-        textCell.inputType       = PJEmail;
-        textCell.placeholderText = passedCell.placeholderText;
-        textCell.inputType = passedCell.inputType;
+        textCell.placeholderText = [definition valueForKey:@"placeholderText"];
+        textCell.inputType = [[definition valueForKey:@"inputType"] intValue];
 
     } else if (class == [PJBoolField class]) {
 
@@ -128,10 +121,17 @@
 
     } else if (class == [PJDatePicker class]) {
 
+        PJDatePicker *datePicker = (PJDatePicker *)cell;
+        datePicker.datePickerMode = [[definition valueForKey:@"datePickerMode"] intValue];
+
     } else if (class == [PJListField class]) {
+
         PJListField *listField = (PJListField *)cell;
         listField.listItems    = [definition valueForKey:@"listItems"];
         listField.defaultValue = [definition valueForKey:@"defaultValue"];
+        if (listField.defaultValue != nil) {
+            listField.indexPathOfSelectedItem = [NSIndexPath indexPathForRow:[listField.listItems indexOfObject:listField.defaultValue] inSection:0];
+        }
 
     } else if (class == [PJSubmitCell class]) {
 
@@ -172,7 +172,7 @@
 }
 #pragma mark - FieldTableViewCellDelegate
 - (void)didSelected:(Class)viewController sender:(FieldTableViewCell *)cell {
-
+    [self.view endEditing:YES];
     if (viewController == [DescriptionViewController class]) {
         DescriptionViewController *vc = [[viewController alloc]init];
         vc.titleString                = cell.titleText;
@@ -195,10 +195,7 @@
 
     } else if ([cell isKindOfClass:[PJDatePicker class]]) {
         //Date Picker Selected;
-        self.datePickerContainerBottomConstraint.constant = 0;
-        [UIView animateWithDuration:0.3 animations:^{
-            [self.view layoutIfNeeded];
-        }];
+
     }
 
 }
@@ -217,15 +214,14 @@
     NSMutableArray *formValues = [NSMutableArray new];
     for (FieldTableViewCell *cell in cellObjects){
         if (![cell isKindOfClass:[PJSubmitCell class]]) {
-            //NSLog(@"Cell Key: %@\nCell Value: %@\nCell Message: %@\nCellIsValid: %d",cell.key,cell.value,cell.validityMessage,(int)cell.isValid);
             if (cell.isValid) {
                 NSDictionary *values = @{ cell.key :
-                                             @{  @"value":cell.value,
-                                                 @"message" : cell.validityMessage,
-                                                 @"isValid": @(cell.isValid)
-                                             }};
-                    [formValues addObject:values];
-            
+                                              @{  @"value":cell.value,
+                                                  @"message" : cell.validityMessage,
+                                                  @"isValid": @(cell.isValid)
+                                                  }};
+                [formValues addObject:values];
+
             } else {
                 UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Error!!" message:[NSString stringWithFormat:@"Field:  %@ \n\nMessage:  %@",cell.titleText,cell.validityMessage ]delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
                 [alert show];

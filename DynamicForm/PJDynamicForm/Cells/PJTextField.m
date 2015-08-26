@@ -29,17 +29,14 @@ static NSString *defaultEmailRegex = @"[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-
     [self.textField addTarget:self
                        action:@selector(textFieldDidChange:)
              forControlEvents:UIControlEventEditingChanged];
-
     //Set the keyboard type according to inputType
-
     [self sanitize];
 }
 
 - (void)textFieldDidChange:(UITextField *)textField {
-
     [self sanitize];
-
 }
+
 - (void)textFieldDidBeginEditing:(UITextField *)textField {
     [self.delegate controlActivated:self];
 
@@ -48,7 +45,7 @@ static NSString *defaultEmailRegex = @"[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-
     self.value = self.textField.text;
 
     if (self.isRequired) {
-        if (self.textField.text.length <= 0) {
+        if (self.textField.text.length == 0) {
             self.isValid         = NO;
             self.validityMessage = @"Required field is empty!";
             return;
@@ -71,6 +68,7 @@ static NSString *defaultEmailRegex = @"[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-
                 self.isValid         = NO;
             }
         }
+
     } else {
         if (self.textField.text.length == 0) {
             self.isValid = YES;
@@ -97,8 +95,6 @@ static NSString *defaultEmailRegex = @"[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-
             }
         }
     }
-
-
 }
 
 - (void)textFieldDidEndEditing:(UITextField *)textField {

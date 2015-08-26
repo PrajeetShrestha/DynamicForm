@@ -19,29 +19,23 @@
 - (void)awakeFromNib {
     self.title.textColor     = PJColorFieldTitle;
     self.textField.textColor = PJColorFieldValue;
+    self.textField.delegate  = self;
     self.textField.font      = [UIFont systemFontOfSize:PJSizeFieldValue];
     self.title.font          = [UIFont systemFontOfSize:PJSizeFieldTitle];
-    self.datePicker = [UIDatePicker new];
-    [self.datePicker addTarget:self action:@selector(pickerSelected:) forControlEvents:UIControlEventTouchUpInside];
-
-    self.textField.inputView = [UIDatePicker new];
-
 }
-
 
 - (void)pickerSelected:(id)picker {
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-
     [dateFormatter setDateFormat:@"dd-MM-yyyy HH:mm"];
-
-    NSString *formatedDate = [dateFormatter stringFromDate:self.datePicker.date];
-
-    self.selectedDate = formatedDate;
+    NSString *formatedDate         = [dateFormatter stringFromDate:self.datePicker.date];
+    self.selectedDate              = formatedDate;
+    self.textField.text            = self.selectedDate;
+    [self sanitize];
+    NSLog(@"%@",self.value);
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
-
     if (selected) {
         [self.delegate didSelected:nil sender:self];
     } else {
@@ -51,6 +45,12 @@
 - (void)layoutSubviews {
 
     [self setupRequiredLabelVisibility];
+    self.datePicker                 = [UIDatePicker new];
+    self.datePicker.datePickerMode  = self.datePickerMode;
+    self.datePicker.backgroundColor = [UIColor whiteColor];
+    [self.datePicker addTarget:self action:@selector(pickerSelected:) forControlEvents:UIControlEventValueChanged];
+    self.textField.inputView = self.datePicker;
+    [self sanitize];
 }
 
 - (void)setupRequiredLabelVisibility {
@@ -58,6 +58,24 @@
         self.requiredLabel.hidden = NO;
     } else {
         self.requiredLabel.hidden = YES;
+    }
+}
+#pragma mark - UITextField Delegate
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
+    return NO;
+}
+
+- (void)sanitize {
+    self.value = self.textField.text;
+    if (self.isRequired && self.textField.text.length == 0) {
+            self.isValid         = NO;
+            self.validityMessage = @"Required field is empty!";
+            return;
+    } else {
+
+            self.isValid = YES;
+            self.validityMessage = @"Field is valid!";
+            return;
     }
 }
 @end

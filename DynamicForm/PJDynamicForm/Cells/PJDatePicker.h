@@ -8,7 +8,6 @@
 
 #import "FieldTableViewCell.h"
 
-@interface PJDatePicker : FieldTableViewCell <UIPickerViewDelegate>
-
-
+@interface PJDatePicker : FieldTableViewCell <UITextFieldDelegate>
+@property (nonatomic) UIDatePickerMode datePickerMode;
 @end
