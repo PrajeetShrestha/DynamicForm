@@ -51,6 +51,7 @@
     [self.datePicker addTarget:self action:@selector(pickerSelected:) forControlEvents:UIControlEventValueChanged];
     self.textField.inputView = self.datePicker;
     [self sanitize];
+    [super addBorders];
 }
 
 - (void)setupRequiredLabelVisibility {
@@ -67,6 +68,7 @@
 
 - (void)sanitize {
     self.value = self.textField.text;
+    self.textField.placeholder = self.placeholderText;
     if (self.isRequired && self.textField.text.length == 0) {
             self.isValid         = NO;
             self.validityMessage = @"Required field is empty!";

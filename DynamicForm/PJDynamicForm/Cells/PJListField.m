@@ -46,6 +46,7 @@
     self.title.text = self.titleText;
 
     [self setupRequiredLabelVisibility];
+    [super addBorders];
 }
 
 - (void)setupRequiredLabelVisibility {

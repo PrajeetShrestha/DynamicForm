@@ -14,7 +14,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Pev-L7-mUb" customClass="CustomView">
-                        <rect key="frame" x="4" y="0.0" width="312" height="55"/>
+                        <rect key="frame" x="4" y="0.0" width="312" height="51"/>
                         <color key="backgroundColor" red="1" green="1" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Required" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x50-s1-fdI">
@@ -57,7 +57,7 @@
                     <constraint firstItem="4nE-6C-gaF" firstAttribute="trailing" secondItem="x50-s1-fdI" secondAttribute="trailing" constant="270" id="hqP-cr-64J"/>
                     <constraint firstItem="0Zh-t2-luN" firstAttribute="leading" secondItem="U1U-lL-7Sn" secondAttribute="leadingMargin" id="hqm-jk-nwP"/>
                     <constraint firstItem="4nE-6C-gaF" firstAttribute="leading" secondItem="x50-s1-fdI" secondAttribute="leading" id="kcv-Qv-k9I"/>
-                    <constraint firstItem="9gd-wB-sMK" firstAttribute="top" secondItem="Pev-L7-mUb" secondAttribute="bottom" constant="4" id="qmk-xr-7ku"/>
+                    <constraint firstItem="9gd-wB-sMK" firstAttribute="top" secondItem="Pev-L7-mUb" secondAttribute="bottom" constant="8" id="qmk-xr-7ku"/>
                     <constraint firstAttribute="trailing" secondItem="Pev-L7-mUb" secondAttribute="trailing" constant="4" id="yn3-kd-BdG"/>
                 </constraints>
             </tableViewCellContentView>

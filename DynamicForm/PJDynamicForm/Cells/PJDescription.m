@@ -53,6 +53,7 @@
     }
 
     [self setupRequiredLabelVisibility];
+    [super addBorders];
 }
 
 - (void)setupRequiredLabelVisibility {

@@ -67,7 +67,7 @@
 
 #pragma mark - TableView Delegates
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 66.0f;
+    return PJFieldHeight;
 }
 
 #pragma mark - Private Method
@@ -122,8 +122,9 @@
 
     } else if (class == [PJDatePicker class]) {
 
-        PJDatePicker *datePicker = (PJDatePicker *)cell;
-        datePicker.datePickerMode = [[definition valueForKey:@"datePickerMode"] intValue];
+        PJDatePicker *datePicker   = (PJDatePicker *)cell;
+        datePicker.datePickerMode  = [[definition valueForKey:@"datePickerMode"] intValue];
+        datePicker.placeholderText = [definition valueForKey:@"placeholderText"];
 
     } else if (class == [PJListField class]) {
 

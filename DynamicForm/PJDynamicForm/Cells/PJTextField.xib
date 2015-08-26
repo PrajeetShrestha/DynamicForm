@@ -14,7 +14,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ASS-68-pAv" customClass="CustomView">
-                        <rect key="frame" x="4" y="0.0" width="312" height="55"/>
+                        <rect key="frame" x="4" y="0.0" width="312" height="51"/>
                         <color key="backgroundColor" red="1" green="1" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eCu-uo-n7i" userLabel="Title">
@@ -44,7 +44,7 @@
                     <constraint firstItem="eCu-uo-n7i" firstAttribute="leading" secondItem="MW8-wm-aiN" secondAttribute="leading" id="aD5-S4-W5x"/>
                     <constraint firstItem="ASS-68-pAv" firstAttribute="top" secondItem="Rod-1c-rmN" secondAttribute="top" id="cZ4-rb-aJH"/>
                     <constraint firstItem="eCu-uo-n7i" firstAttribute="leading" secondItem="MrY-CL-wtE" secondAttribute="leading" id="cf0-lA-alN"/>
-                    <constraint firstAttribute="bottom" secondItem="ASS-68-pAv" secondAttribute="bottom" constant="4" id="dai-aS-KKx"/>
+                    <constraint firstAttribute="bottom" secondItem="ASS-68-pAv" secondAttribute="bottom" constant="8" id="dai-aS-KKx"/>
                     <constraint firstAttribute="bottomMargin" secondItem="MW8-wm-aiN" secondAttribute="bottom" id="pnQ-4p-6Ya"/>
                     <constraint firstItem="eCu-uo-n7i" firstAttribute="leading" secondItem="Rod-1c-rmN" secondAttribute="leadingMargin" id="rlq-qf-5wh"/>
                     <constraint firstItem="MW8-wm-aiN" firstAttribute="trailing" secondItem="Rod-1c-rmN" secondAttribute="trailingMargin" id="u44-2T-DTv"/>

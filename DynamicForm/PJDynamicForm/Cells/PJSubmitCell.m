@@ -16,6 +16,7 @@
 - (void)awakeFromNib {
     self.submitButton.layer.cornerRadius = 3.0f;
     self.submitButton.clipsToBounds  = YES;
+    self.submitButton.backgroundColor = PJColorFieldTitle;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

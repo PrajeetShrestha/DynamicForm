@@ -16,6 +16,7 @@
 @implementation PJBoolField
 
 - (void)awakeFromNib {
+    [super awakeFromNib];
     self.title.textColor = PJColorFieldTitle;
     self.title.font = [UIFont systemFontOfSize:PJSizeFieldTitle];
     self.switchControl.onTintColor = PJColorFieldTitle;
@@ -39,6 +40,7 @@
 }
 - (void)layoutSubviews {
     [super layoutSubviews];
+    [super addBorders];
     bool switchState = [self.value boolValue];
     self.title.text  = self.titleText;
     //Bool Field always have a default state so it's valid.

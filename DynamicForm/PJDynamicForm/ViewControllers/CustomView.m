@@ -16,7 +16,7 @@
     self.layer.borderColor  = [UIColor lightGrayColor].CGColor;
     self.layer.cornerRadius = 3.0f;
     self.clipsToBounds      = YES;
-    self.backgroundColor    = UIColorFromRGB(0xFFFFFB);
+    self.backgroundColor    = [UIColor clearColor];//UIColorFromRGB(0xFFFFFB);
     self.hidden = YES;
 }
 

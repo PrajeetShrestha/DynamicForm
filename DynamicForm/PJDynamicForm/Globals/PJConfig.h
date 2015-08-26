@@ -10,10 +10,10 @@
 #define DynamicForm_PJConfig_h
 
 #pragma mark - Color
-#define PJColorFieldTitle UIColorFromRGB(0xE49723)
+#define PJColorFieldTitle UIColorFromRGB(0x4778A4)//UIColorFromRGB(0xE49723)
 #define PJColorFieldValue [UIColor darkGrayColor]//UIColorFromRGB(0x4778A4)
 
-
+#define PJFieldHeight 70
 #pragma mark - Size
 #define PJSizeFieldTitle 15
 #define PJSizeFieldValue 15

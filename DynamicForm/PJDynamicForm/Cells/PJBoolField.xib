@@ -14,7 +14,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="17k-fV-vDA" customClass="CustomView">
-                        <rect key="frame" x="4" y="0.0" width="312" height="55"/>
+                        <rect key="frame" x="4" y="0.0" width="312" height="51"/>
                         <color key="backgroundColor" red="1" green="1" blue="0.98431372549019602" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
                     <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="g51-OI-QfN">
@@ -31,7 +31,7 @@
                     <constraint firstAttribute="centerY" secondItem="g51-OI-QfN" secondAttribute="centerY" id="41l-Qk-nzJ"/>
                     <constraint firstItem="atv-K2-b6r" firstAttribute="leading" secondItem="ksE-sV-SnW" secondAttribute="leadingMargin" id="HnK-hC-C9w"/>
                     <constraint firstAttribute="trailing" secondItem="17k-fV-vDA" secondAttribute="trailing" constant="4" id="N5q-Tb-FYW"/>
-                    <constraint firstAttribute="bottom" secondItem="17k-fV-vDA" secondAttribute="bottom" constant="4" id="OU5-Dg-b4B"/>
+                    <constraint firstAttribute="bottom" secondItem="17k-fV-vDA" secondAttribute="bottom" constant="8" id="OU5-Dg-b4B"/>
                     <constraint firstItem="g51-OI-QfN" firstAttribute="trailing" secondItem="ksE-sV-SnW" secondAttribute="trailingMargin" id="ZHf-FK-Li5"/>
                     <constraint firstItem="17k-fV-vDA" firstAttribute="leading" secondItem="ksE-sV-SnW" secondAttribute="leading" constant="4" id="i00-LT-vhm"/>
                     <constraint firstItem="17k-fV-vDA" firstAttribute="top" secondItem="ksE-sV-SnW" secondAttribute="top" id="tiH-8W-970"/>

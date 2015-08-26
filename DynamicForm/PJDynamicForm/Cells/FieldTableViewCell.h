@@ -33,5 +33,7 @@
 
 @property (nonatomic,weak) id <FieldTableViewCell> delegate;
 
+- (void)addBorders;
+
 
 @end

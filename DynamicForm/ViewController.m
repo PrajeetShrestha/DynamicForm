@@ -58,11 +58,12 @@
     descriptionField.isRequired      = YES;
     [cellDefinitions addObject:descriptionField];
 
-    PJDatePicker *datePicker  = [PJDatePicker new];
-    datePicker.key            = @"dob";
-    datePicker.titleText      = @"Date of Birth";
-    datePicker.isRequired     = YES;
-    datePicker.datePickerMode = UIDatePickerModeDate;
+    PJDatePicker *datePicker   = [PJDatePicker new];
+    datePicker.key             = @"dob";
+    datePicker.titleText       = @"Date of Birth";
+    datePicker.isRequired      = YES;
+    datePicker.placeholderText = @"Select your date of birth...";
+    datePicker.datePickerMode  = UIDatePickerModeDate;
     [cellDefinitions addObject:datePicker];
 
     PJListField *listField = [PJListField new];
