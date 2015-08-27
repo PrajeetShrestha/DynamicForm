@@ -35,21 +35,30 @@
 
     NSMutableArray *cellDefinitions = [NSMutableArray new];
 
-    PJTextField *textField = [PJTextField new];
-    textField.titleText       = @"Email Address";
-    textField.isRequired      = YES;
-    textField.key             = @"email";
-    textField.inputType       = PJEmail;
-    textField.placeholderText = @"Type your email...";
-    [cellDefinitions addObject:textField];
+//    PJTextField *textField = [PJTextField new];
+//    textField.titleText       = @"Email Address";
+//    textField.isRequired      = YES;
+//    textField.key             = @"email";
+//    textField.inputType       = PJEmail;
+//    textField.placeholderText = @"Type your email...";
+//    [cellDefinitions addObject:textField];
+//
+//    PJTextField *addressField = [PJTextField new];
+//    addressField.titleText       = @"Address";
+//    addressField.key             = @"address";
+//    addressField.isRequired      = NO;
+//    addressField.inputType       = PJString;
+//    addressField.placeholderText = @"Type your address...";
+//    [cellDefinitions addObject:addressField];
 
-    PJTextField *addressField = [PJTextField new];
-    addressField.titleText       = @"Address";
-    addressField.key             = @"address";
-    addressField.isRequired      = NO;
-    addressField.inputType       = PJString;
-    addressField.placeholderText = @"Type your address...";
-    [cellDefinitions addObject:addressField];
+    PJBoolField *boolField = [PJBoolField new];
+    boolField.key          = @"subscription";
+    boolField.titleText    = @"Subscribe to our newsletter";
+    boolField.defaultValue = @YES;
+    boolField.valueWhenOff = @"NO";
+    boolField.valueWhenOn  = @"YES";
+    [cellDefinitions addObject:boolField];
+
 //
 //    PJDescription *descriptionField  = [PJDescription new];
 //    descriptionField.key             = @"about";
@@ -75,13 +84,6 @@
 //    listField.selectionOption = PJListMultipleSelection;
 //    [cellDefinitions addObject:listField];
 //
-//    PJBoolField *boolField = [PJBoolField new];
-//    boolField.key          = @"subscription";
-//    boolField.titleText    = @"Subscribe to our newsletter";
-//    boolField.value        = @YES;
-//    boolField.valueWhenOff = @"NO";
-//    boolField.valueWhenOn  = @"YES";
-//    [cellDefinitions addObject:boolField];
 
     PJSubmitCell *submit = [PJSubmitCell new];
     [cellDefinitions addObject:submit];

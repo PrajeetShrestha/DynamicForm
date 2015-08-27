@@ -114,6 +114,7 @@
         PJBoolField *modelBoolField = (PJBoolField *)definition;
         boolField.valueWhenOn       = modelBoolField.valueWhenOn;
         boolField.valueWhenOff      = modelBoolField.valueWhenOff;
+        [boolField setUp];
 
     } else if (class == [PJDescription class]) {
 
@@ -203,7 +204,6 @@
 
 }
 
-
 - (void)submitAction:(id)sender {
     [self.view endEditing:YES];
     NSMutableArray *formValues = [NSMutableArray new];
@@ -233,9 +233,6 @@
     [toast show:nil];
 }
 
-- (void)controlValueChanged:(FieldTableViewCell *)cell {
-
-}
 #pragma mark - DescriptionViewControllerDelegate
 - (void)passValue:(id)value forIndexPath:(NSIndexPath *)indexPath {
     FieldTableViewCell *definition = cellObjects[indexPath.row];

@@ -21,30 +21,26 @@
     self.title.font = [UIFont systemFontOfSize:PJSizeFieldTitle];
     self.switchControl.onTintColor = PJColorFieldTitle;
     self.switchControl.tintColor = PJColorFieldTitle;
-    [self.switchControl addTarget:self action:@selector(setState:) forControlEvents:UIControlEventValueChanged];
+    [self.switchControl addTarget:self
+                           action:@selector(setState:)
+                 forControlEvents:UIControlEventValueChanged];
 
 }
-#pragma mark - Selectors
-- (void)setState:(UISwitch *)sender {
-    if (sender.isOn) {
-    self.value       = @YES;
-    self.textValue   = self.valueWhenOn ;
 
-    } else {
-
-    self.value       = @NO;
-    self.textValue   = self.valueWhenOff;
-    }
-
-    [self.delegate controlValueChanged:self];
-}
-- (void)layoutSubviews {
-    [super layoutSubviews];
-    [super addBorders];
-    bool switchState = [self.value boolValue];
-    self.title.text  = self.titleText;
+- (void)setUp {
+    self.title.text = self.titleText;
     //Bool Field always have a default state so it's valid.
     self.isValid = YES;
+    self.validityMessage = @"Valid!";
+    self.value = self.defaultValue;
+    if (self.defaultValue == nil) {
+        self.value = @YES;
+    }
+    if (![self.value respondsToSelector:@selector(boolValue)]) {
+        NSLog(@"Key: %@ is defined as BOOL field but the value passed is different",self.key);
+        return;
+    }
+    bool switchState = [self.defaultValue boolValue];
     if (switchState) {
         [self.switchControl setOn:YES animated:NO];
         self.value       = @YES;
@@ -56,6 +52,25 @@
         self.textValue   = self.valueWhenOff;
     }
 }
+
+- (void)layoutSubviews {
+    [super addBorders];
+}
+#pragma mark - Selectors
+- (void)setState:(UISwitch *)sender {
+    if (sender.isOn) {
+        self.value       = @YES;
+        self.textValue   = self.valueWhenOn ;
+
+    } else {
+
+        self.value       = @NO;
+        self.textValue   = self.valueWhenOff;
+    }
+    self.isValid = YES;
+    self.validityMessage = @"Valid!";
+}
+
 
 
 
