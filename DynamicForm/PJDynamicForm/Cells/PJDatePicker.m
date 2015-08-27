@@ -27,11 +27,11 @@
 - (void)pickerSelected:(id)picker {
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"dd-MM-yyyy HH:mm"];
-    NSString *formatedDate         = [dateFormatter stringFromDate:self.datePicker.date];
-    self.selectedDate              = formatedDate;
-    self.textField.text            = self.selectedDate;
-    [self sanitize];
-    NSLog(@"%@",self.value);
+    NSString *formatedDate = [dateFormatter stringFromDate:self.datePicker.date];
+    self.selectedDate   = formatedDate;
+    self.textField.text = self.selectedDate;
+    self.value          = self.textField.text;
+    [self checkValidityAndUpdate];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
@@ -42,16 +42,23 @@
 
     }
 }
-- (void)layoutSubviews {
 
-    [self setupRequiredLabelVisibility];
+- (void)setUp {
+
     self.datePicker                 = [UIDatePicker new];
     self.datePicker.datePickerMode  = self.datePickerMode;
     self.datePicker.backgroundColor = [UIColor whiteColor];
-    [self.datePicker addTarget:self action:@selector(pickerSelected:) forControlEvents:UIControlEventValueChanged];
-    self.textField.inputView = self.datePicker;
-    [self sanitize];
+    self.textField.inputView        = self.datePicker;
+    [self.datePicker addTarget:self
+                        action:@selector(pickerSelected:)
+              forControlEvents:UIControlEventValueChanged];
+
+    self.title.text = self.titleText;
+    self.textField.placeholder = self.placeholderText;
+
     [super addBorders];
+    [self setupRequiredLabelVisibility];
+    [self checkValidityAndUpdate];
 }
 
 - (void)setupRequiredLabelVisibility {
@@ -66,18 +73,17 @@
     return NO;
 }
 
-- (void)sanitize {
-    self.value = self.textField.text;
-    self.textField.placeholder = self.placeholderText;
+- (void)checkValidityAndUpdate {
+
     if (self.isRequired && self.textField.text.length == 0) {
-            self.isValid         = NO;
-            self.validityMessage = @"Required field is empty!";
-            return;
+        self.isValid         = NO;
+        self.validityMessage = @"Required field is empty!";
+        return;
     } else {
 
-            self.isValid = YES;
-            self.validityMessage = @"Field is valid!";
-            return;
+        self.isValid = YES;
+        self.validityMessage = @"Field is valid!";
+        return;
     }
 }
 @end

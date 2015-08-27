@@ -59,22 +59,21 @@
 //    boolField.valueWhenOn  = @"YES";
 //    [cellDefinitions addObject:boolField];
 
-//
-    PJDescription *descriptionField  = [PJDescription new];
-    descriptionField.key             = @"about";
-    descriptionField.titleText       = @"About you!";
-    descriptionField.placeholderText = @"Type your description here...";
-    descriptionField.isRequired      = YES;
-    descriptionField.defaultValue    = @"HEY";
-    [cellDefinitions addObject:descriptionField];
-//
-//    PJDatePicker *datePicker   = [PJDatePicker new];
-//    datePicker.key             = @"dob";
-//    datePicker.titleText       = @"Date of Birth";
-//    datePicker.isRequired      = YES;
-//    datePicker.placeholderText = @"Select your date of birth...";
-//    datePicker.datePickerMode  = UIDatePickerModeDate;
-//    [cellDefinitions addObject:datePicker];
+//    PJDescription *descriptionField  = [PJDescription new];
+//    descriptionField.key             = @"about";
+//    descriptionField.titleText       = @"About you!";
+//    descriptionField.placeholderText = @"Type your description here...";
+//    descriptionField.isRequired      = YES;
+//    descriptionField.defaultValue    = @"HEY";
+//    [cellDefinitions addObject:descriptionField];
+
+    PJDatePicker *datePicker   = [PJDatePicker new];
+    datePicker.key             = @"dob";
+    datePicker.titleText       = @"Date of Birth";
+    datePicker.isRequired      = YES;
+    datePicker.placeholderText = @"Select your date of birth...";
+    datePicker.datePickerMode  = UIDatePickerModeDate;
+    [cellDefinitions addObject:datePicker];
 //
 //    PJListField *listField = [PJListField new];
 //    listField.key          = @"country";

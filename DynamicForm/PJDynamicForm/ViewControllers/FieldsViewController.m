@@ -129,6 +129,7 @@
         PJDatePicker *modelDatePicker = (PJDatePicker *)definition;
         datePicker.datePickerMode  = modelDatePicker.datePickerMode;
         datePicker.placeholderText = modelDatePicker.placeholderText;
+        [datePicker setUp];
 
     } else if (class == [PJListField class]) {
 
