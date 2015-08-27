@@ -51,21 +51,22 @@
 //    addressField.placeholderText = @"Type your address...";
 //    [cellDefinitions addObject:addressField];
 
-    PJBoolField *boolField = [PJBoolField new];
-    boolField.key          = @"subscription";
-    boolField.titleText    = @"Subscribe to our newsletter";
-    boolField.defaultValue = @YES;
-    boolField.valueWhenOff = @"NO";
-    boolField.valueWhenOn  = @"YES";
-    [cellDefinitions addObject:boolField];
+//    PJBoolField *boolField = [PJBoolField new];
+//    boolField.key          = @"subscription";
+//    boolField.titleText    = @"Subscribe to our newsletter";
+//    boolField.defaultValue = @YES;
+//    boolField.valueWhenOff = @"NO";
+//    boolField.valueWhenOn  = @"YES";
+//    [cellDefinitions addObject:boolField];
 
 //
-//    PJDescription *descriptionField  = [PJDescription new];
-//    descriptionField.key             = @"about";
-//    descriptionField.titleText       = @"About you!";
-//    descriptionField.placeholderText = @"Type your description here...";
-//    descriptionField.isRequired      = YES;
-//    [cellDefinitions addObject:descriptionField];
+    PJDescription *descriptionField  = [PJDescription new];
+    descriptionField.key             = @"about";
+    descriptionField.titleText       = @"About you!";
+    descriptionField.placeholderText = @"Type your description here...";
+    descriptionField.isRequired      = YES;
+    descriptionField.defaultValue    = @"HEY";
+    [cellDefinitions addObject:descriptionField];
 //
 //    PJDatePicker *datePicker   = [PJDatePicker new];
 //    datePicker.key             = @"dob";

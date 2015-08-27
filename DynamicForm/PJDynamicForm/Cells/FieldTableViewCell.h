@@ -13,7 +13,7 @@
 - (void)controlActivated:(id)sender;
 //Method when any of the controls is changed in cell.
 - (void)controlValueChanged:(id)cell;
-- (void)didSelected:(Class)viewController sender:(id)cell;
+- (void)didSelectedCell:(Class)viewController sender:(id)cell;
 - (void)submitAction:(id)sender;
 @end
 

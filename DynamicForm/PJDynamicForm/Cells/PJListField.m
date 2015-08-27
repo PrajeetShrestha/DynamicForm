@@ -25,7 +25,7 @@
     [super setSelected:selected animated:animated];
 
     if (selected) {
-        [self.delegate didSelected:([PJListViewController class]) sender:self];
+        [self.delegate didSelectedCell:([PJListViewController class]) sender:self];
     } else {
 
     }

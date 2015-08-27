@@ -13,10 +13,13 @@
 @end
 
 @interface DescriptionViewController : UIViewController
+
 @property (weak, nonatomic) IBOutlet UITextView *textView;
-@property (nonatomic)       NSString *initialValue;
-@property (nonatomic)       NSIndexPath *indexPath;
+@property (nonatomic) NSString    *initialValue;
+@property (nonatomic) NSIndexPath *indexPath;
+@property (nonatomic) NSString    *titleString;
+
 @property (nonatomic,weak)id <DescriptionViewControllerDelegate> delegate;
-@property (nonatomic) NSString *titleString;
+
 
 @end

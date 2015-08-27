@@ -10,7 +10,7 @@
 #import "DescriptionViewController.h"
 @interface PJDescription()
 
-@property (weak, nonatomic) IBOutlet UITextField *lblDescription;
+@property (weak, nonatomic) IBOutlet UITextField *textField;
 @property (weak, nonatomic) IBOutlet UILabel * title;
 @property (weak, nonatomic) IBOutlet UILabel * requiredLabel;
 @end
@@ -18,32 +18,26 @@
 @implementation PJDescription
 
 - (void)awakeFromNib {
-    self.title.textColor          = PJColorFieldTitle;
-    self.lblDescription.textColor = PJColorFieldValue;
-    self.title.font               = [UIFont systemFontOfSize:PJSizeFieldTitle];
-    self.lblDescription.font      = [UIFont systemFontOfSize:PJSizeFieldValue];
-    [self layoutSubviews];
+    self.title.textColor     = PJColorFieldTitle;
+    self.textField.textColor = PJColorFieldValue;
+    self.title.font          = [UIFont systemFontOfSize:PJSizeFieldTitle];
+    self.textField.font      = [UIFont systemFontOfSize:PJSizeFieldValue];
 
 }
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-    [super setSelected:selected animated:animated];
 
-    if (selected) {
-       [self.delegate didSelected:([DescriptionViewController class]) sender:self];
-    } else {
+- (void)setUp {
+    self.title.text            = self.titleText;
+    self.textField.placeholder = self.placeholderText;
+    [self setupRequiredLabelVisibility];
+    [super addBorders];
 
+    if (self.defaultValue != nil && self.value == nil) {
+        self.value = self.defaultValue;
     }
-}
-
-- (void)layoutSubviews {
-    //[super layoutSubviews];
     if (self.value != nil && [self.value length] != 0) {
-        self.lblDescription.text        = self.value;
-    } else {
-        self.lblDescription.placeholder = self.placeholderText;
+        self.textField.text = self.value;
     }
 
-    self.title.text          = self.titleText;
     if (self.value == nil && self.isRequired) {
         self.validityMessage = @"Required Field Empty!";
         self.isValid = NO;
@@ -52,8 +46,15 @@
         self.isValid = YES;
     }
 
-    [self setupRequiredLabelVisibility];
-    [super addBorders];
+}
+- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
+    [super setSelected:selected animated:animated];
+    
+    if (selected) {
+       [self.delegate didSelectedCell:([DescriptionViewController class]) sender:self];
+    } else {
+
+    }
 }
 
 - (void)setupRequiredLabelVisibility {

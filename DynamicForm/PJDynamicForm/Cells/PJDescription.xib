@@ -62,8 +62,8 @@
                 </constraints>
             </tableViewCellContentView>
             <connections>
-                <outlet property="lblDescription" destination="4nE-6C-gaF" id="MnX-6I-R0W"/>
                 <outlet property="requiredLabel" destination="x50-s1-fdI" id="Oxv-ZG-ZDF"/>
+                <outlet property="textField" destination="4nE-6C-gaF" id="v3j-ZA-sm7"/>
                 <outlet property="title" destination="0Zh-t2-luN" id="Em4-Zp-Apc"/>
             </connections>
             <point key="canvasLocation" x="465" y="415"/>

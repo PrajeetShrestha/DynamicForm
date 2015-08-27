@@ -37,7 +37,7 @@
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
     if (selected) {
-        [self.delegate didSelected:nil sender:self];
+        [self.delegate didSelectedCell:nil sender:self];
     } else {
 
     }

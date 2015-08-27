@@ -121,6 +121,7 @@
         PJDescription *descriptionCell  = (PJDescription *)cell;
         PJDescription *modelDescriptionCell = (PJDescription *)definition;
         descriptionCell.placeholderText = modelDescriptionCell.placeholderText;
+        [descriptionCell setUp];
 
     } else if (class == [PJDatePicker class]) {
 
@@ -173,7 +174,7 @@
 }
 
 #pragma mark - FieldTableViewCellDelegate
-- (void)didSelected:(Class)viewController sender:(FieldTableViewCell *)cell {
+- (void)didSelectedCell:(Class)viewController sender:(FieldTableViewCell *)cell {
     [self.view endEditing:YES];
     if (viewController == [DescriptionViewController class]) {
         DescriptionViewController *vc = [[viewController alloc]init];
@@ -227,8 +228,8 @@
     }
 
     EKToast *toast = [[EKToast alloc]initWithMessage:[NSString stringWithFormat:@"%@",formValues]];
-    toast.position = ToastPositionBottom;
-    toast.delay = 3.0f;
+    toast.position           = ToastPositionBottom;
+    toast.delay              = 3.0f;
     toast.shouldAutoDestruct = NO;
     [toast show:nil];
 }
@@ -237,7 +238,7 @@
 - (void)passValue:(id)value forIndexPath:(NSIndexPath *)indexPath {
     FieldTableViewCell *definition = cellObjects[indexPath.row];
     definition.value = value;
-    [definition layoutSubviews];
+    [definition setUp];
 }
 
 #pragma mark - PJListViewControllerDelegate
@@ -245,7 +246,7 @@
     PJListField *definition = cellObjects[indexPath.row];
     if (definition.selectionOption == PJListSingleSelection) {
         definition.indexPathsOfSelectedItem = selectedIndex;
-        definition.value                   = value;
+        definition.value                    = value;
         [definition layoutSubviews];
     } else if (definition.selectionOption == PJListMultipleSelection) {
         definition.value = value;
