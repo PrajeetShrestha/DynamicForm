@@ -12,6 +12,7 @@
 #pragma mark - Color
 #define PJColorFieldTitle UIColorFromRGB(0x4778A4)//UIColorFromRGB(0xE49723)
 #define PJColorFieldValue [UIColor darkGrayColor]//UIColorFromRGB(0x4778A4)
+#define PJColorBackground [UIColor whiteColor]//UIColorFromRGB(0xFFFEEA)
 
 #define PJFieldHeight 70
 #pragma mark - Size

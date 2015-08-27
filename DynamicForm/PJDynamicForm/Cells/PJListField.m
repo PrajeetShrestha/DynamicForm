@@ -21,30 +21,25 @@
     self.selectedValue.font      = [UIFont systemFontOfSize:PJSizeFieldValue];
 }
 
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-    [super setSelected:selected animated:animated];
-
-    if (selected) {
-        [self.delegate didSelectedCell:([PJListViewController class]) sender:self];
-    } else {
-
-    }
-}
-
-- (void)layoutSubviews {
+- (void)setUp {
     [self setupRequiredLabelVisibility];
     [super addBorders];
 
     self.title.text = self.titleText;
     self.isValid = YES;
     self.validityMessage = @"Valid!";
-
     if (self.defaultValue != nil && self.value == nil) {
+
         self.selectedValue.text = self.defaultValue;
         self.value = self.defaultValue;
+
     } else if ((self.defaultValue == nil && self.value == nil)) {
+
         self.selectedValue.text = @"- (Select) -";
+        self.value = nil;
+
     } else {
+
         if (self.selectionOption == PJListMultipleSelection) {
             if (self.value == nil) {
                 return;
@@ -54,6 +49,7 @@
             for (NSString * value in array) {
                 [string appendString:[NSString stringWithFormat:@"%@, ",value]];
             }
+            NSLog(@"String %@",string);
             string = [[string substringWithRange:NSMakeRange(0, string.length - 2)] mutableCopy];
             self.selectedValue.text = string;
 
@@ -61,7 +57,6 @@
             self.selectedValue.text = [NSString stringWithFormat:@"%@",self.value];
         }
     }
-
 }
 
 - (void)setupRequiredLabelVisibility {

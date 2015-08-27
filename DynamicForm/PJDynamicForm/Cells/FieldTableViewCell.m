@@ -20,6 +20,7 @@
 }
 
 - (void)addBorders {
+
     dispatch_async(dispatch_get_global_queue(0, 0), ^{
          static UIView *view = nil;
         dispatch_async(dispatch_get_main_queue(), ^{
@@ -30,6 +31,7 @@
             [self.contentView addSubview:view];
         });
     });
+                                                                    
 }
 
 - (void)setUp {

@@ -29,6 +29,7 @@ static NSString *defaultEmailRegex = @"[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-
 - (void)setUp {
     [self checkValidityAndUpdateValue];
     [self manageInputKeyboard];
+    [super addBorders];
     [self.textField addTarget:self
                        action:@selector(textFieldDidChange:)
              forControlEvents:UIControlEventEditingChanged];
@@ -98,11 +99,11 @@ static NSString *defaultEmailRegex = @"[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-
 #pragma mark - TextField Delegate
 - (void)textFieldDidEndEditing:(UITextField *)textField {
     [self checkValidityAndUpdateValue];
-    [self.delegate controlValueChanged:self];
+
 }
 
 - (void)textFieldDidBeginEditing:(UITextField *)textField {
-    [self.delegate controlActivated:self];
+  //  [self.delegate controlActivated:self];
 }
 
 #pragma mark - Textfield Actions

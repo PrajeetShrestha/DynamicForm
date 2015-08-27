@@ -45,16 +45,6 @@
         self.validityMessage = @"Valid data!";
         self.isValid = YES;
     }
-
-}
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-    [super setSelected:selected animated:animated];
-    
-    if (selected) {
-       [self.delegate didSelectedCell:([DescriptionViewController class]) sender:self];
-    } else {
-
-    }
 }
 
 - (void)setupRequiredLabelVisibility {

@@ -16,15 +16,15 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="100" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="H2l-VP-hqb" customClass="FieldTableView">
-                    <rect key="frame" x="8" y="0.0" width="584" height="600"/>
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </tableView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstAttribute="bottom" secondItem="H2l-VP-hqb" secondAttribute="bottom" id="SIp-eh-urA"/>
-                <constraint firstItem="H2l-VP-hqb" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="8" id="X9d-hL-Fwc"/>
-                <constraint firstAttribute="trailing" secondItem="H2l-VP-hqb" secondAttribute="trailing" constant="8" id="kUA-ne-nE9"/>
+                <constraint firstItem="H2l-VP-hqb" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="X9d-hL-Fwc"/>
+                <constraint firstAttribute="trailing" secondItem="H2l-VP-hqb" secondAttribute="trailing" id="kUA-ne-nE9"/>
                 <constraint firstItem="H2l-VP-hqb" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="tCv-sd-H9r"/>
             </constraints>
         </view>

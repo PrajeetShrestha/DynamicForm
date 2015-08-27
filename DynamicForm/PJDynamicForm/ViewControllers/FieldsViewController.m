@@ -55,12 +55,38 @@
     return cellDefinition.count;
 
 }
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    FieldTableViewCell *cell = (FieldTableViewCell *)[tableView cellForRowAtIndexPath:indexPath];
+       [self.view endEditing:YES];
+    if ([cell isKindOfClass:[PJListField class]]) {
+        PJListViewController *vc = [[PJListViewController alloc]init];
+        vc.titleString   = cell.titleText;
+        vc.delegate      = self;
+        vc.indexPath     = cell.indexPath;
+        vc.listItems     = [cell valueForKey:@"listItems"];
+        //vc.selectionType = [[cell valueForKey:@"selectionType"] intValue];
+        if ([cell valueForKey:@"indexPathsOfSelectedItem"] != nil) {
+            vc.indexPathOfSelectedItem = [cell valueForKey:@"indexPathsOfSelectedItem"];
+        }
+        vc.selectionOption = [[cell valueForKey:@"selectionOption"] intValue];
+        [self showViewController:vc sender:nil];
+
+    } else if ([cell isKindOfClass:[PJDescription class]]) {
+
+            DescriptionViewController *vc = [[DescriptionViewController alloc]init];
+            vc.titleString                = cell.titleText;
+            vc.delegate                   = self;
+            vc.initialValue               = cell.value;
+            vc.indexPath                  = cell.indexPath;
+            [self showViewController:vc sender:nil];
+    }
 
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [self cellTypeForIndexPath:indexPath forTableView:tableView];
+    
     return cell;
 }
 
@@ -82,6 +108,10 @@
     cell.indexPath                 = indexPath;
     cell.delegate                  = self;
     cell.defaultValue              = definition.defaultValue;
+    if(indexPath.row % 2 == 0)
+        cell.backgroundColor = PJColorBackground;
+    else
+        cell.backgroundColor = [UIColor whiteColor];
     [self segragateValuesByTypeInCell:cell forDefinition:definition];
     [self pushCellInArray:cell];
     return cell;
@@ -139,8 +169,12 @@
         listField.selectionOption   = modelListField.selectionOption;
         listField.defaultValue      = modelListField.defaultValue;
         if (listField.defaultValue != nil) {
-            listField.indexPathsOfSelectedItem = [NSIndexPath indexPathForRow:[listField.listItems indexOfObject:listField.defaultValue] inSection:0];
+            listField.indexPathsOfSelectedItem = [NSIndexPath indexPathForRow:[listField.listItems
+                                                                               indexOfObject:listField.defaultValue]
+                                                                    inSection:0];
         }
+        [listField setUp];
+        
     } else if (class == [PJSubmitCell class]) {
 
     } else {
@@ -175,36 +209,6 @@
 }
 
 #pragma mark - FieldTableViewCellDelegate
-- (void)didSelectedCell:(Class)viewController sender:(FieldTableViewCell *)cell {
-    [self.view endEditing:YES];
-    if (viewController == [DescriptionViewController class]) {
-        DescriptionViewController *vc = [[viewController alloc]init];
-        vc.titleString                = cell.titleText;
-        vc.delegate                   = self;
-        vc.initialValue               = cell.value;
-        vc.indexPath                  = cell.indexPath;
-        [self showViewController:vc sender:nil];
-
-    } else if (viewController == [PJListViewController class]) {
-
-        PJListViewController *vc = [[PJListViewController alloc]init];
-        vc.titleString   = cell.titleText;
-        vc.delegate      = self;
-        vc.indexPath     = cell.indexPath;
-        vc.listItems     = [cell valueForKey:@"listItems"];
-        //vc.selectionType = [[cell valueForKey:@"selectionType"] intValue];
-        if ([cell valueForKey:@"indexPathsOfSelectedItem"] != nil) {
-            vc.indexPathOfSelectedItem = [cell valueForKey:@"indexPathsOfSelectedItem"];
-        }
-        vc.selectionOption = [[cell valueForKey:@"selectionOption"] intValue];
-        [self showViewController:vc sender:nil];
-
-    } else if ([cell isKindOfClass:[PJDatePicker class]]) {
-        //Date Picker Selected;
-
-    }
-
-}
 
 - (void)submitAction:(id)sender {
     [self.view endEditing:YES];
@@ -247,12 +251,9 @@
     PJListField *definition = cellObjects[indexPath.row];
     if (definition.selectionOption == PJListSingleSelection) {
         definition.indexPathsOfSelectedItem = selectedIndex;
-        definition.value                    = value;
-        [definition layoutSubviews];
-    } else if (definition.selectionOption == PJListMultipleSelection) {
-        definition.value = value;
-        [definition layoutSubviews] ;
     }
+    definition.value = value;
+    [definition setUp];
 }
 
 #pragma mark - UIViewController+BackButtonHandler

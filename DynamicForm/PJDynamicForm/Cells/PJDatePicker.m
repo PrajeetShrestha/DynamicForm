@@ -34,15 +34,6 @@
     [self checkValidityAndUpdate];
 }
 
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-    [super setSelected:selected animated:animated];
-    if (selected) {
-        [self.delegate didSelectedCell:nil sender:self];
-    } else {
-
-    }
-}
-
 - (void)setUp {
 
     self.datePicker                 = [UIDatePicker new];

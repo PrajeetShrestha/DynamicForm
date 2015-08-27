@@ -48,7 +48,6 @@ static NSString *cellIdentifier = @"PJListItemCell";
 }
 #pragma mark - Bar Button Action
 - (void) done:(id)sender {
-    //    [self.navigationController popViewControllerAnimated:NO];
     NSMutableArray *selectedItems = [NSMutableArray new];
 
     for (NSIndexPath *indexPath in self.tableView.indexPathsForSelectedRows) {
