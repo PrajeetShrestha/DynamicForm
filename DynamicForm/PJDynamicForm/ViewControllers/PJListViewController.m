@@ -48,7 +48,7 @@ static NSString *cellIdentifier = @"PJListItemCell";
 }
 #pragma mark - Bar Button Action
 - (void) done:(id)sender {
-    [self.navigationController popViewControllerAnimated:YES];
+    //    [self.navigationController popViewControllerAnimated:NO];
     NSMutableArray *selectedItems = [NSMutableArray new];
 
     for (NSIndexPath *indexPath in self.tableView.indexPathsForSelectedRows) {
@@ -56,7 +56,10 @@ static NSString *cellIdentifier = @"PJListItemCell";
     }
 
     [self.delegate selectedItemInList:selectedItems forCellAtIndexPath:self.indexPath andSelectedIndex:self.tableView.indexPathsForSelectedRows] ;
-        //[self.navigationController popViewControllerAnimated:YES];
+
+    //FIXME: IF Animtation is set yes the app will crash
+    [self.navigationController popViewControllerAnimated:NO];
+    
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -106,6 +109,7 @@ static NSString *cellIdentifier = @"PJListItemCell";
 - (void)scrollViewDidScroll:(UIScrollView *)scrollViews {
     [self updateCells]  ;
 }
+
 
 
 

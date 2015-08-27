@@ -18,8 +18,6 @@
     self.validityMessage = @"Not Available";
     self.value = @"";
     self.isValid = NO;
-
-
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
@@ -33,8 +31,8 @@
         dispatch_async(dispatch_get_main_queue(), ^{
             view = [UIView new];
             view.frame = self.bounds;
-            view.frame = CGRectMake(self.bounds.origin.x, self.bounds.size.height-2,self.bounds.size.width, 1);
-            view.backgroundColor = [UIColor groupTableViewBackgroundColor];
+            view.frame = CGRectMake(self.bounds.origin.x, self.bounds.size.height-2,self.bounds.size.width, 0.5);
+            view.backgroundColor = PJColorFieldTitle;
             [self.contentView addSubview:view];
         });
     });

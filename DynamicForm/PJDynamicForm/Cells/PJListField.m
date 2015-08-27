@@ -32,32 +32,35 @@
 }
 
 - (void)layoutSubviews {
-    //[super layoutSubviews];
+    self.title.text = self.titleText;
+
+    [self setupRequiredLabelVisibility];
+    [super addBorders];
     self.isValid = YES;
     self.validityMessage = @"Valid!";
     if (self.defaultValue != nil && self.value == nil) {
         self.selectedValue.text = self.defaultValue;
         self.value = self.defaultValue;
-    } else if (self.defaultValue == nil && self.value == nil) {
-        self.selectedValue.text = @"- (Select One) -";
+    } else if ((self.defaultValue == nil && self.value == nil)) {
+        self.selectedValue.text = @"- (Select) -";
     } else {
         if (self.selectionOption == PJListMultipleSelection) {
             if (self.value == nil) {
                 return;
             }
             NSMutableString *string = [NSMutableString new];
-
-            for (id value in self.value) {
+            NSArray *array = (NSArray *)self.value;
+            for (NSString * value in array) {
                 [string appendString:[NSString stringWithFormat:@"%@, ",value]];
             }
+            string = [[string substringWithRange:NSMakeRange(0, string.length - 2)] mutableCopy];
             self.selectedValue.text = string;
+
         } else {
             self.selectedValue.text = [NSString stringWithFormat:@"%@",self.value];
         }
     }
-    self.title.text = self.titleText;
-    [self setupRequiredLabelVisibility];
-    [super addBorders];
+
 }
 
 - (void)setupRequiredLabelVisibility {
