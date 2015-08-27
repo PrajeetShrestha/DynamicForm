@@ -18,4 +18,9 @@ typedef enum PJTextFieldInputType {
 @property (nonatomic) NSString *regex;
 @property (nonatomic) PJTextFieldInputType inputType;
 
+@property (weak, nonatomic) IBOutlet UITextField *textField;
+@property (weak, nonatomic) IBOutlet UILabel     *title;
+@property (weak, nonatomic) IBOutlet UILabel     *requiredLabel;
+
+- (void)setupRequiredLabelVisibilityIfIsRequired:(BOOL)isRequired;
 @end

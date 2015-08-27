@@ -25,7 +25,6 @@
 @property (nonatomic) id          defaultValue;
 @property (nonatomic) id          value;
 
-@property (nonatomic) BOOL        isEnabled;
 @property (nonatomic) BOOL        isRequired;
 @property (nonatomic) NSIndexPath *indexPath;
 @property (nonatomic) BOOL        isValid;
@@ -34,6 +33,7 @@
 @property (nonatomic,weak) id <FieldTableViewCell> delegate;
 
 - (void)addBorders;
+- (void)setUp;
 
 
 @end

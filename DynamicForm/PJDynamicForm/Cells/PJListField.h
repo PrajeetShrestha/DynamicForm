@@ -15,4 +15,6 @@
 @property (nonatomic) NSArray *listItems;
 @property (nonatomic) NSIndexPath *indexPathsOfSelectedItem;
 @property (nonatomic) PJListSelectionOption selectionOption;
+
+- (void)setupRequiredLabelVisibility;
 @end

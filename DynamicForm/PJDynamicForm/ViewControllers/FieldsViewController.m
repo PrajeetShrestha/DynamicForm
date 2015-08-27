@@ -76,14 +76,12 @@
     NSString *cellType             = [self cellTypeForDefinitionClass:[definition class]];
     //Initialize common properties of all Cells
     FieldTableViewCell *cell       = [tableView dequeueReusableCellWithIdentifier:cellType];
+    cell.key                       = definition.key;
     cell.titleText                 = definition.titleText;
     cell.isRequired                = definition.isRequired;
     cell.indexPath                 = indexPath;
     cell.delegate                  = self;
     cell.defaultValue              = definition.defaultValue;
-    cell.isEnabled                 = definition.isEnabled;
-    cell.value                     = definition.value;
-    cell.key                       = definition.key;
     [self segragateValuesByTypeInCell:cell forDefinition:definition];
     [self pushCellInArray:cell];
     return cell;
@@ -104,38 +102,42 @@
 - (void)segragateValuesByTypeInCell:(id)cell forDefinition:(id)definition {
     Class class = [cell class];
     if (class == [PJTextField class] ) {
-
-        PJTextField *textCell    = (PJTextField *)cell;
-        textCell.placeholderText = [definition valueForKey:@"placeholderText"];
-        textCell.inputType = [[definition valueForKey:@"inputType"] intValue];
+        PJTextField *modelTextField    = (PJTextField *)definition;
+        PJTextField *textCell          = (PJTextField *)cell;
+        textCell.placeholderText       = modelTextField.placeholderText;
+        textCell.inputType             = modelTextField.inputType;
+        [textCell setUp];
 
     } else if (class == [PJBoolField class]) {
 
         PJBoolField *boolField = (PJBoolField *)cell;
-        boolField.valueWhenOn  = [definition valueForKey:@"valueWhenOn"];
-        boolField.valueWhenOff = [definition valueForKey:@"valueWhenOff"];
+        PJBoolField *modelBoolField = (PJBoolField *)definition;
+        boolField.valueWhenOn       = modelBoolField.valueWhenOn;
+        boolField.valueWhenOff      = modelBoolField.valueWhenOff;
 
     } else if (class == [PJDescription class]) {
 
         PJDescription *descriptionCell  = (PJDescription *)cell;
-        descriptionCell.placeholderText = [definition valueForKey:@"placeholderText"];
+        PJDescription *modelDescriptionCell = (PJDescription *)definition;
+        descriptionCell.placeholderText = modelDescriptionCell.placeholderText;
 
     } else if (class == [PJDatePicker class]) {
 
         PJDatePicker *datePicker   = (PJDatePicker *)cell;
-        datePicker.datePickerMode  = [[definition valueForKey:@"datePickerMode"] intValue];
-        datePicker.placeholderText = [definition valueForKey:@"placeholderText"];
+        PJDatePicker *modelDatePicker = (PJDatePicker *)definition;
+        datePicker.datePickerMode  = modelDatePicker.datePickerMode;
+        datePicker.placeholderText = modelDatePicker.placeholderText;
 
     } else if (class == [PJListField class]) {
 
-        PJListField *listField  = (PJListField *)cell;
-        listField.listItems     = [definition valueForKey:@"listItems"];
-        listField.defaultValue  = [definition valueForKey:@"defaultValue"];
+        PJListField *listField      = (PJListField *)cell;
+        PJListField *modelListField = (PJListField *)definition;
+        listField.listItems         = modelListField.listItems;
+        listField.selectionOption   = modelListField.selectionOption;
+        listField.defaultValue      = modelListField.defaultValue;
         if (listField.defaultValue != nil) {
             listField.indexPathsOfSelectedItem = [NSIndexPath indexPathForRow:[listField.listItems indexOfObject:listField.defaultValue] inSection:0];
         }
-        listField.selectionOption = [[definition valueForKey:@"selectionOption"] intValue];
-
     } else if (class == [PJSubmitCell class]) {
 
     } else {
@@ -201,14 +203,6 @@
 
 }
 
-- (void)controlActivated:(id)sender {
-    //FieldTableViewCell *cell = (FieldTableViewCell *)sender;
-    //TODO: Future upgrade
-    //Dynamic Form view scroll.
-    //CGRect rectInTableView = [self.tableView rectForRowAtIndexPath:cell.indexPath];
-    //CGRect rectInSuperview = [self.tableView convertRect:rectInTableView toView:[self.tableView superview]];
-    //NSLog(@"%@ RECT IN SUPERVIEW " ,NSStringFromCGRect(rectInSuperview));
-}
 
 - (void)submitAction:(id)sender {
     [self.view endEditing:YES];
@@ -282,24 +276,13 @@
 }
 
 
-#pragma mark - References
-/*
- for (FieldTableViewCell *definition in cellDefinition){
- Class class = [definition class];
- if (class == [PJTextField class] ) {
- PJTextField *textField = (PJTextField *)definition;
- } else if (class == [PJBoolField class]) {
- PJBoolField *boolField = (PJBoolField *)definition;
- } else if (class == [PJDatePicker class]) {
- PJDatePicker *datePicker = (PJDatePicker *)definition;
- } else if (class == [PJDescription class]) {
- PJDescription *descriptionField = (PJDescription *)definition;
- } else if (class == [PJListField class]) {
- PJListField *listField = (PJListField *)definition;
- } else if (class == [PJSubmitCell class]) {
- PJSubmitCell *submitCell = (PJSubmitCell *)definition;
- } else {
- }
- }
- */
+- (void)controlActivated:(id)sender {
+    //FieldTableViewCell *cell = (FieldTableViewCell *)sender;
+    //TODO: Future upgrade
+    //Dynamic Form view scroll.
+    //CGRect rectInTableView = [self.tableView rectForRowAtIndexPath:cell.indexPath];
+    //CGRect rectInSuperview = [self.tableView convertRect:rectInTableView toView:[self.tableView superview]];
+    //NSLog(@"%@ RECT IN SUPERVIEW " ,NSStringFromCGRect(rectInSuperview));
+}
+
 @end

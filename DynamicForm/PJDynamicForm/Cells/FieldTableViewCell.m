@@ -14,12 +14,6 @@
 
 }
 
-- (void)layoutSubviews {
-    self.validityMessage = @"Not Available";
-    self.value = @"";
-    self.isValid = NO;
-}
-
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
 
@@ -36,6 +30,10 @@
             [self.contentView addSubview:view];
         });
     });
+}
+
+- (void)setUp {
+    
 }
 
 @end

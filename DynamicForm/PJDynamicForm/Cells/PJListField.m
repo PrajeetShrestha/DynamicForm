@@ -19,8 +19,8 @@
     self.selectedValue.textColor = PJColorFieldValue;
     self.title.font              = [UIFont systemFontOfSize:PJSizeFieldTitle];
     self.selectedValue.font      = [UIFont systemFontOfSize:PJSizeFieldValue];
-
 }
+
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
 
@@ -32,12 +32,13 @@
 }
 
 - (void)layoutSubviews {
-    self.title.text = self.titleText;
-
     [self setupRequiredLabelVisibility];
     [super addBorders];
+
+    self.title.text = self.titleText;
     self.isValid = YES;
     self.validityMessage = @"Valid!";
+
     if (self.defaultValue != nil && self.value == nil) {
         self.selectedValue.text = self.defaultValue;
         self.value = self.defaultValue;

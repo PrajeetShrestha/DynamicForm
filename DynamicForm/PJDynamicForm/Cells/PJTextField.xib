@@ -52,7 +52,6 @@
                 </constraints>
             </tableViewCellContentView>
             <connections>
-                <outlet property="containerView" destination="ASS-68-pAv" id="Cvf-oj-lmC"/>
                 <outlet property="requiredLabel" destination="MrY-CL-wtE" id="s6f-It-0dy"/>
                 <outlet property="textField" destination="MW8-wm-aiN" id="kym-t2-Y64"/>
                 <outlet property="title" destination="eCu-uo-n7i" id="l3B-nA-U5A"/>
