@@ -38,7 +38,8 @@
         self.textField.text = self.value;
     }
 
-    if (self.value == nil && self.isRequired) {
+    if ((self.value == nil || [self.value length] == 0) && self.isRequired) {
+        self.textField.text = @"";
         self.validityMessage = @"Required Field Empty!";
         self.isValid = NO;
     } else {

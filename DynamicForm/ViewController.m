@@ -43,8 +43,6 @@
     textField.placeholderText = @"Type your email...";
     [cellDefinitions addObject:textField];
 
-
-
     PJTextField *addressField = [PJTextField new];
     addressField.titleText       = @"Address";
     addressField.key             = @"address";
@@ -77,14 +75,6 @@
     datePicker.datePickerMode  = UIDatePickerModeDate;
     [cellDefinitions addObject:datePicker];
 
-    PJListField *listField = [PJListField new];
-    listField.key          = @"country";
-    listField.titleText    = @"Country";
-    listField.listItems    = @[@"Nepal",@"China",@"3",@"4",@"5",@"6",@"7",@"8",@"9",@"10",@"11",@"12",@"13",@"14",@"15",@"16",@"17",@"18",@"19",@"20",@"21",@"22",@"23",@"24",@"25",@"26",@"China",@"3",@"4",@"5",@"6",@"7",@"8",@"9",@"10",@"11",@"12",@"13",@"14",@"15",@"16",@"17",@"18",@"19",@"20",@"21",@"22",@"23",@"24",@"25",@"China",@"3",@"4",@"5",@"6",@"7",@"8",@"9",@"10",@"11",@"12",@"13",@"14",@"15",@"16",@"17",@"18",@"19",@"20",@"21",@"22",@"23",@"24",@"25",@"China",@"3",@"4",@"5",@"6",@"7",@"8",@"9",@"10",@"11",@"12",@"13",@"14",@"15",@"16",@"17",@"18",@"19",@"20",@"21",@"22",@"23",@"24",@"25",@"China",@"3",@"4",@"5",@"6",@"7",@"8",@"9",@"10",@"11",@"12",@"13",@"14",@"15",@"16",@"17",@"18",@"19",@"20",@"21",@"22",@"23",@"24",@"25",@"China",@"3",@"4",@"5",@"6",@"7",@"8",@"9",@"10",@"11",@"12",@"13",@"14",@"15",@"16",@"17",@"18",@"19",@"20",@"21",@"22",@"23",@"24",@"25",@"China",@"3",@"4",@"5",@"6",@"7",@"8",@"9",@"10",@"11",@"12",@"13",@"14",@"15",@"16",@"17",@"18",@"19",@"20",@"21",@"22",@"23",@"24",@"25",@"China",@"3",@"4",@"5",@"6",@"7",@"8",@"9",@"10",@"11",@"12",@"13",@"14",@"15",@"16",@"17",@"18",@"19",@"20",@"21",@"22",@"23",@"24",@"25",@"China",@"3",@"4",@"5",@"6",@"7",@"8",@"9",@"10",@"11",@"12",@"13",@"14",@"15",@"16",@"17",@"18",@"19",@"20",@"21",@"22",@"23",@"24",@"25"];
-    listField.isRequired   = YES;
-//    listField.defaultValue = listField.listItems[0];
-    listField.selectionOption = PJListMultipleSelection;
-    [cellDefinitions addObject:listField];
 
     PJSubmitCell *submit = [PJSubmitCell new];
     [cellDefinitions addObject:submit];

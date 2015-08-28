@@ -237,6 +237,8 @@
 - (void)passValue:(id)value forIndexPath:(NSIndexPath *)indexPath {
     FieldTableViewCell *definition = cellObjects[indexPath.row];
     definition.value = value;
+
+    NSLog(@"definition value %@",definition.value);
     [definition setUp];
 }
 
