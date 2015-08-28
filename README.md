@@ -5,7 +5,7 @@
 * Import PJDynamicForm.h in your class. ```#import PJDynamicForm.h````
 * You need IQKeyboardManager for this to work with TextFields, so install through pod ```pod 'IQKeyboardManager'```
 * If you need basic customization you can do that through PJConfig.h which is in folder PJDynamicForm/Globals
-* Supported Fields
+### Supported Fields
 * TextField - Email
 * TextField - Number
 * TextField - String
@@ -17,7 +17,7 @@
 
 
 
-## Future Enhancements
+### Future Enhancements
 * ImagePicker Field
 * Location Picker Field
 
