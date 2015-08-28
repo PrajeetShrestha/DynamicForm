@@ -285,13 +285,4 @@
 }
 
 
-- (void)controlActivated:(id)sender {
-    //FieldTableViewCell *cell = (FieldTableViewCell *)sender;
-    //TODO: Future upgrade
-    //Dynamic Form view scroll.
-    //CGRect rectInTableView = [self.tableView rectForRowAtIndexPath:cell.indexPath];
-    //CGRect rectInSuperview = [self.tableView convertRect:rectInTableView toView:[self.tableView superview]];
-    //NSLog(@"%@ RECT IN SUPERVIEW " ,NSStringFromCGRect(rectInSuperview));
-}
-
 @end

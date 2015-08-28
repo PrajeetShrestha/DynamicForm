@@ -10,5 +10,5 @@
 
 @interface PJDatePicker : FieldTableViewCell <UITextFieldDelegate>
 @property (nonatomic) UIDatePickerMode datePickerMode;
-@property (nonatomic) NSString *placeholderText;
+@property (nonatomic) NSString         *placeholderText;
 @end

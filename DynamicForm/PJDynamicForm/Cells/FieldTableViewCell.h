@@ -9,10 +9,6 @@
 #import <UIKit/UIKit.h>
 @protocol FieldTableViewCell<NSObject>
 @optional
-//Method to be triggered when any of the controls (TextField,TextView etc) is activated
-- (void)controlActivated:(id)sender;
-//Method when any of the controls is changed in cell.
-- (void)controlValueChanged:(id)cell;
 - (void)submitAction:(id)sender;
 @end
 
