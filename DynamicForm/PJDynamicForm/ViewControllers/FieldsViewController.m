@@ -242,7 +242,7 @@
 
 #pragma mark - PJListViewControllerDelegate
 - (void)selectedValuesFromList:(NSArray *)selectedListItems fromIndexPath:(NSIndexPath *)indexPath{
-
+    NSLog(@"SELECTED %@",selectedListItems);
     if (selectedListItems != nil && selectedListItems.count != 0) {
         PJListField *cell     = (PJListField *)[self.tableView cellForRowAtIndexPath:indexPath];
         NSMutableArray *valueOfObjects = [NSMutableArray new];

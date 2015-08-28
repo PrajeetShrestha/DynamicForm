@@ -43,7 +43,7 @@
         if (self.value == nil || [self.value count] == 0) {
             return;
         }
-        if (self.selectionOption == PJListMultipleSelection) {
+//        if (self.selectionOption == PJListMultipleSelection) {
 
             NSMutableString *string = [NSMutableString new];
             NSArray *array = (NSArray *)self.value;
@@ -53,9 +53,9 @@
             string = [[string substringWithRange:NSMakeRange(0, string.length - 2)] mutableCopy];
             self.selectedValue.text = string;
 
-        } else {
-            self.selectedValue.text = [NSString stringWithFormat:@"%@",self.value];
-        }
+//        } else {
+//            self.selectedValue.text = [NSString stringWithFormat:@"%@",self.value];
+//        }
     }
 }
 

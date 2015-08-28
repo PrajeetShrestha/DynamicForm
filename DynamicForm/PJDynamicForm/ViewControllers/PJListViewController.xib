@@ -8,6 +8,7 @@
             <connections>
                 <outlet property="btnClearAll" destination="Mt4-Di-Fcu" id="wiE-0t-FNn"/>
                 <outlet property="btnSelectAll" destination="P7P-8T-wX3" id="CyN-SW-2bq"/>
+                <outlet property="buttonContainer" destination="Pz5-6m-BWN" id="xiH-9u-Rk0"/>
                 <outlet property="heightConstraintButtons" destination="Qkg-DH-yxY" id="EVq-47-YBc"/>
                 <outlet property="tableView" destination="R4m-yq-0Si" id="PKG-zY-s7x"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -62,8 +63,7 @@
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstAttribute="bottom" secondItem="R4m-yq-0Si" secondAttribute="bottom" constant="40" id="8bg-P7-8nc"/>
-                <constraint firstAttribute="bottom" secondItem="Pz5-6m-BWN" secondAttribute="bottom" id="C4r-Ic-x3s"/>
+                <constraint firstAttribute="bottom" secondItem="Pz5-6m-BWN" secondAttribute="bottom" id="Aw8-Tp-aoX"/>
                 <constraint firstAttribute="trailing" secondItem="R4m-yq-0Si" secondAttribute="trailing" id="LL3-UI-91s"/>
                 <constraint firstItem="R4m-yq-0Si" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="Zu1-8U-Raw"/>
                 <constraint firstItem="R4m-yq-0Si" firstAttribute="trailing" secondItem="Pz5-6m-BWN" secondAttribute="trailing" id="tJd-zc-M6Q"/>

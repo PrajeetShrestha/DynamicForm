@@ -13,6 +13,7 @@
 @property (nonatomic) NSMutableArray *allIndexPaths;
 @property (weak, nonatomic) IBOutlet UIButton *btnClearAll;
 @property (weak, nonatomic) IBOutlet UIButton *btnSelectAll;
+@property (weak, nonatomic) IBOutlet UIView *buttonContainer;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *heightConstraintButtons;
 @end
 
@@ -42,19 +43,25 @@ static NSString *cellIdentifier = @"PJListItemCell";
     //Default will be PJListSingleSelection
     if (self.selectionOption == PJListSingleSelection) {
         self.tableView.allowsMultipleSelection = NO;
+        self.heightConstraintButtons.constant = 0;
+        self.buttonContainer.hidden = YES;
+        
     } else if(self.selectionOption == PJListMultipleSelection) {
         self.tableView.allowsMultipleSelection = YES;
-        UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithTitle:@"Done" style:UIBarButtonItemStylePlain target:self action:@selector(done:)];
-        self.navigationItem.rightBarButtonItem = doneButton;
+
         [self.btnClearAll setTitleColor:PJColorFieldValue forState:UIControlStateNormal];
         [self.btnSelectAll setTitleColor:PJColorFieldTitle forState:UIControlStateNormal];
     }
+    UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithTitle:@"Done" style:UIBarButtonItemStylePlain target:self action:@selector(done:)];
+    self.navigationItem.rightBarButtonItem = doneButton;
+
+
 
 }
 #pragma mark - Bar Button Action
 - (void) done:(id)sender {
     [self.delegate selectedValuesFromList:self.userSelectedRows fromIndexPath:self.indexPath];
-    [self.navigationController popViewControllerAnimated:NO];
+    [self.navigationController popViewControllerAnimated:YES];
     
 }
 
