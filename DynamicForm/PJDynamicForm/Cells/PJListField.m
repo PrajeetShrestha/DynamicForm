@@ -40,10 +40,11 @@
 
     } else {
 
+        if (self.value == nil || [self.value count] == 0) {
+            return;
+        }
         if (self.selectionOption == PJListMultipleSelection) {
-            if (self.value == nil) {
-                return;
-            }
+
             NSMutableString *string = [NSMutableString new];
             NSArray *array = (NSArray *)self.value;
             for (NSString * value in array) {
