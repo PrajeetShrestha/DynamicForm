@@ -14,7 +14,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HZ0-Xs-KZJ">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="59"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <color key="backgroundColor" red="0.89411764705882357" green="0.59215686274509804" blue="0.13725490196078433" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
                         <state key="normal" title="Submit">
@@ -28,7 +28,7 @@
                 </subviews>
                 <constraints>
                     <constraint firstItem="HZ0-Xs-KZJ" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="4DS-TW-udh"/>
-                    <constraint firstAttribute="bottom" secondItem="HZ0-Xs-KZJ" secondAttribute="bottom" id="9SZ-Mb-4yE"/>
+                    <constraint firstAttribute="bottom" secondItem="HZ0-Xs-KZJ" secondAttribute="bottom" constant="15" id="9SZ-Mb-4yE"/>
                     <constraint firstItem="HZ0-Xs-KZJ" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="VPn-Id-oOw"/>
                     <constraint firstAttribute="trailing" secondItem="HZ0-Xs-KZJ" secondAttribute="trailing" id="bhy-6p-hf1"/>
                 </constraints>
