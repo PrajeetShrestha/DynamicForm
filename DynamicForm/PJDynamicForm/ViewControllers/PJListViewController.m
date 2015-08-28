@@ -21,6 +21,9 @@ static NSString *cellIdentifier = @"PJListItemCell";
     if (self) {
         self = [self initWithNibName:@"PJListViewController" bundle:[NSBundle mainBundle]];
         self.allIndexPaths = [NSMutableArray new];
+        if (self.userSelectedRows == nil) {
+            self.userSelectedRows = [NSMutableArray new];
+        }
     }
     return self;
 }
@@ -41,72 +44,56 @@ static NSString *cellIdentifier = @"PJListItemCell";
         self.navigationItem.rightBarButtonItem = doneButton;
     }
 
-    for (int i = 0; i < self.listItems.count; i ++) {
-        NSIndexPath *indexpath = [NSIndexPath indexPathForRow:i inSection:0];
-        [self.allIndexPaths addObject:indexpath];
-    }
 }
 #pragma mark - Bar Button Action
 - (void) done:(id)sender {
-    NSMutableArray *selectedItems = [NSMutableArray new];
-
-    for (NSIndexPath *indexPath in self.tableView.indexPathsForSelectedRows) {
-        [selectedItems addObject:self.listItems[indexPath.row]];
-    }
-
-    [self.delegate selectedItemInList:selectedItems forCellAtIndexPath:self.indexPath andSelectedIndex:self.tableView.indexPathsForSelectedRows] ;
-
-    //FIXME: IF Animtation is set yes the app will crash
+    [self.delegate selectedValuesFromList:self.userSelectedRows fromIndexPath:self.indexPath];
     [self.navigationController popViewControllerAnimated:NO];
     
-}
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return self.listItems.count;
 }
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (self.selectionOption == PJListMultipleSelection) {
-        [self updateCells];
-    } else {
-        [self.navigationController popViewControllerAnimated:YES];
-        [self.delegate selectedItemInList:self.listItems[indexPath.row] forCellAtIndexPath:self.indexPath andSelectedIndex:indexPath] ;
+    NSNumber *row = [NSNumber numberWithInteger:indexPath.row];
+    if (![self.userSelectedRows containsObject:row]) {
+        [self.userSelectedRows addObject:row];
     }
+    PJListItemCell *cell               = (PJListItemCell *)[tableView cellForRowAtIndexPath:indexPath];
+
+    cell.selectionIndicatorView.hidden = NO;
 }
 
 - (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath {
-    [self updateCells];
+    NSNumber *row = [NSNumber numberWithInteger:indexPath.row];
+    if ([self.userSelectedRows containsObject:row]) {
+        [self.userSelectedRows removeObject:row];
+    }
+    PJListItemCell *cell               = (PJListItemCell *)[tableView cellForRowAtIndexPath:indexPath];
+    cell.selectionIndicatorView.hidden = YES;
 }
 
-- (void)updateCells {
-    for (NSIndexPath *indexPath in self.allIndexPaths) {
-        PJListItemCell *cell = (PJListItemCell *)[self.tableView cellForRowAtIndexPath:indexPath];
-        if ([self.tableView.indexPathsForSelectedRows containsObject:indexPath]) {
-            cell.selectionIndicatorView.hidden = NO;
-        } else {
-            cell.selectionIndicatorView.hidden = YES;
-        }
-    }
-}
+
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    PJListItemCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
-    cell.textLabel.text = self.listItems[indexPath.row];
+    PJListItemCell *cell     = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+    cell.textLabel.text      = self.listItems[indexPath.row];
     cell.textLabel.textColor = PJColorFieldValue;
-    if ([indexPath isEqual: self.indexPathOfSelectedItem]) {
+    NSNumber *row = [NSNumber numberWithInteger:indexPath.row];
+    if ([self.userSelectedRows containsObject:row]) {
+        
         cell.selectionIndicatorView.hidden = NO;
+
+        [tableView selectRowAtIndexPath:indexPath
+                               animated:NO
+                         scrollPosition:UITableViewScrollPositionNone];
     } else {
-        cell.selectionIndicatorView.hidden = YES;
+        cell.selectionIndicatorView.hidden   = YES;
     }
 
     return cell;
-}
-
-- (void)scrollViewDidScroll:(UIScrollView *)scrollViews {
-    [self updateCells]  ;
 }
 
 

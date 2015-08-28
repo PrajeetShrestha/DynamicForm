@@ -12,9 +12,9 @@
 
 @interface PJListField : FieldTableViewCell
 
-@property (nonatomic) NSArray *listItems;
-@property (nonatomic) NSIndexPath *indexPathsOfSelectedItem;
+@property (nonatomic) NSArray               *listItems;
 @property (nonatomic) PJListSelectionOption selectionOption;
+@property (nonatomic) NSArray               *userSelectedRows;
 
 - (void)setupRequiredLabelVisibility;
 @end

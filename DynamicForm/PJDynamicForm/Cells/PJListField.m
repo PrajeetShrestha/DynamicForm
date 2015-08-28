@@ -49,7 +49,6 @@
             for (NSString * value in array) {
                 [string appendString:[NSString stringWithFormat:@"%@, ",value]];
             }
-            NSLog(@"String %@",string);
             string = [[string substringWithRange:NSMakeRange(0, string.length - 2)] mutableCopy];
             self.selectedValue.text = string;
 

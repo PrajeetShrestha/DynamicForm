@@ -60,33 +60,32 @@
     FieldTableViewCell *cell = (FieldTableViewCell *)[tableView cellForRowAtIndexPath:indexPath];
        [self.view endEditing:YES];
     if ([cell isKindOfClass:[PJListField class]]) {
-        PJListViewController *vc = [[PJListViewController alloc]init];
-        vc.titleString   = cell.titleText;
-        vc.delegate      = self;
-        vc.indexPath     = cell.indexPath;
-        vc.listItems     = [cell valueForKey:@"listItems"];
-        //vc.selectionType = [[cell valueForKey:@"selectionType"] intValue];
-        if ([cell valueForKey:@"indexPathsOfSelectedItem"] != nil) {
-            vc.indexPathOfSelectedItem = [cell valueForKey:@"indexPathsOfSelectedItem"];
+        PJListViewController *vc   = [[PJListViewController alloc]init];
+        PJListField *modelListCell = (PJListField *)cell;
+        vc.titleString             = modelListCell.titleText;
+        vc.delegate                = self;
+        vc.indexPath               = modelListCell.indexPath;
+        vc.listItems               = modelListCell.listItems;
+        vc.selectionOption         = modelListCell.selectionOption;
+        if (modelListCell.userSelectedRows != nil) {
+            vc.userSelectedRows        = [modelListCell.userSelectedRows mutableCopy];
         }
-        vc.selectionOption = [[cell valueForKey:@"selectionOption"] intValue];
+
         [self showViewController:vc sender:nil];
 
     } else if ([cell isKindOfClass:[PJDescription class]]) {
 
-            DescriptionViewController *vc = [[DescriptionViewController alloc]init];
-            vc.titleString                = cell.titleText;
-            vc.delegate                   = self;
-            vc.initialValue               = cell.value;
-            vc.indexPath                  = cell.indexPath;
-            [self showViewController:vc sender:nil];
+        DescriptionViewController *vc = [[DescriptionViewController alloc]init];
+        vc.titleString                = cell.titleText;
+        vc.delegate                   = self;
+        vc.initialValue               = cell.value;
+        vc.indexPath                  = cell.indexPath;
+        [self showViewController:vc sender:nil];
     }
-
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [self cellTypeForIndexPath:indexPath forTableView:tableView];
-    
     return cell;
 }
 
@@ -168,11 +167,6 @@
         listField.listItems         = modelListField.listItems;
         listField.selectionOption   = modelListField.selectionOption;
         listField.defaultValue      = modelListField.defaultValue;
-        if (listField.defaultValue != nil) {
-            listField.indexPathsOfSelectedItem = [NSIndexPath indexPathForRow:[listField.listItems
-                                                                               indexOfObject:listField.defaultValue]
-                                                                    inSection:0];
-        }
         [listField setUp];
         
     } else if (class == [PJSubmitCell class]) {
@@ -247,13 +241,19 @@
 }
 
 #pragma mark - PJListViewControllerDelegate
-- (void)selectedItemInList:(id)value forCellAtIndexPath:(NSIndexPath *)indexPath andSelectedIndex:(id)selectedIndex {
-    PJListField *definition = cellObjects[indexPath.row];
-    if (definition.selectionOption == PJListSingleSelection) {
-        definition.indexPathsOfSelectedItem = selectedIndex;
+- (void)selectedValuesFromList:(NSArray *)selectedListItems fromIndexPath:(NSIndexPath *)indexPath{
+
+    if (selectedListItems != nil) {
+        PJListField *cell     = (PJListField *)[self.tableView cellForRowAtIndexPath:indexPath];
+        NSMutableArray *valueOfObjects = [NSMutableArray new];
+        for (NSNumber *number in selectedListItems) {
+            [valueOfObjects addObject:cell.listItems[number.integerValue]];
+        }
+        cell.value            = valueOfObjects;
+        cell.userSelectedRows = selectedListItems;
+        [cell setUp];
     }
-    definition.value = value;
-    [definition setUp];
+
 }
 
 #pragma mark - UIViewController+BackButtonHandler

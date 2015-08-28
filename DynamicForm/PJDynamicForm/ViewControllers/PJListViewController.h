@@ -8,16 +8,17 @@
 
 #import <UIKit/UIKit.h>
 @protocol PJListViewControllerDelegate <NSObject>
-//Selected Indexes because when called by a MultipleSelect list view indexes will be passed
-- (void)selectedItemInList:(id)value forCellAtIndexPath:(NSIndexPath *)indexPath andSelectedIndex:(id )selectedIndexes;
+@optional
+- (void)selectedValuesFromList:(NSArray *)selectedListItems fromIndexPath:(NSIndexPath *)indexPath;
 @end
+
 @interface PJListViewController : UIViewController
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) id <PJListViewControllerDelegate> delegate;
-@property (nonatomic) NSArray *listItems;
-@property (nonatomic) NSIndexPath *indexPath;
-@property (nonatomic) NSIndexPath *indexPathOfSelectedItem;
-@property (nonatomic) NSString *titleString;
+@property (nonatomic) NSArray               *listItems;
+@property (nonatomic) NSIndexPath           *indexPath;
+@property (nonatomic) NSString              *titleString;
 @property (nonatomic) PJListSelectionOption selectionOption;
+@property (nonatomic) NSMutableArray        *userSelectedRows;
 
 @end

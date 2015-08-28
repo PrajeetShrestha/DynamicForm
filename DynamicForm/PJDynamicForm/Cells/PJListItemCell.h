@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "PJDynamicForm.h"
 @interface PJListItemCell : UITableViewCell
+
 @property (weak, nonatomic) IBOutlet UIView *selectionIndicatorView;
 
 @end
