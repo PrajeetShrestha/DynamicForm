@@ -246,9 +246,11 @@
     if (selectedListItems != nil) {
         PJListField *cell     = (PJListField *)[self.tableView cellForRowAtIndexPath:indexPath];
         NSMutableArray *valueOfObjects = [NSMutableArray new];
+        
         for (NSNumber *number in selectedListItems) {
             [valueOfObjects addObject:cell.listItems[number.integerValue]];
         }
+
         cell.value            = valueOfObjects;
         cell.userSelectedRows = selectedListItems;
         [cell setUp];

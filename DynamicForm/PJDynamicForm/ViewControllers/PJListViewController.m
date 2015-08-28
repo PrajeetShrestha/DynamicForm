@@ -11,6 +11,9 @@
 
 @interface PJListViewController ()<UITableViewDataSource,UITableViewDelegate,UIScrollViewDelegate>
 @property (nonatomic) NSMutableArray *allIndexPaths;
+@property (weak, nonatomic) IBOutlet UIButton *btnClearAll;
+@property (weak, nonatomic) IBOutlet UIButton *btnSelectAll;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *heightConstraintButtons;
 @end
 
 @implementation PJListViewController
@@ -24,6 +27,7 @@ static NSString *cellIdentifier = @"PJListItemCell";
         if (self.userSelectedRows == nil) {
             self.userSelectedRows = [NSMutableArray new];
         }
+
     }
     return self;
 }
@@ -42,6 +46,8 @@ static NSString *cellIdentifier = @"PJListItemCell";
         self.tableView.allowsMultipleSelection = YES;
         UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithTitle:@"Done" style:UIBarButtonItemStylePlain target:self action:@selector(done:)];
         self.navigationItem.rightBarButtonItem = doneButton;
+        [self.btnClearAll setTitleColor:PJColorFieldValue forState:UIControlStateNormal];
+        [self.btnSelectAll setTitleColor:PJColorFieldTitle forState:UIControlStateNormal];
     }
 
 }
@@ -96,7 +102,28 @@ static NSString *cellIdentifier = @"PJListItemCell";
     return cell;
 }
 
+- (IBAction)clearAction:(id)sender {
+    [self.userSelectedRows removeAllObjects];
+    for (NSInteger i = 0; i < self.listItems.count; i ++) {
+        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:i inSection:0];
+        [self.tableView deselectRowAtIndexPath:indexPath animated:NO];
+        PJListItemCell *cell = (PJListItemCell *)[self.tableView cellForRowAtIndexPath:indexPath];
+        cell.selectionIndicatorView.hidden = YES;
+    }
+}
 
+- (IBAction)selectAllAction:(id)sender {
+    //Clear previous selection
+    [self.userSelectedRows removeAllObjects];
+    for (NSInteger i = 0; i < self.listItems.count; i ++) {
+        NSNumber *row = [NSNumber numberWithInteger:i];
+        [self.userSelectedRows addObject:row];
+        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:i inSection:0];
+        [self.tableView selectRowAtIndexPath:indexPath animated:NO scrollPosition:UITableViewScrollPositionNone];
+        PJListItemCell *cell = (PJListItemCell *)[self.tableView cellForRowAtIndexPath:indexPath];
+        cell.selectionIndicatorView.hidden = NO;
+    }
+}
 
 
 @end
