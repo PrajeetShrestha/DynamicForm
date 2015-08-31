@@ -13,6 +13,7 @@
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic) NSArray  *cellDefinition;
 @property (nonatomic) NSString *titleString;
+@property (nonatomic) NSArray  *sections;
 
 
 @end

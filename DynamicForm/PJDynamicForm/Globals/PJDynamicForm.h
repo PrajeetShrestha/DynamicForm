@@ -23,6 +23,7 @@
 #import "PJListItemCell.h"  
 #import "PJSubmitCell.h"
 #import "PJTextField.h"
+#import "PJHeader.h"
 
 
 #pragma mark - Libraries
@@ -31,5 +32,6 @@
 
 #pragma mark - Models
 #import "FormValues.h"
+#import "PJSection.h"
 
 #endif

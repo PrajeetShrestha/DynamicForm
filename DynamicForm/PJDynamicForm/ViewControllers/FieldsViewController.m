@@ -52,8 +52,20 @@
 }
 #pragma mark - TableView Datasource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return cellDefinition.count;
+    PJSection *sectionElement = self.sections[section];
+    return sectionElement.elements.count;
 
+}
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return self.sections.count;
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+    PJSection *sectionElement = self.sections[section];
+    PJHeader *header          = [PJHeader new];
+    header.title.text         = sectionElement.name;
+    return header;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -97,7 +109,8 @@
 
 #pragma mark - Private Method
 - (UITableViewCell *)cellTypeForIndexPath:(NSIndexPath *)indexPath forTableView:(UITableView *)tableView {
-    FieldTableViewCell *definition = cellDefinition[indexPath.row];
+    PJSection *sectionElement = self.sections[indexPath.section];
+    FieldTableViewCell *definition = sectionElement.elements[indexPath.row];//cellDefinition[indexPath.row];
     NSString *cellType             = [self cellTypeForDefinitionClass:[definition class]];
     //Initialize common properties of all Cells
     FieldTableViewCell *cell       = [tableView dequeueReusableCellWithIdentifier:cellType];
