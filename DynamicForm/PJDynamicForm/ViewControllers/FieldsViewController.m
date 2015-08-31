@@ -61,15 +61,25 @@
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return self.sections.count;
+    if (self.sections.count > 0) {
+        return self.sections.count;
+    } else {
+        return 1;
+    }
+
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
 
-    PJSection *sectionElement = self.sections[section];
-    PJHeader *header          = [PJHeader new];
-    header.title.text         = sectionElement.name;
-    return header;
+    if (self.sections.count > 0) {
+        PJSection *sectionElement = self.sections[section];
+        PJHeader *header          = [PJHeader new];
+        header.title.text         = sectionElement.name;
+        return header;
+    } else {
+        return nil;
+    }
+
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -112,7 +122,11 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-    return 44;
+    if (self.sections.count > 0) {
+        return 44;
+    } else {
+        return 0;
+    }
 }
 
 #pragma mark - Private Method

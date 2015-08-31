@@ -75,17 +75,19 @@
     datePicker.datePickerMode  = UIDatePickerModeDate;
     [cellDefinitions addObject:datePicker];
 
+    PJSubmitCell *submit = [PJSubmitCell new];
+    [cellDefinitions addObject:submit];
+    
     PJSection *section1 = [PJSection new];
     section1.name       = @"TopFields";
     section1.elements   = @[textField,addressField];
 
     PJSection *section2 = [PJSection new];
     section2.name       = @"BotField";
-    section2.elements   = @[descriptionField,datePicker];
+    section2.elements   = @[descriptionField,datePicker,submit];
 
     NSArray *sections    = @[section1,section2];
-    PJSubmitCell *submit = [PJSubmitCell new];
-    [cellDefinitions addObject:submit];
+
 
     FieldsViewController *vc = [FieldsViewController new];
     vc.sections              = sections;
