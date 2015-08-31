@@ -11,30 +11,41 @@
             <rect key="frame" x="0.0" y="0.0" width="400" height="75"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="kRn-AR-eVi">
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="758" translatesAutoresizingMaskIntoConstraints="NO" id="kRn-AR-eVi">
                     <rect key="frame" x="8" y="10" width="56" height="56"/>
+                    <color key="backgroundColor" red="0.73976934520000004" green="0.19352235540000001" blue="0.21513054949999999" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="56" id="0HF-cc-XGm"/>
-                        <constraint firstAttribute="width" secondItem="kRn-AR-eVi" secondAttribute="height" multiplier="1:1" id="CKI-Yf-sf5"/>
+                        <constraint firstAttribute="width" secondItem="kRn-AR-eVi" secondAttribute="height" multiplier="1:1" id="7Ym-wf-b7V"/>
                     </constraints>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cyZ-V8-YaW">
                     <rect key="frame" x="72" y="27" width="320" height="21"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
             </subviews>
-            <color key="backgroundColor" red="1" green="0.78384857060000002" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+            <color key="backgroundColor" red="0.89411764709999997" green="0.59215686270000001" blue="0.13725490200000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstAttribute="centerY" secondItem="kRn-AR-eVi" secondAttribute="centerY" id="4lV-LM-zIs"/>
+                <constraint firstItem="cyZ-V8-YaW" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="6a2-co-lFI"/>
                 <constraint firstItem="cyZ-V8-YaW" firstAttribute="leading" secondItem="kRn-AR-eVi" secondAttribute="trailing" constant="8" id="AyT-bb-xe6"/>
                 <constraint firstAttribute="trailing" secondItem="cyZ-V8-YaW" secondAttribute="trailing" constant="8" id="Kbp-RZ-uqP"/>
+                <constraint firstAttribute="bottom" secondItem="kRn-AR-eVi" secondAttribute="bottom" constant="9" id="Sxo-QO-fio"/>
+                <constraint firstItem="kRn-AR-eVi" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="10" id="fDN-04-iBe"/>
+                <constraint firstItem="kRn-AR-eVi" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="8" id="n8n-JD-5PR"/>
                 <constraint firstItem="kRn-AR-eVi" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="ss3-VF-LlT"/>
                 <constraint firstItem="cyZ-V8-YaW" firstAttribute="centerY" secondItem="kRn-AR-eVi" secondAttribute="centerY" id="v4T-AC-ef4"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="4lV-LM-zIs"/>
+                    <exclude reference="Sxo-QO-fio"/>
+                    <exclude reference="n8n-JD-5PR"/>
+                </mask>
+            </variation>
             <connections>
                 <outlet property="imageView" destination="kRn-AR-eVi" id="GLM-eI-GiP"/>
                 <outlet property="title" destination="cyZ-V8-YaW" id="Nhd-rL-oIN"/>

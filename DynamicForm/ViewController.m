@@ -83,9 +83,7 @@
     section2.name       = @"BotField";
     section2.elements   = @[descriptionField,datePicker];
 
-    NSArray *sections = @[section1,section2];
-
-
+    NSArray *sections    = @[section1,section2];
     PJSubmitCell *submit = [PJSubmitCell new];
     [cellDefinitions addObject:submit];
 
